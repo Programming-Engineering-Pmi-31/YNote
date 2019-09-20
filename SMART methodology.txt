@@ -1,0 +1,15 @@
+Create DB till 22.09.2019
+Refactore project due to ONION architecture till 6.10.2019.
+Connect Swagger, Logger, IOC & Mappers till 6.10.2019.
+Create ExceptionFilter till 6.10.2019.
+Create all necessary DTOs, Services, ViewModels till 20.10.2019
+Create user authorization till 27.10.2019
+Create email sender till 27.10.2019
+Finish Web API project till 3.11.2019
+Create desktop GUI using WPF till 17.11.2019
+Connect Web API project to WPF Project till 17.11.2019
+Create mobile GUI using Xamarin till 1.12.2019
+Connect Web API to Xamarin project till 1.12.2019
+Create all necessary Tests till 3.12.2019
+Create presentation till 6.12.2019
+
