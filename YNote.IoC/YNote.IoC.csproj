@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="2.2.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\YNote.Mappers\YNote.Mappers.csproj" />
+    <ProjectReference Include="..\YNote.Services.Interfaces\YNote.Services.Interfaces.csproj" />
+    <ProjectReference Include="..\YNote.Services\YNote.Services.csproj" />
+  </ItemGroup>
+
+</Project>
