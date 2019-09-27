@@ -18,4 +18,11 @@
     <Folder Include="Areas\YNote.Domain\Views\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\YNote.IoC\YNote.IoC.csproj" />
+    <ProjectReference Include="..\YNote.Services.Interfaces\YNote.Services.Interfaces.csproj" />
+    <ProjectReference Include="..\YNote.Services.Models\YNote.Services.Models.csproj" />
+    <ProjectReference Include="..\YNote.WebAPI.Models\YNote.WebAPI.Models.csproj" />
+  </ItemGroup>
+
 </Project>
