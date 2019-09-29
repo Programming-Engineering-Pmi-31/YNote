@@ -1,2 +1,0 @@
-# YNote
-Your personal dashboards
