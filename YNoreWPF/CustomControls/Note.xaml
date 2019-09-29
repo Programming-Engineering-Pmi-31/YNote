@@ -1,0 +1,18 @@
+﻿<UserControl x:Class="YNoreWPF.CustomControls.Note"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:YNoreWPF.CustomControls"
+             mc:Ignorable="d" 
+             d:DesignHeight="150" d:DesignWidth="150" AllowDrop="True">
+    <Grid Name="NoteGrid" Background="Yellow">
+        <StackPanel Name="Context" Margin="5,5,5,30">
+            <TextBox Height="Auto"  TextWrapping="Wrap" VerticalAlignment="Top" Grid.IsSharedSizeScope="True" Background="{x:Null}" BorderBrush="{x:Null}"/>
+        </StackPanel>
+        <Button Content="V" HorizontalAlignment="Left" Margin="5,0,0,5" VerticalAlignment="Bottom" Width="20" Height="20" Background="{x:Null}" Click="Add_CheckBox_On_Click"/>
+        <Button Content="D" HorizontalAlignment="Right" Margin="0,0,5,5" VerticalAlignment="Bottom" Width="20" Height="20" Background="{x:Null}" Click="Delete_Note_On_Click"/>
+
+
+    </Grid>
+</UserControl>
