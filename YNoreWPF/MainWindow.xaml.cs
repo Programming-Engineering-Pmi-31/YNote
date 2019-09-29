@@ -22,17 +22,17 @@ namespace YNoreWPF {
         double FirstXPos, FirstYPos, FirstArrowXPos, FirstArrowYPos;
         object MovingObject;
         public MainWindow() {
-
-
             InitializeComponent();
 
-            for (int countSpace = 0; countSpace < 4; ++countSpace) {
-                SpaceGrid.Children.Add(new Button() { Content = (countSpace + 1).ToString(),
-                                                      Width = 35,
-                                                      Height = 35,
-                                                    //Margin = new Thickness(10)
-                                                        });
+            for (int countSpace = 0; countSpace < 2; ++countSpace) {
+                SpacesListView.Items.Add(new Label() { Content = $"{countSpace+1}",
+                                                       FontSize = 25});
             }
+
+            SpacesListView.Items.Add(new Label() {
+                Content = "+",
+                FontSize = 25
+            });
         }
 
         private void Add_New_Note(object sender, RoutedEventArgs e) {
@@ -41,12 +41,17 @@ namespace YNoreWPF {
                                                                      MinHeight = 100,
                                                                      //MinWidth = 100,
                                                                      HorizontalAlignment = HorizontalAlignment.Left,
+                                                                     Margin = new Thickness(10)
                                                                      });
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e) {
+        private void Login_Click(object sender, RoutedEventArgs e) {
             YNoreWPF.AdditionalWindow.LoginWindow loginWindow = new AdditionalWindow.LoginWindow();
             loginWindow.Show();
+        }
+
+        private void Exit_Click(object sender, RoutedEventArgs e) {
+            Application.Current.Shutdown();
         }
 
         private void MouseLeftButtonDown(object sender, MouseButtonEventArgs e) {
