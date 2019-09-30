@@ -36,12 +36,10 @@ namespace YNoreWPF {
         }
 
         private void Add_New_Note(object sender, RoutedEventArgs e) {
-            NotesStackPanel.Children.Add(new CustomControls.Note() { Height = Double.NaN,
+            NotesStackPanel.Children.Add(new CustomControls.Note() { Height = 100,
                                                                      Width = 100,
-                                                                     MinHeight = 100,
-                                                                     //MinWidth = 100,
                                                                      HorizontalAlignment = HorizontalAlignment.Left,
-                                                                     Margin = new Thickness(10)
+                                                                     Margin = new Thickness(10)                                                                     
                                                                      });
         }
 

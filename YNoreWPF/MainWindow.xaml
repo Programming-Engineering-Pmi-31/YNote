@@ -5,8 +5,44 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:YNoreWPF"
         xmlns:customcontrol="clr-namespace:YNoreWPF.CustomControls"
+        xmlns:addition="clr-namespace:YNoreWPF.Addition"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800" WindowStyle="None">
+
+    <Window.Resources>
+        <Style TargetType="{x:Type customcontrol:Note}">
+            <Setter Property="Template" >
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type customcontrol:Note}">
+                        <Grid DataContext="{Binding RelativeSource={RelativeSource TemplatedParent}}">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="5"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="5"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="5"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="5"/>
+                            </Grid.RowDefinitions>
+
+                            <addition:Resizer Cursor="SizeNWSE" Background="Yellow" Width="3" Height="3" BorderBrush="Yellow" Grid.Row="0" Grid.Column="0" ThumbDirection="TopLeft"/>
+                            <addition:Resizer Cursor="SizeWE" Background="Yellow" Width="3" BorderBrush="Yellow" Grid.Row="1" Grid.Column="0" ThumbDirection="Left"/>
+                            <addition:Resizer Cursor="SizeNESW" Background="Yellow" Width="3" Height="3" BorderBrush="{x:Null}" Grid.Row="2" Grid.Column="0" ThumbDirection="BottomLeft" />
+                            <addition:Resizer Cursor="SizeNS" Background="Yellow" Height="3" BorderBrush="{x:Null}" Grid.Row="2" Grid.Column="1" ThumbDirection="Bottom" />
+                            <addition:Resizer Cursor="SizeNWSE" Background="Yellow" Width="3" Height="3" Grid.Row="2" Grid.Column="2" ThumbDirection="BottomRight" />
+                            <addition:Resizer Cursor="SizeWE" Background="Yellow" Width="3" Grid.Row="1" Grid.Column="2" ThumbDirection="Right"/>
+                            <addition:Resizer Cursor="SizeNESW" Background="Yellow" Width="3" Height="3" Grid.Row="0" Grid.Column="2" ThumbDirection="TopRight"/>
+                            <addition:Resizer Cursor="SizeNS" Background="Yellow"  Height="3" Grid.Row="0" Grid.Column="1" ThumbDirection="Top"/>
+
+                            <ContentPresenter Grid.Row="1" Grid.Column="1" Content="{TemplateBinding Content}" Margin="{TemplateBinding Padding}"/>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+    
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="20*"/>
@@ -32,9 +68,11 @@
 
         <Grid Name="Notes" Grid.Column="1" Grid.Row="1" Background="#4f5352" Grid.RowSpan="2">
             <ScrollViewer Name="test" VerticalScrollBarVisibility="Auto">
-                <StackPanel Orientation="Horizontal" Name="NotesStackPanel" Margin="5"/>
+                <StackPanel Orientation="Horizontal" Name="NotesStackPanel" Margin="5">
+                    <customcontrol:Note Height="100" Width="100"/>
+                </StackPanel>
             </ScrollViewer>
-            <Button Content="+" HorizontalAlignment="Right" Margin="0,0,20,20" VerticalAlignment="Bottom" Width="30" Height="30" Background="{x:Null}" Click="Add_New_Note"/>
+            <Button Content="+" HorizontalAlignment="Right" Margin="0,0,20,20" VerticalAlignment="Bottom" Width="30" Height="30" Background="Gray" Click="Add_New_Note"/>
         </Grid>
 
     </Grid>
