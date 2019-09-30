@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:YNoreWPF.CustomControls"
              mc:Ignorable="d" 
-             d:DesignHeight="150" d:DesignWidth="150" AllowDrop="True">
+             d:DesignHeight="150" d:DesignWidth="150" AllowDrop="True" >
     <Grid Name="NoteGrid" Background="Yellow">
         <StackPanel Name="Context" Margin="5,5,5,30">
             <TextBox Height="Auto"  TextWrapping="Wrap" VerticalAlignment="Top" Grid.IsSharedSizeScope="True" Background="{x:Null}" BorderBrush="{x:Null}"/>

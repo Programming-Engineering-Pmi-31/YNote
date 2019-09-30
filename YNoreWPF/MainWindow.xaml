@@ -61,7 +61,7 @@
         </Grid>
 
         <Grid Name="SpaceGrid" Grid.Column="0" Grid.Row="1" Background="#1de5c7" Grid.RowSpan="2">
-            <ListView Name="SpacesListView" Foreground="{x:Null}" Background="{x:Null}" BorderBrush="{x:Null}" Height="Auto">
+            <ListView Name="SpacesListView" Foreground="{x:Null}" Background="{x:Null}" BorderBrush="{x:Null}" Height="Auto" SelectionChanged="SelectionChange_Event">
                
             </ListView>
         </Grid>
@@ -69,7 +69,7 @@
         <Grid Name="Notes" Grid.Column="1" Grid.Row="1" Background="#4f5352" Grid.RowSpan="2">
             <ScrollViewer Name="test" VerticalScrollBarVisibility="Auto">
                 <StackPanel Orientation="Horizontal" Name="NotesStackPanel" Margin="5">
-                    <customcontrol:Note Height="100" Width="100"/>
+                    
                 </StackPanel>
             </ScrollViewer>
             <Button Content="+" HorizontalAlignment="Right" Margin="0,0,20,20" VerticalAlignment="Bottom" Width="30" Height="30" Background="Gray" Click="Add_New_Note"/>

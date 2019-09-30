@@ -18,11 +18,6 @@ namespace YNoreWPF.CustomControls {
     /// Interaction logic for Note.xaml
     /// </summary>
     public partial class Note : UserControl {
-        // Data
-
-        // For move elements
-        double FirstXPos, FirstYPos, FirstArrowXPos, FirstArrowYPos;
-        object MovingObject;
 
         public Note() {
             InitializeComponent();
@@ -34,30 +29,8 @@ namespace YNoreWPF.CustomControls {
             //                                      Content = "ToDo"});
             Context.Children.Add(new YNoreWPF.CustomControls.CheckWithTextBox() { HorizontalAlignment = System.Windows.HorizontalAlignment.Left });
         }
-
         private void Delete_Note_On_Click(object sender, RoutedEventArgs e) {
             ((Panel)this.Parent).Children.Remove(this);
         }
-
-        //private void MouseLeftButtonDown_Event(object sender, MouseButtonEventArgs e) {
-        //    //In this event, we get current mouse position on the control to use it in the MouseMove event.
-        //    FirstXPos = e.GetPosition(sender as Control).X;
-        //    FirstYPos = e.GetPosition(sender as Control).Y;
-        //    FirstArrowXPos = e.GetPosition((sender as Control).Parent as Control).X - FirstXPos;
-        //    FirstArrowYPos = e.GetPosition((sender as Control).Parent as Control).Y - FirstYPos;
-        //    MovingObject = sender;
-        //}
-        //void MouseLeftButtonUp_Event(object sender, MouseButtonEventArgs e) {
-        //    MovingObject = null;
-        //}
-        //private void MouseMove_Event(object sender, MouseEventArgs e) {
-        //    if (e.LeftButton == MouseButtonState.Pressed) {
-        //        (MovingObject as FrameworkElement).SetValue(Canvas.LeftProperty,
-        //             e.GetPosition((MovingObject as FrameworkElement).Parent as FrameworkElement).X - FirstXPos);
-
-        //        (MovingObject as FrameworkElement).SetValue(Canvas.TopProperty,
-        //             e.GetPosition((MovingObject as FrameworkElement).Parent as FrameworkElement).Y - FirstYPos);
-        //    }
-        //}
     }
 }

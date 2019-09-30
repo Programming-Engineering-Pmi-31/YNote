@@ -19,8 +19,6 @@ namespace YNoreWPF {
     /// </summary>
     public partial class MainWindow : Window {
 
-        double FirstXPos, FirstYPos, FirstArrowXPos, FirstArrowYPos;
-        object MovingObject;
         public MainWindow() {
             InitializeComponent();
 
@@ -51,26 +49,30 @@ namespace YNoreWPF {
         private void Exit_Click(object sender, RoutedEventArgs e) {
             Application.Current.Shutdown();
         }
+        private void MouseLeftButtonUp_Event(object sender, MouseButtonEventArgs e) {
 
-        private void MouseLeftButtonDown(object sender, MouseButtonEventArgs e) {
-            //In this event, we get current mouse position on the control to use it in the MouseMove event.
-            FirstXPos = e.GetPosition(sender as Control).X;
-            FirstYPos = e.GetPosition(sender as Control).Y;
-            FirstArrowXPos = e.GetPosition((sender as Control).Parent as Control).X - FirstXPos;
-            FirstArrowYPos = e.GetPosition((sender as Control).Parent as Control).Y - FirstYPos;
-            MovingObject = sender;
         }
-        void MouseLeftButtonUp(object sender, MouseButtonEventArgs e) {
-            MovingObject = null;
-        }
-        private void MouseMove(object sender, MouseEventArgs e) {
-            if (e.LeftButton == MouseButtonState.Pressed) {
-                (MovingObject as FrameworkElement).SetValue(Canvas.LeftProperty,
-                     e.GetPosition((MovingObject as FrameworkElement).Parent as FrameworkElement).X - FirstXPos);
+        private void MouseMove_Event(object sender, MouseEventArgs e) {
 
-                (MovingObject as FrameworkElement).SetValue(Canvas.TopProperty,
-                     e.GetPosition((MovingObject as FrameworkElement).Parent as FrameworkElement).Y - FirstYPos);
+        }
+
+        private void SelectionChange_Event(object sender, SelectionChangedEventArgs e) {
+            int index = SpacesListView.SelectedIndex;
+
+            NotesStackPanel.Children.Clear();
+
+            if (index == SpacesListView.Items.Count - 1) { 
+                SpacesListView.Items.RemoveAt(SpacesListView.Items.Count - 1);
+                SpacesListView.Items.Add(new Label() {
+                    Content = $"{ SpacesListView.Items.Count + 1}",
+                    FontSize = 25
+                });
+                SpacesListView.Items.Add(new Label() {
+                    Content = $"+",
+                    FontSize = 25
+                });
             }
+
         }
     }
 }
