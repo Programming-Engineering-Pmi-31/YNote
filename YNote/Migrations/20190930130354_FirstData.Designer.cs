@@ -10,7 +10,7 @@ using YNote;
 namespace YNote.Migrations
 {
     [DbContext(typeof(YNoteDbContext))]
-    [Migration("20190930122404_FirstData")]
+    [Migration("20190930130354_FirstData")]
     partial class FirstData
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
