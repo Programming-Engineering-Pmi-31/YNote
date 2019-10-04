@@ -92,12 +92,23 @@ namespace YNoreWPF {
             MovingObject = null;
         }
         private void MouseMove_Event(object sender, MouseEventArgs e) {
-            if (e.LeftButton == MouseButtonState.Pressed) {
+            if (e.LeftButton == MouseButtonState.Pressed && Keyboard.IsKeyDown(Key.LeftCtrl)) {
                 (MovingObject as FrameworkElement).SetValue(Canvas.LeftProperty,
                      e.GetPosition((MovingObject as FrameworkElement).Parent as FrameworkElement).X - FirstXPos);
 
                 (MovingObject as FrameworkElement).SetValue(Canvas.TopProperty,
                      e.GetPosition((MovingObject as FrameworkElement).Parent as FrameworkElement).Y - FirstYPos);
+            }
+        }
+
+        private void FullScreen_Click(object sender, RoutedEventArgs e) {
+            if ((string)((Button)sender).Content == "FullScreen") {
+                this.WindowState = WindowState.Maximized;
+                ((Button)sender).Content = "Minimizate";
+            }
+            if ((string)((Button)sender).Content == "Minimizate") {
+                this.WindowState = WindowState.Normal;
+                ((Button)sender).Content = "FullScreen";
             }
         }
 

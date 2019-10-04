@@ -20,7 +20,6 @@ namespace YNoreWPF.CustomControls {
     /// Interaction logic for Note.xaml
     /// </summary>
     public partial class Note : UserControl {
-
         
         public Note() {
             InitializeComponent();

@@ -69,6 +69,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="CustomControls\Group.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="CustomControls\Note.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -92,6 +96,9 @@
     </Compile>
     <Compile Include="CustomControls\CheckWithTextBox.xaml.cs">
       <DependentUpon>CheckWithTextBox.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CustomControls\Group.xaml.cs">
+      <DependentUpon>Group.xaml</DependentUpon>
     </Compile>
     <Compile Include="CustomControls\Note.xaml.cs">
       <DependentUpon>Note.xaml</DependentUpon>
