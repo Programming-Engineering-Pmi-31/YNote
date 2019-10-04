@@ -66,13 +66,20 @@
             </ListView>
         </Grid>
 
-        <Grid Name="Notes" Grid.Column="1" Grid.Row="1" Background="#4f5352" Grid.RowSpan="2">
-            <ScrollViewer Name="test" VerticalScrollBarVisibility="Auto">
-                <StackPanel Orientation="Horizontal" Name="NotesStackPanel" Margin="5">
-                    
-                </StackPanel>
-            </ScrollViewer>
+        <Grid Name="Notes" Grid.Column="1" Grid.Row="1" Background="#4f5352">
+            <Canvas Name="NotesCanvas" Margin="5">
+                <ScrollViewer Name="test" VerticalScrollBarVisibility="Auto" Canvas.Left="2">
+                    <customcontrol:Note Height="150" Width="150" />
+
+                    <ScrollViewer.ContextMenu>
+                        <ContextMenu>
+                            <MenuItem Header="Add Note" Click="Add_New_Note"/>
+                        </ContextMenu>
+                    </ScrollViewer.ContextMenu>
+                </ScrollViewer>
+            </Canvas>
             <Button Content="+" HorizontalAlignment="Right" Margin="0,0,20,20" VerticalAlignment="Bottom" Width="30" Height="30" Background="Gray" Click="Add_New_Note"/>
+            <CheckBox Name="Movable" Content="Lock" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="5" Checked="CanMove_Checked" Unchecked="Movable_Unchecked"/>
         </Grid>
 
     </Grid>

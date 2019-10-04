@@ -18,27 +18,59 @@ namespace YNoreWPF {
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window {
+        // Drop and drag
+        double FirstXPos, FirstYPos;
+        object MovingObject;
 
         public MainWindow() {
             InitializeComponent();
+
+            foreach (Control control in NotesCanvas.Children) {
+                control.PreviewMouseLeftButtonDown += this.MouseLeftButtonDown_Event;
+                control.PreviewMouseLeftButtonUp += this.PreviewMouseLeftButtonUp_Event;
+                control.Cursor = Cursors.Hand;
+            }
+            NotesCanvas.PreviewMouseMove += this.MouseMove_Event;
 
             for (int countSpace = 0; countSpace < 2; ++countSpace) {
                 SpacesListView.Items.Add(new Label() { Content = $"{countSpace+1}",
                                                        FontSize = 25});
             }
-
             SpacesListView.Items.Add(new Label() {
                 Content = "+",
                 FontSize = 25
             });
         }
 
+        private void CanMove_Checked(object sender, RoutedEventArgs e) {
+            foreach (Control control in NotesCanvas.Children) {
+                control.PreviewMouseLeftButtonDown -= this.MouseLeftButtonDown_Event;
+                control.PreviewMouseLeftButtonUp -= this.PreviewMouseLeftButtonUp_Event;
+                control.Cursor = null;
+            }
+            NotesCanvas.PreviewMouseMove -= this.MouseMove_Event;
+        }
+
+        private void Movable_Unchecked(object sender, RoutedEventArgs e) {
+            foreach (Control control in NotesCanvas.Children) {
+                control.PreviewMouseLeftButtonDown += this.MouseLeftButtonDown_Event;
+                control.PreviewMouseLeftButtonUp += this.PreviewMouseLeftButtonUp_Event;
+            }
+            NotesCanvas.PreviewMouseMove += this.MouseMove_Event;
+        }
+
         private void Add_New_Note(object sender, RoutedEventArgs e) {
-            NotesStackPanel.Children.Add(new CustomControls.Note() { Height = 100,
-                                                                     Width = 100,
-                                                                     HorizontalAlignment = HorizontalAlignment.Left,
-                                                                     Margin = new Thickness(10)                                                                     
-                                                                     });
+            NotesCanvas.Children.Add(new CustomControls.Note() { Height = 150,
+                                                                     Width = 150,
+                                                                     HorizontalAlignment = HorizontalAlignment.Right,
+                                                                     VerticalAlignment = VerticalAlignment.Top,
+                                                                     Margin = new Thickness(10)});
+            foreach (Control control in NotesCanvas.Children) {
+                control.PreviewMouseLeftButtonDown += this.MouseLeftButtonDown_Event;
+                control.PreviewMouseLeftButtonUp += this.PreviewMouseLeftButtonUp_Event;
+                control.Cursor = Cursors.Hand;
+            }
+            NotesCanvas.PreviewMouseMove += this.MouseMove_Event;
         }
 
         private void Login_Click(object sender, RoutedEventArgs e) {
@@ -49,17 +81,32 @@ namespace YNoreWPF {
         private void Exit_Click(object sender, RoutedEventArgs e) {
             Application.Current.Shutdown();
         }
-        private void MouseLeftButtonUp_Event(object sender, MouseButtonEventArgs e) {
 
+        private void MouseLeftButtonDown_Event(object sender, MouseButtonEventArgs e) {
+            //In this event, we get current mouse position on the control to use it in the MouseMove event.
+            //if (Mouse.DirectlyOver == ((CustomControls.Note)sender)) {
+                FirstXPos = e.GetPosition(sender as Control).X;
+                FirstYPos = e.GetPosition(sender as Control).Y;
+                MovingObject = sender;
+            //}
+        }
+        void PreviewMouseLeftButtonUp_Event(object sender, MouseButtonEventArgs e) {
+            MovingObject = null;
         }
         private void MouseMove_Event(object sender, MouseEventArgs e) {
+            if (e.LeftButton == MouseButtonState.Pressed) {
+                (MovingObject as FrameworkElement).SetValue(Canvas.LeftProperty,
+                     e.GetPosition((MovingObject as FrameworkElement).Parent as FrameworkElement).X - FirstXPos);
 
+                (MovingObject as FrameworkElement).SetValue(Canvas.TopProperty,
+                     e.GetPosition((MovingObject as FrameworkElement).Parent as FrameworkElement).Y - FirstYPos);
+            }
         }
 
         private void SelectionChange_Event(object sender, SelectionChangedEventArgs e) {
             int index = SpacesListView.SelectedIndex;
 
-            NotesStackPanel.Children.Clear();
+            NotesCanvas.Children.Clear();
 
             if (index == SpacesListView.Items.Count - 1) { 
                 SpacesListView.Items.RemoveAt(SpacesListView.Items.Count - 1);

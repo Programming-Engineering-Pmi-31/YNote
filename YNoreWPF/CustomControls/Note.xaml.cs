@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -19,6 +21,7 @@ namespace YNoreWPF.CustomControls {
     /// </summary>
     public partial class Note : UserControl {
 
+        
         public Note() {
             InitializeComponent();
         }
@@ -31,6 +34,26 @@ namespace YNoreWPF.CustomControls {
         }
         private void Delete_Note_On_Click(object sender, RoutedEventArgs e) {
             ((Panel)this.Parent).Children.Remove(this);
+        }
+
+        private void ChangeColorToWhite_click(object sender, RoutedEventArgs e) {
+            NoteGrid.Background = Brushes.White;
+        }
+        private void ChangeColorToYellow_click(object sender, RoutedEventArgs e) {
+            NoteGrid.Background = Brushes.Yellow;
+        }
+        private void ChangeColorToBlue_click(object sender, RoutedEventArgs e) {
+            NoteGrid.Background = Brushes.Aqua;
+        }
+
+        private void MoveToDesktop_Click(object sender, RoutedEventArgs e) {
+            ((Panel)this.Parent).Children.Remove(this);
+            AdditionalWindow.NoteDesktop noteWindow = new AdditionalWindow.NoteDesktop(this);
+            noteWindow.Show();
+        }
+
+        private void DontMovable_Event(object sender, RoutedEventArgs e) {
+
         }
     }
 }
