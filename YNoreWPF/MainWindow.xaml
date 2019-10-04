@@ -68,8 +68,8 @@
 
         <Grid Name="Notes" Grid.Column="1" Grid.Row="1" Background="#4f5352">
             <Canvas Name="NotesCanvas" Margin="5">
-                <ScrollViewer Name="test" VerticalScrollBarVisibility="Auto" Canvas.Left="2">
-                    <customcontrol:Note Height="150" Width="150" />
+                <ScrollViewer Name="test" VerticalScrollBarVisibility="Auto" Canvas.Left="1">
+                    <!--customcontrol:Note Height="150" Width="150" /-->
 
                     <ScrollViewer.ContextMenu>
                         <ContextMenu>

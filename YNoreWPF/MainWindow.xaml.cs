@@ -55,12 +55,13 @@ namespace YNoreWPF {
             foreach (Control control in NotesCanvas.Children) {
                 control.PreviewMouseLeftButtonDown += this.MouseLeftButtonDown_Event;
                 control.PreviewMouseLeftButtonUp += this.PreviewMouseLeftButtonUp_Event;
+                control.Cursor = Cursors.Hand;
             }
             NotesCanvas.PreviewMouseMove += this.MouseMove_Event;
         }
 
         private void Add_New_Note(object sender, RoutedEventArgs e) {
-            NotesCanvas.Children.Add(new CustomControls.Note() { Height = 150,
+            NotesCanvas.Children.Add(new CustomControls.Note("Test text", new List<Addition.UserTask>{ new Addition.UserTask(true,"todo"),new Addition.UserTask(false,"do") }) { Height = 150,
                                                                      Width = 150,
                                                                      HorizontalAlignment = HorizontalAlignment.Right,
                                                                      VerticalAlignment = VerticalAlignment.Top,
@@ -83,12 +84,9 @@ namespace YNoreWPF {
         }
 
         private void MouseLeftButtonDown_Event(object sender, MouseButtonEventArgs e) {
-            //In this event, we get current mouse position on the control to use it in the MouseMove event.
-            //if (Mouse.DirectlyOver == ((CustomControls.Note)sender)) {
-                FirstXPos = e.GetPosition(sender as Control).X;
-                FirstYPos = e.GetPosition(sender as Control).Y;
-                MovingObject = sender;
-            //}
+            FirstXPos = e.GetPosition(sender as Control).X;
+            FirstYPos = e.GetPosition(sender as Control).Y;
+            MovingObject = sender;
         }
         void PreviewMouseLeftButtonUp_Event(object sender, MouseButtonEventArgs e) {
             MovingObject = null;

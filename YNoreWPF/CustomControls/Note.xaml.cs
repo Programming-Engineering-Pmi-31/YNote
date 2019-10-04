@@ -26,11 +26,17 @@ namespace YNoreWPF.CustomControls {
             InitializeComponent();
         }
 
+        public Note(string text, List<Addition.UserTask> tasks) : this() {
+            TextBoxElem.Text = text;
+            foreach (Addition.UserTask userTask in tasks)
+                Context.Children.Add(new CustomControls.CheckWithTextBox(userTask.Status, userTask.Text));
+        }
+
         private void Add_CheckBox_On_Click(object sender, RoutedEventArgs e) {
             //Context.Children.Add(new CheckBox() { HorizontalAlignment = System.Windows.HorizontalAlignment.Left,
             //                                      Margin = new System.Windows.Thickness(0,0,0,0),
             //                                      Content = "ToDo"});
-            Context.Children.Add(new YNoreWPF.CustomControls.CheckWithTextBox() { HorizontalAlignment = System.Windows.HorizontalAlignment.Left });
+            Context.Children.Add(new YNoreWPF.CustomControls.CheckWithTextBox(true,"todo") { HorizontalAlignment = System.Windows.HorizontalAlignment.Left });
         }
         private void Delete_Note_On_Click(object sender, RoutedEventArgs e) {
             ((Panel)this.Parent).Children.Remove(this);

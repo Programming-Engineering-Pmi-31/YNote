@@ -8,7 +8,7 @@
              d:DesignHeight="150" d:DesignWidth="150" AllowDrop="True" >
     <Grid Name="NoteGrid" Background="Yellow">
         <StackPanel Name="Context" Margin="5,5,5,30">
-            <TextBox Height="Auto"  TextWrapping="Wrap" VerticalAlignment="Top" Grid.IsSharedSizeScope="True" Background="{x:Null}" BorderBrush="{x:Null}"/>
+            <TextBox Name="TextBoxElem" Text="" Height="Auto"  TextWrapping="Wrap" VerticalAlignment="Top" Grid.IsSharedSizeScope="True" Background="{x:Null}" BorderBrush="{x:Null}"/>
         </StackPanel>
         <Button Content="V" HorizontalAlignment="Left" Margin="5,0,0,5" VerticalAlignment="Bottom" Width="20" Height="20" Background="{x:Null}" Click="Add_CheckBox_On_Click"/>
         <Button Content="D" HorizontalAlignment="Right" Margin="0,0,5,5" VerticalAlignment="Bottom" Width="20" Height="20" Background="{x:Null}" Click="Delete_Note_On_Click"/>

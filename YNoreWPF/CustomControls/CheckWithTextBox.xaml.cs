@@ -25,5 +25,9 @@ namespace YNoreWPF.CustomControls {
         public CheckWithTextBox() {
             InitializeComponent();
         }
+        public CheckWithTextBox(bool status, string text) : this() {
+            CheckBoxElem.IsChecked = status;
+            TextBoxElem.Text = text;
+        }
     }
 }

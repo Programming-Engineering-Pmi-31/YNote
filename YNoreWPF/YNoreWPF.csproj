@@ -84,6 +84,8 @@
       <DependentUpon>NoteDesktop.xaml</DependentUpon>
     </Compile>
     <Compile Include="Addition\Resizer.cs" />
+    <Compile Include="Addition\UserTask.cs" />
+    <Compile Include="Addition\User.cs" />
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
