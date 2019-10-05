@@ -78,8 +78,6 @@
 
 
         <Grid Name="InfoBar" Grid.Row="0" Grid.Column="1" Background="#1de5c7">
-            
-
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                 <Button Content="Login"  Width="Auto" Height="20" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" Margin="5,0,5,0" Click="Login_Click"/>
                 <Button Content="FullScreen"  Width="Auto" Height="20" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" Margin="5,0,5,0" Click="FullScreen_Click"/>
@@ -88,14 +86,27 @@
         </Grid>
 
         <Grid Name="SpaceGrid" Grid.Column="0" Grid.Row="0" Background="#1de5c7" Grid.RowSpan="2" HorizontalAlignment="Right">
-            <Button x:Name="ButtonOpenMenu" HorizontalAlignment="Right" VerticalAlignment="Top" Height="20" Width="20" Foreground="White" Background="{x:Null}" BorderBrush="{x:Null}" Click="ButtonOpenMenu_Click">
-                <materialDesign:PackIcon Kind="Menu" Width="20" Height="20"/>
-            </Button>
-            <Button x:Name="ButtonCloseMenu" HorizontalAlignment="Right" VerticalAlignment="Top" Height="20" Width="20" Foreground="White" Background="{x:Null}" BorderBrush="{x:Null}" Visibility="Collapsed" Click="ButtonCloseMenu_Click">
-                <materialDesign:PackIcon Kind="Menu" Width="20" Height="20"/>
-            </Button>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="20"/>
+                <RowDefinition Height="581*"/>
+            </Grid.RowDefinitions>
 
-            <ListView Name="SpacesListView" Height="Auto" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="White" Background="{x:Null}" BorderBrush="{x:Null}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" SelectionChanged="SelectionChange_Event">
+            <Grid Grid.Row="0">
+                <Button x:Name="ButtonOpenMenu" HorizontalAlignment="Right" VerticalAlignment="Top" Height="20" Width="20" Foreground="White" Background="{x:Null}" BorderBrush="{x:Null}" Click="ButtonOpenMenu_Click" Margin="0,0,3,0" Grid.RowSpan="2">
+                    <materialDesign:PackIcon Kind="Menu" Width="20" Height="20"/>
+                </Button>
+                <Button x:Name="ButtonCloseMenu" HorizontalAlignment="Right" VerticalAlignment="Top" Height="20" Width="20" Foreground="White" Background="{x:Null}" BorderBrush="{x:Null}" Visibility="Collapsed" Click="ButtonCloseMenu_Click" Margin="0,0,3,0" Grid.RowSpan="2">
+                    <materialDesign:PackIcon Kind="Menu" Width="20" Height="20"/>
+                </Button>
+            </Grid>
+
+            <Grid Grid.Row="1">
+                <StackPanel HorizontalAlignment="Left" VerticalAlignment="Top" Orientation="Horizontal" Margin="5,10,0,0">
+                    <materialDesign:PackIcon Kind="User" Width="25" Height="25" Margin="0,0,10,0" Foreground="White"/>
+                    <TextBlock Text="User name" VerticalAlignment="Center" Height="25" FontSize="17" Foreground="White"/>
+                </StackPanel>
+                
+                <ListView Name="SpacesListView" Height="Auto" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="White" Background="{x:Null}" BorderBrush="{x:Null}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" SelectionChanged="SelectionChange_Event">
                 <ListViewItem Height="30">
                     <StackPanel Orientation="Horizontal">
                         <materialDesign:PackIcon Kind="FileDocument" Width="25" Height="25" Margin="0,0,10,0"/>
@@ -115,13 +126,17 @@
                     </StackPanel>
                 </ListViewItem>
             </ListView>
+
+            <Button Height="30" Width="Auto" HorizontalAlignment="Left" VerticalAlignment="Bottom" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" Grid.Row="1">
+                <StackPanel Orientation="Horizontal">
+                    <materialDesign:PackIcon Kind="Logout" Height="25" Width="25" Margin="0,0,10,0"/>
+                    <TextBlock Text="Log Out" VerticalAlignment="Center"/>
+                </StackPanel>
+            </Button>
+            </Grid>
         </Grid>
 
         <Grid Name="Notes" Grid.Column="1" Grid.Row="1" Background="#4f5352" Margin="1,0,-1,0">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="45*"/>
-                <RowDefinition Height="377*"/>
-            </Grid.RowDefinitions>
             <Canvas Name="NotesCanvas" Margin="5" Grid.RowSpan="2">
                 <ScrollViewer Name="test" VerticalScrollBarVisibility="Auto" Canvas.Left="1">
                     <!--customcontrol:Note Height="150" Width="150" /-->
