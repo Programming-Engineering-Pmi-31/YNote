@@ -48,24 +48,6 @@ namespace YNoreWPF {
                 
         }
 
-        private void CanMove_Checked(object sender, RoutedEventArgs e) {
-            foreach (Control control in NotesCanvas.Children) {
-                control.PreviewMouseLeftButtonDown -= this.MouseLeftButtonDown_Event;
-                control.PreviewMouseLeftButtonUp -= this.PreviewMouseLeftButtonUp_Event;
-                control.Cursor = null;
-            }
-            NotesCanvas.PreviewMouseMove -= this.MouseMove_Event;
-        }
-
-        private void Movable_Unchecked(object sender, RoutedEventArgs e) {
-            foreach (Control control in NotesCanvas.Children) {
-                control.PreviewMouseLeftButtonDown += this.MouseLeftButtonDown_Event;
-                control.PreviewMouseLeftButtonUp += this.PreviewMouseLeftButtonUp_Event;
-                control.Cursor = Cursors.Hand;
-            }
-            NotesCanvas.PreviewMouseMove += this.MouseMove_Event;
-        }
-
         private void Add_New_Note(object sender, RoutedEventArgs e) {
             NotesCanvas.Children.Add(new CustomControls.Note("Test text", new List<Addition.UserTask>{ new Addition.UserTask(true,"todo"),new Addition.UserTask(false,"do") }) { Height = 150,
                                                                      Width = 150,
@@ -80,15 +62,26 @@ namespace YNoreWPF {
             NotesCanvas.PreviewMouseMove += this.MouseMove_Event;
         }
 
+        #region InfoBar
         private void Login_Click(object sender, RoutedEventArgs e) {
             YNoreWPF.AdditionalWindow.LoginWindow loginWindow = new AdditionalWindow.LoginWindow();
             loginWindow.Show();
         }
-
         private void Exit_Click(object sender, RoutedEventArgs e) {
             Application.Current.Shutdown();
         }
+        private void FullScreen_Click(object sender, RoutedEventArgs e) {
+            if (this.WindowState == WindowState.Normal)
+                this.WindowState = WindowState.Maximized;
+            else
+                this.WindowState = WindowState.Normal;
+        }
+        private void Minimized_Click(object sender, RoutedEventArgs e) {
+            this.WindowState = WindowState.Minimized;
+        }
+        #endregion
 
+        #region MakeNoteMovable_Events
         private void MouseLeftButtonDown_Event(object sender, MouseButtonEventArgs e) {
             FirstXPos = e.GetPosition(sender as Control).X;
             FirstYPos = e.GetPosition(sender as Control).Y;
@@ -106,18 +99,9 @@ namespace YNoreWPF {
                      e.GetPosition((MovingObject as FrameworkElement).Parent as FrameworkElement).Y - FirstYPos);
             }
         }
+        #endregion
 
-        private void FullScreen_Click(object sender, RoutedEventArgs e) {
-            if ((string)((Button)sender).Content == "FullScreen") {
-                this.WindowState = WindowState.Maximized;
-                ((Button)sender).Content = "Minimizate";
-            }
-            if ((string)((Button)sender).Content == "Minimizate") {
-                this.WindowState = WindowState.Normal;
-                ((Button)sender).Content = "FullScreen";
-            }
-        }
-
+        #region PopUp_Menu
         private void ButtonCloseMenu_Click(object sender, RoutedEventArgs e) {
             ButtonOpenMenu.Visibility = Visibility.Visible;
             ButtonCloseMenu.Visibility = Visibility.Collapsed;
@@ -126,6 +110,17 @@ namespace YNoreWPF {
         private void ButtonOpenMenu_Click(object sender, RoutedEventArgs e) {
             ButtonOpenMenu.Visibility = Visibility.Collapsed;
             ButtonCloseMenu.Visibility = Visibility.Visible;
+        }
+        #endregion
+
+        private void ButtonOpenInfoGrid_Click(object sender, RoutedEventArgs e) {
+            ButtonOpenInfoGrid.Visibility = Visibility.Collapsed;
+            ButtonCloseInfoGrid.Visibility = Visibility.Visible;
+        }
+
+        private void ButtonCloseInfoGridu_Click(object sender, RoutedEventArgs e) {
+            ButtonOpenInfoGrid.Visibility = Visibility.Visible;
+            ButtonCloseInfoGrid.Visibility = Visibility.Collapsed;
         }
 
         private void SelectionChange_Event(object sender, SelectionChangedEventArgs e) {

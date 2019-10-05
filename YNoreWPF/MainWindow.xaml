@@ -54,6 +54,18 @@
                 <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="40"/>
             </DoubleAnimationUsingKeyFrames>
         </Storyboard>
+        <Storyboard x:Key="InfoOpen">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.TargetName="InfoGrid">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0" Value="150"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="InfoClose">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.TargetName="InfoGrid">
+                <EasingDoubleKeyFrame KeyTime="0" Value="150"/>
+                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
     </Window.Resources>
 
     <Window.Triggers>
@@ -63,9 +75,14 @@
         <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="ButtonCloseMenu">
             <BeginStoryboard Storyboard="{StaticResource MenuClose}"/>
         </EventTrigger>
+        <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="ButtonOpenInfoGrid">
+            <BeginStoryboard Storyboard="{StaticResource InfoOpen}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="ButtonCloseInfoGrid">
+            <BeginStoryboard Storyboard="{StaticResource InfoClose}"/>
+        </EventTrigger>
     </Window.Triggers>
 
-    <!--Border BorderBrush="Aqua" CornerRadius="20" BorderThickness="2"-->
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="20"/>
@@ -80,6 +97,7 @@
         <Grid Name="InfoBar" Grid.Row="0" Grid.Column="1" Background="#1de5c7">
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                 <Button Content="Login"  Width="Auto" Height="20" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" Margin="5,0,5,0" Click="Login_Click"/>
+                <Button Content="Minimized"  Width="Auto" Height="20" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" Margin="5,0,5,0" Click="Minimized_Click"/>
                 <Button Content="FullScreen"  Width="Auto" Height="20" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" Margin="5,0,5,0" Click="FullScreen_Click"/>
                 <Button Content="Exit" Width="Auto" Height="20" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" Margin="5,0,5,0" Click="Exit_Click"/>
             </StackPanel>
@@ -136,7 +154,21 @@
             </Grid>
         </Grid>
 
-        <Grid Name="Notes" Grid.Column="1" Grid.Row="1" Background="#4f5352" Margin="1,0,-1,0">
+        <Grid Name="Notes" Grid.Column="1" Grid.Row="1" Background="#4f5352">
+           
+            <Grid x:Name="InfoGrid" HorizontalAlignment="Right" Width="150" Margin="0,60,10,60">
+                <Rectangle RadiusX="20" RadiusY="20" Fill="#1de5c7"/>
+                <TextBlock Text="Space Name" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="15" FontSize="17" Foreground="White"/>
+                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,50">
+                    <Label Content="User 1" FontSize="17" Foreground="White"/>
+                    <Label Content="User 2" FontSize="17" Foreground="White"/>
+                    <Label Content="User 3" FontSize="17" Foreground="White"/>
+                    <Label Content="User 4" FontSize="17" Foreground="White"/>
+                    <Label Content="User 5" FontSize="17" Foreground="White"/>
+                    <Label Content="User 6" FontSize="17" Foreground="White"/>
+                </StackPanel>
+            </Grid>
+            
             <Canvas Name="NotesCanvas" Margin="5" Grid.RowSpan="2">
                 <ScrollViewer Name="test" VerticalScrollBarVisibility="Auto" Canvas.Left="1">
                     <customcontrol:Note Height="150" Width="150" />
@@ -149,7 +181,19 @@
                     </ScrollViewer.ContextMenu>
                 </ScrollViewer>
             </Canvas>
-            <Button Content="+" HorizontalAlignment="Right" Margin="0,0,20,20" VerticalAlignment="Bottom" Width="30" Height="30" Background="Gray" Click="Add_New_Note" Grid.Row="1"/>
+
+            <StackPanel HorizontalAlignment="Right" VerticalAlignment="Bottom" Orientation="Horizontal" Margin="0,0,10,10">
+                <Button  Width="30" Height="30" Background="{x:Null}" BorderBrush="{x:Null}" Click="Add_New_Note" Grid.Row="1">
+                    <materialDesign:PackIcon Kind="Add" Foreground="White" Height="30" Width="30"/>
+                </Button>
+                <Button x:Name="ButtonOpenInfoGrid" Height="30" Width="30" Background="{x:Null}" BorderBrush="{x:Null}" Click="ButtonOpenInfoGrid_Click">
+                    <materialDesign:PackIcon Kind="Information" Width="29" Height="29" Foreground="White"/>
+                </Button>
+                <Button x:Name="ButtonCloseInfoGrid" Height="30" Width="30" Visibility="Collapsed" Background="{x:Null}" BorderBrush="{x:Null}" Click="ButtonCloseInfoGridu_Click">
+                    <materialDesign:PackIcon Kind="Information" Width="29" Height="29" Foreground="White"/>
+                </Button>
+
+            </StackPanel>
         </Grid>
 
     </Grid>
