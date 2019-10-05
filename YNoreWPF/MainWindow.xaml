@@ -6,8 +6,9 @@
         xmlns:local="clr-namespace:YNoreWPF"
         xmlns:customcontrol="clr-namespace:YNoreWPF.CustomControls"
         xmlns:addition="clr-namespace:YNoreWPF.Addition"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800" WindowStyle="None">
+        Title="MainWindow" Height="600" Width="1000" WindowStyle="None" AllowsTransparency="True" Background="Transparent" WindowStartupLocation="CenterScreen">
 
     <Window.Resources>
         <Style TargetType="{x:Type customcontrol:Note}">
@@ -41,19 +42,44 @@
                 </Setter.Value>
             </Setter>
         </Style>
+        <Storyboard x:Key="MenuOpen">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.TargetName="SpaceGrid">
+                <EasingDoubleKeyFrame KeyTime="0" Value="40"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="130"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="MenuClose">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.TargetName="SpaceGrid">
+                <EasingDoubleKeyFrame KeyTime="0" Value="130"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="40"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
     </Window.Resources>
-    
+
+    <Window.Triggers>
+        <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="ButtonOpenMenu">
+            <BeginStoryboard Storyboard="{StaticResource MenuOpen}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="ButtonCloseMenu">
+            <BeginStoryboard Storyboard="{StaticResource MenuClose}"/>
+        </EventTrigger>
+    </Window.Triggers>
+
+    <!--Border BorderBrush="Aqua" CornerRadius="20" BorderThickness="2"-->
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="20*"/>
+            <RowDefinition Height="20"/>
             <RowDefinition Height="427*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="30*"/>
+            <ColumnDefinition Width="130"/>
             <ColumnDefinition Width="371*"/>
         </Grid.ColumnDefinitions>
 
-        <Grid Name="InfoBar" Grid.Row="0" Grid.ColumnSpan="2" Background="#1de5c7">
+
+        <Grid Name="InfoBar" Grid.Row="0" Grid.Column="1" Background="#1de5c7">
+            
+
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                 <Button Content="Login"  Width="Auto" Height="20" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" Margin="5,0,5,0" Click="Login_Click"/>
                 <Button Content="FullScreen"  Width="Auto" Height="20" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" Margin="5,0,5,0" Click="FullScreen_Click"/>
@@ -61,16 +87,45 @@
             </StackPanel>
         </Grid>
 
-        <Grid Name="SpaceGrid" Grid.Column="0" Grid.Row="1" Background="#1de5c7" Grid.RowSpan="2">
-            <ListView Name="SpacesListView" Foreground="{x:Null}" Background="{x:Null}" BorderBrush="{x:Null}" Height="Auto" SelectionChanged="SelectionChange_Event">
-               
+        <Grid Name="SpaceGrid" Grid.Column="0" Grid.Row="0" Background="#1de5c7" Grid.RowSpan="2" HorizontalAlignment="Right">
+            <Button x:Name="ButtonOpenMenu" HorizontalAlignment="Right" VerticalAlignment="Top" Height="20" Width="20" Foreground="White" Background="{x:Null}" BorderBrush="{x:Null}" Click="ButtonOpenMenu_Click">
+                <materialDesign:PackIcon Kind="Menu" Width="20" Height="20"/>
+            </Button>
+            <Button x:Name="ButtonCloseMenu" HorizontalAlignment="Right" VerticalAlignment="Top" Height="20" Width="20" Foreground="White" Background="{x:Null}" BorderBrush="{x:Null}" Visibility="Collapsed" Click="ButtonCloseMenu_Click">
+                <materialDesign:PackIcon Kind="Menu" Width="20" Height="20"/>
+            </Button>
+
+            <ListView Name="SpacesListView" Height="Auto" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="White" Background="{x:Null}" BorderBrush="{x:Null}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" SelectionChanged="SelectionChange_Event">
+                <ListViewItem Height="30">
+                    <StackPanel Orientation="Horizontal">
+                        <materialDesign:PackIcon Kind="FileDocument" Width="25" Height="25" Margin="0,0,10,0"/>
+                        <TextBlock Text="Space 1" VerticalAlignment="Center" Height="25" FontSize="17"/>
+                    </StackPanel>
+                </ListViewItem>
+                <ListViewItem Height="30">
+                    <StackPanel Orientation="Horizontal">
+                        <materialDesign:PackIcon Kind="FileDocument" Width="25" Height="25" Margin="0,0,10,0"/>
+                        <TextBlock Text="Space 2" VerticalAlignment="Center" Height="25" FontSize="17"/>
+                    </StackPanel>
+                </ListViewItem>
+                <ListViewItem Height="30">
+                    <StackPanel Orientation="Horizontal">
+                        <materialDesign:PackIcon Kind="FileDocument" Width="25" Height="25" Margin="0,0,10,0"/>
+                        <TextBlock Text="Add space" VerticalAlignment="Center" Height="25" FontSize="17"/>
+                    </StackPanel>
+                </ListViewItem>
             </ListView>
         </Grid>
 
         <Grid Name="Notes" Grid.Column="1" Grid.Row="1" Background="#4f5352" Margin="1,0,-1,0">
-            <Canvas Name="NotesCanvas" Margin="5">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="45*"/>
+                <RowDefinition Height="377*"/>
+            </Grid.RowDefinitions>
+            <Canvas Name="NotesCanvas" Margin="5" Grid.RowSpan="2">
                 <ScrollViewer Name="test" VerticalScrollBarVisibility="Auto" Canvas.Left="1">
                     <!--customcontrol:Note Height="150" Width="150" /-->
+
 
                     <ScrollViewer.ContextMenu>
                         <ContextMenu>
@@ -79,7 +134,7 @@
                     </ScrollViewer.ContextMenu>
                 </ScrollViewer>
             </Canvas>
-            <Button Content="+" HorizontalAlignment="Right" Margin="0,0,20,20" VerticalAlignment="Bottom" Width="30" Height="30" Background="Gray" Click="Add_New_Note"/>
+            <Button Content="+" HorizontalAlignment="Right" Margin="0,0,20,20" VerticalAlignment="Bottom" Width="30" Height="30" Background="Gray" Click="Add_New_Note" Grid.Row="1"/>
         </Grid>
 
     </Grid>

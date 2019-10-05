@@ -18,8 +18,26 @@ namespace YNoreWPF.CustomControls {
     /// Interaction logic for Group.xaml
     /// </summary>
     public partial class Group : UserControl {
+        List<Note> notes = new List<Note>();
+
         public Group() {
             InitializeComponent();
+        }
+        public Group(List<Addition.Note> _notes):this() {
+            //foreach(Addition.Note noteElem in _notes)
+            //    StackPanelElem.Children.Add(new CustomControls.Note(noteElem.Text,noteElem.Tasks));
+            foreach (Addition.Note noteElem in _notes) {
+                for (int i = 0; i < 2; ++i)
+                    for (int j = 0; j < 2; ++j) {
+                        var note = new CustomControls.Note(noteElem.Text, noteElem.Tasks);
+                        MainGrid.Children.Add(note);
+                        Grid.SetColumn(note,i);
+                        Grid.SetRow(note,j);
+                    }
+            }
+        }
+        public void add_note() {
+
         }
     }
 }

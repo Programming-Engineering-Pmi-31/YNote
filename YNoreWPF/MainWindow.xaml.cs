@@ -32,14 +32,20 @@ namespace YNoreWPF {
             }
             NotesCanvas.PreviewMouseMove += this.MouseMove_Event;
 
-            for (int countSpace = 0; countSpace < 2; ++countSpace) {
-                SpacesListView.Items.Add(new Label() { Content = $"{countSpace+1}",
-                                                       FontSize = 25});
-            }
-            SpacesListView.Items.Add(new Label() {
-                Content = "+",
-                FontSize = 25
-            });
+            //for (int countSpace = 0; countSpace < 2; ++countSpace) {
+            //    SpacesListView.Items.Add(new Label() { Content = $"{countSpace+1}",
+            //                                           FontSize = 25});
+            //}
+            //SpacesListView.Items.Add(new Label() {
+            //    Content = "+",
+            //    FontSize = 25
+            //});
+
+            //Notes.Children.Add(new CustomControls.Group(new List<Addition.Note> { new Addition.Note("1",new List<Addition.UserTask> { }),
+            //                                                                      new Addition.Note("2",new List<Addition.UserTask> { }),
+            //                                                                      new Addition.Note("3",new List<Addition.UserTask> { }),
+            //                                                                      new Addition.Note("4",new List<Addition.UserTask> { })}) { Height = 200, Width = 200 });
+                
         }
 
         private void CanMove_Checked(object sender, RoutedEventArgs e) {
@@ -110,6 +116,16 @@ namespace YNoreWPF {
                 this.WindowState = WindowState.Normal;
                 ((Button)sender).Content = "FullScreen";
             }
+        }
+
+        private void ButtonCloseMenu_Click(object sender, RoutedEventArgs e) {
+            ButtonOpenMenu.Visibility = Visibility.Visible;
+            ButtonCloseMenu.Visibility = Visibility.Collapsed;
+        }
+
+        private void ButtonOpenMenu_Click(object sender, RoutedEventArgs e) {
+            ButtonOpenMenu.Visibility = Visibility.Collapsed;
+            ButtonCloseMenu.Visibility = Visibility.Visible;
         }
 
         private void SelectionChange_Event(object sender, SelectionChangedEventArgs e) {
