@@ -101,7 +101,7 @@
             </Grid>
 
             <Grid Grid.Row="1">
-                <StackPanel HorizontalAlignment="Left" VerticalAlignment="Top" Orientation="Horizontal" Margin="5,10,0,0">
+                <StackPanel HorizontalAlignment="Left" VerticalAlignment="Top" Orientation="Horizontal" Margin="10,10,0,0">
                     <materialDesign:PackIcon Kind="User" Width="25" Height="25" Margin="0,0,10,0" Foreground="White"/>
                     <TextBlock Text="User name" VerticalAlignment="Center" Height="25" FontSize="17" Foreground="White"/>
                 </StackPanel>
@@ -127,7 +127,7 @@
                 </ListViewItem>
             </ListView>
 
-            <Button Height="30" Width="Auto" HorizontalAlignment="Left" VerticalAlignment="Bottom" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" Grid.Row="1">
+            <Button Height="30" Width="Auto" HorizontalAlignment="Left" VerticalAlignment="Bottom" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" Margin="10,0,0,10">
                 <StackPanel Orientation="Horizontal">
                     <materialDesign:PackIcon Kind="Logout" Height="25" Width="25" Margin="0,0,10,0"/>
                     <TextBlock Text="Log Out" VerticalAlignment="Center"/>
@@ -139,7 +139,7 @@
         <Grid Name="Notes" Grid.Column="1" Grid.Row="1" Background="#4f5352" Margin="1,0,-1,0">
             <Canvas Name="NotesCanvas" Margin="5" Grid.RowSpan="2">
                 <ScrollViewer Name="test" VerticalScrollBarVisibility="Auto" Canvas.Left="1">
-                    <!--customcontrol:Note Height="150" Width="150" /-->
+                    <customcontrol:Note Height="150" Width="150" />
 
 
                     <ScrollViewer.ContextMenu>
