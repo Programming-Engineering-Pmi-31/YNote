@@ -26,7 +26,7 @@ namespace YNoreWPF.CustomControls {
         }
 
         public Note(string text, List<Addition.UserTask> tasks) : this() {
-            TextBoxElem.Text = text;
+            TextBoxElem.Document.Blocks.Add(new Paragraph(new Run(text)));
             foreach (Addition.UserTask userTask in tasks)
                 Context.Children.Add(new CustomControls.CheckWithTextBox(userTask.Status, userTask.Text));
         }
@@ -57,8 +57,18 @@ namespace YNoreWPF.CustomControls {
             noteWindow.Show();
         }
 
-        private void DontMovable_Event(object sender, RoutedEventArgs e) {
+        private void IncrementSelectedText_Click(object sender, RoutedEventArgs e) {
+            TextSelection text = TextBoxElem.Selection;
+            if (!text.IsEmpty) {
+                text.ApplyPropertyValue(RichTextBox.FontSizeProperty,FontSize+1);
+            }
+        }
 
+        private void DecrementSelectedText_Click(object sender, RoutedEventArgs e) {
+            TextSelection text = TextBoxElem.Selection;
+            if (!text.IsEmpty) {
+                text.ApplyPropertyValue(RichTextBox.FontSizeProperty, FontSize - 1);
+            }
         }
     }
 }
