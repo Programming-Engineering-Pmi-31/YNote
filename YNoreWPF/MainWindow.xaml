@@ -96,10 +96,18 @@
 
         <Grid Name="InfoBar" Grid.Row="0" Grid.Column="1" Background="#1de5c7">
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                <Button Content="Login"  Width="Auto" Height="20" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" Margin="5,0,5,0" Click="Login_Click"/>
-                <Button Content="Minimized"  Width="Auto" Height="20" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" Margin="5,0,5,0" Click="Minimized_Click"/>
-                <Button Content="FullScreen"  Width="Auto" Height="20" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" Margin="5,0,5,0" Click="FullScreen_Click"/>
-                <Button Content="Exit" Width="Auto" Height="20" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" Margin="5,0,5,0" Click="Exit_Click"/>
+                <Button  Width="Auto" Height="20" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" Margin="5,0,5,0" Click="Login_Click">
+                    <materialDesign:PackIcon Kind="Login"/>
+                </Button>
+                <Button Width="Auto" Height="20" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" Margin="5,0,5,0" Click="Minimized_Click">
+                    <materialDesign:PackIcon Kind="WindowMinimize"/>
+                </Button>
+                <Button Width="Auto" Height="20" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" Margin="5,0,5,0" Click="FullScreen_Click">
+                    <materialDesign:PackIcon Kind="Fullscreen"/>
+                </Button>
+                <Button Width="Auto" Height="20" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" Margin="5,0,5,0" Click="Exit_Click">
+                    <materialDesign:PackIcon Kind="Close"/>
+                </Button>
             </StackPanel>
         </Grid>
 
@@ -158,7 +166,11 @@
            
             <Grid x:Name="InfoGrid" HorizontalAlignment="Right" Width="150" Margin="0,60,10,60">
                 <Rectangle RadiusX="20" RadiusY="20" Fill="#1de5c7"/>
-                <TextBlock Text="Space Name" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="15" FontSize="17" Foreground="White"/>
+                <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="15">
+                    <TextBox Text="Space Name" FontSize="17" Foreground="White" Background="{x:Null}" BorderBrush="{x:Null}"/>
+                    <TextBox Text="Description" Height="Auto" Margin="5" FontSize="15" Foreground="White" Background="{x:Null}" BorderBrush="{x:Null}"/>
+                </StackPanel>
+                    
                 <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,50">
                     <Label Content="User 1" FontSize="17" Foreground="White"/>
                     <Label Content="User 2" FontSize="17" Foreground="White"/>
@@ -172,7 +184,6 @@
             <Canvas Name="NotesCanvas" Margin="5" Grid.RowSpan="2">
                 <ScrollViewer Name="test" VerticalScrollBarVisibility="Auto" Canvas.Left="1">
                     <customcontrol:Note Height="150" Width="150" />
-
 
                     <ScrollViewer.ContextMenu>
                         <ContextMenu>
