@@ -1,8 +1,8 @@
 ﻿using System;
-using YNote.Entities;
+using YNote_DAL.Entities;
 using Microsoft.EntityFrameworkCore;
 
-namespace YNote
+namespace YNote_DAL
 {
     public class Seed
     {

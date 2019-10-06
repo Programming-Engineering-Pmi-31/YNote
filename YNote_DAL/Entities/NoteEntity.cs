@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using YNote.Entities.Base;
+using YNote_DAL.Entities.Base;
 
-namespace YNote.Entities {
+namespace YNote_DAL.Entities {
     public class NoteEntity:BaseEntity {
 
         public int? GroupId { get; set; }

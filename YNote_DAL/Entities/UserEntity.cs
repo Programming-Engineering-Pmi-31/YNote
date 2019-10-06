@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace YNote.Entities {
+namespace YNote_DAL.Entities {
     public class UserEntity{
 
         public Guid Id { get; set; }
