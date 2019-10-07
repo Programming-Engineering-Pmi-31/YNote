@@ -29,7 +29,7 @@ namespace YNote
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             services.AddDbContext<YNoteDbContext>(server => server.UseSqlServer(
-                "Data Source=DESKTOP-8DEVSOF;Initial Catalog=YNote;Integrated Security=True"
+                "Data Source=DESKTOP-8DEVSOF;Initial Catalog=YNote;Integrated Security=True",  b => b.MigrationsAssembly("YNote")
                 ));
         }
 
