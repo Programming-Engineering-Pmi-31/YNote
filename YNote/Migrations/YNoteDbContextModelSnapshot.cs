@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using YNote;
+using YNote_DAL;
 
 namespace YNote.Migrations
 {
@@ -19,7 +19,7 @@ namespace YNote.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("YNote.Entities.GroupEntity", b =>
+            modelBuilder.Entity("YNote_DAL.Entities.GroupEntity", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -44,7 +44,7 @@ namespace YNote.Migrations
                         });
                 });
 
-            modelBuilder.Entity("YNote.Entities.NoteEntity", b =>
+            modelBuilder.Entity("YNote_DAL.Entities.NoteEntity", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -78,7 +78,7 @@ namespace YNote.Migrations
                         });
                 });
 
-            modelBuilder.Entity("YNote.Entities.SpaceEntity", b =>
+            modelBuilder.Entity("YNote_DAL.Entities.SpaceEntity", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -105,7 +105,7 @@ namespace YNote.Migrations
                         });
                 });
 
-            modelBuilder.Entity("YNote.Entities.TaskEntity", b =>
+            modelBuilder.Entity("YNote_DAL.Entities.TaskEntity", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -141,7 +141,7 @@ namespace YNote.Migrations
                         });
                 });
 
-            modelBuilder.Entity("YNote.Entities.UserEntity", b =>
+            modelBuilder.Entity("YNote_DAL.Entities.UserEntity", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd();
@@ -186,49 +186,49 @@ namespace YNote.Migrations
                         });
                 });
 
-            modelBuilder.Entity("YNote.Entities.GroupEntity", b =>
+            modelBuilder.Entity("YNote_DAL.Entities.GroupEntity", b =>
                 {
-                    b.HasOne("YNote.Entities.SpaceEntity", "Space")
+                    b.HasOne("YNote_DAL.Entities.SpaceEntity", "Space")
                         .WithMany("Groups")
                         .HasForeignKey("SpaceId");
                 });
 
-            modelBuilder.Entity("YNote.Entities.NoteEntity", b =>
+            modelBuilder.Entity("YNote_DAL.Entities.NoteEntity", b =>
                 {
-                    b.HasOne("YNote.Entities.UserEntity", "AssignedUser")
+                    b.HasOne("YNote_DAL.Entities.UserEntity", "AssignedUser")
                         .WithMany("Notes")
                         .HasForeignKey("AssignedUserId");
 
-                    b.HasOne("YNote.Entities.GroupEntity", "Group")
+                    b.HasOne("YNote_DAL.Entities.GroupEntity", "Group")
                         .WithMany("Notes")
                         .HasForeignKey("GroupId")
                         .OnDelete(DeleteBehavior.SetNull);
 
-                    b.HasOne("YNote.Entities.SpaceEntity", "Space")
+                    b.HasOne("YNote_DAL.Entities.SpaceEntity", "Space")
                         .WithMany("Notes")
                         .HasForeignKey("SpaceId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("YNote.Entities.SpaceEntity", b =>
+            modelBuilder.Entity("YNote_DAL.Entities.SpaceEntity", b =>
                 {
-                    b.HasOne("YNote.Entities.UserEntity", "Author")
+                    b.HasOne("YNote_DAL.Entities.UserEntity", "Author")
                         .WithMany("Spaces")
                         .HasForeignKey("AuthorId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("YNote.Entities.TaskEntity", b =>
+            modelBuilder.Entity("YNote_DAL.Entities.TaskEntity", b =>
                 {
-                    b.HasOne("YNote.Entities.NoteEntity", "Note")
+                    b.HasOne("YNote_DAL.Entities.NoteEntity", "Note")
                         .WithMany("Tasks")
                         .HasForeignKey("NoteId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("YNote.Entities.UserEntity", b =>
+            modelBuilder.Entity("YNote_DAL.Entities.UserEntity", b =>
                 {
-                    b.HasOne("YNote.Entities.SpaceEntity")
+                    b.HasOne("YNote_DAL.Entities.SpaceEntity")
                         .WithMany("Users")
                         .HasForeignKey("SpaceEntityId");
                 });

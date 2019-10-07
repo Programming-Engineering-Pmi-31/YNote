@@ -1,8 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using YNote.Entities;
+using YNote_DAL.Entities;
 
-namespace YNote.Configurations
+namespace YNote_DAL.Configurations
 {
     class UserConfiguration : IEntityTypeConfiguration<UserEntity>
     {

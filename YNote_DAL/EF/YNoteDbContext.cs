@@ -1,9 +1,9 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore;
-using YNote.Configurations;
-using YNote.Entities;
+using YNote_DAL.Configurations;
+using YNote_DAL.Entities;
 
-namespace YNote
+namespace YNote_DAL
 {
     public class YNoteDbContext: DbContext
     {
