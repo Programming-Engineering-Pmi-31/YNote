@@ -49,7 +49,7 @@ namespace YNoreWPF {
         }
 
         private void Add_New_Note(object sender, RoutedEventArgs e) {
-            NotesCanvas.Children.Add(new CustomControls.Note("Test text", new List<Addition.UserTask>{ new Addition.UserTask(true,"todo"),new Addition.UserTask(false,"do") }) { Height = 150,
+            NotesCanvas.Children.Add(new CustomControls.Note() { Height = 150,
                                                                      Width = 150,
                                                                      HorizontalAlignment = HorizontalAlignment.Right,
                                                                      VerticalAlignment = VerticalAlignment.Top,

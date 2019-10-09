@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:YNoreWPF.CustomControls"
              mc:Ignorable="d" 
              d:DesignHeight="150" d:DesignWidth="150" AllowDrop="True" MouseEnter="MouseEnter_Event" MouseLeave="MouseLeave_Event">
-    <Grid Name="NoteGrid" Background="Yellow">
+    <Grid Name="NoteGrid" Background="#fff9ed">
         <StackPanel Name="Context" Margin="5,5,5,30">
             <RichTextBox Name="TextBoxElem" Height="Auto" VerticalAlignment="Top" Grid.IsSharedSizeScope="True" Background="{x:Null}" BorderBrush="{x:Null}"/>
         </StackPanel>

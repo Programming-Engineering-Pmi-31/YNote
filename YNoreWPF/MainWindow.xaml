@@ -27,14 +27,14 @@
                                 <RowDefinition Height="5"/>
                             </Grid.RowDefinitions>
 
-                            <addition:Resizer Cursor="SizeNWSE" Background="Yellow" Width="3" Height="3" BorderBrush="Yellow" Grid.Row="0" Grid.Column="0" ThumbDirection="TopLeft"/>
-                            <addition:Resizer Cursor="SizeWE" Background="Yellow" Width="3" BorderBrush="Yellow" Grid.Row="1" Grid.Column="0" ThumbDirection="Left"/>
-                            <addition:Resizer Cursor="SizeNESW" Background="Yellow" Width="3" Height="3" BorderBrush="{x:Null}" Grid.Row="2" Grid.Column="0" ThumbDirection="BottomLeft" />
-                            <addition:Resizer Cursor="SizeNS" Background="Yellow" Height="3" BorderBrush="{x:Null}" Grid.Row="2" Grid.Column="1" ThumbDirection="Bottom" />
-                            <addition:Resizer Cursor="SizeNWSE" Background="Yellow" Width="3" Height="3" Grid.Row="2" Grid.Column="2" ThumbDirection="BottomRight" />
-                            <addition:Resizer Cursor="SizeWE" Background="Yellow" Width="3" Grid.Row="1" Grid.Column="2" ThumbDirection="Right"/>
-                            <addition:Resizer Cursor="SizeNESW" Background="Yellow" Width="3" Height="3" Grid.Row="0" Grid.Column="2" ThumbDirection="TopRight"/>
-                            <addition:Resizer Cursor="SizeNS" Background="Yellow"  Height="3" Grid.Row="0" Grid.Column="1" ThumbDirection="Top"/>
+                            <addition:Resizer Cursor="SizeNWSE" Background="#fff9ed" Width="3" Height="3" BorderBrush="Yellow" Grid.Row="0" Grid.Column="0" ThumbDirection="TopLeft"/>
+                            <addition:Resizer Cursor="SizeWE" Background="#fff9ed" Width="3" BorderBrush="Yellow" Grid.Row="1" Grid.Column="0" ThumbDirection="Left"/>
+                            <addition:Resizer Cursor="SizeNESW" Background="#fff9ed" Width="3" Height="3" BorderBrush="{x:Null}" Grid.Row="2" Grid.Column="0" ThumbDirection="BottomLeft" />
+                            <addition:Resizer Cursor="SizeNS" Background="#fff9ed" Height="3" BorderBrush="{x:Null}" Grid.Row="2" Grid.Column="1" ThumbDirection="Bottom" />
+                            <addition:Resizer Cursor="SizeNWSE" Background="#fff9ed" Width="3" Height="3" Grid.Row="2" Grid.Column="2" ThumbDirection="BottomRight" />
+                            <addition:Resizer Cursor="SizeWE" Background="#fff9ed" Width="3" Grid.Row="1" Grid.Column="2" ThumbDirection="Right"/>
+                            <addition:Resizer Cursor="SizeNESW" Background="#fff9ed" Width="3" Height="3" Grid.Row="0" Grid.Column="2" ThumbDirection="TopRight"/>
+                            <addition:Resizer Cursor="SizeNS" Background="#fff9ed"  Height="3" Grid.Row="0" Grid.Column="1" ThumbDirection="Top"/>
 
                             <ContentPresenter Grid.Row="1" Grid.Column="1" Content="{TemplateBinding Content}" Margin="{TemplateBinding Padding}"/>
                         </Grid>
@@ -94,24 +94,24 @@
         </Grid.ColumnDefinitions>
 
 
-        <Grid Name="InfoBar" Grid.Row="0" Grid.Column="1" Background="#1de5c7">
+        <Grid Name="InfoBar" Grid.Row="0" Grid.Column="1" Background="#dbf8ff">
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                <Button  Width="Auto" Height="20" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" Margin="5,0,5,0" Click="Login_Click">
+                <!--Button  Width="Auto" Height="20" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#002d53" Margin="5,0,5,0" Click="Login_Click">
                     <materialDesign:PackIcon Kind="Login"/>
-                </Button>
-                <Button Width="Auto" Height="20" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" Margin="5,0,5,0" Click="Minimized_Click">
+                </-->
+                <Button Width="Auto" Height="20" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#002d53" Margin="5,0,5,0" Click="Minimized_Click">
                     <materialDesign:PackIcon Kind="WindowMinimize"/>
                 </Button>
-                <Button Width="Auto" Height="20" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" Margin="5,0,5,0" Click="FullScreen_Click">
+                <Button Width="Auto" Height="20" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#002d53" Margin="5,0,5,0" Click="FullScreen_Click">
                     <materialDesign:PackIcon Kind="Fullscreen"/>
                 </Button>
-                <Button Width="Auto" Height="20" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" Margin="5,0,5,0" Click="Exit_Click">
+                <Button Width="Auto" Height="20" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#002d53" Margin="5,0,5,0" Click="Exit_Click">
                     <materialDesign:PackIcon Kind="Close"/>
                 </Button>
             </StackPanel>
         </Grid>
 
-        <Grid Name="SpaceGrid" Grid.Column="0" Grid.Row="0" Background="#1de5c7" Grid.RowSpan="2" HorizontalAlignment="Right">
+        <Grid Name="SpaceGrid" Grid.Column="0" Grid.Row="0" Background="#dbf8ff" Grid.RowSpan="2" HorizontalAlignment="Right">
             <Grid.RowDefinitions>
                 <RowDefinition Height="20"/>
                 <RowDefinition Height="581*"/>
@@ -128,32 +128,32 @@
 
             <Grid Grid.Row="1">
                 <StackPanel HorizontalAlignment="Left" VerticalAlignment="Top" Orientation="Horizontal" Margin="10,10,0,0">
-                    <materialDesign:PackIcon Kind="User" Width="25" Height="25" Margin="0,0,10,0" Foreground="White"/>
-                    <TextBlock Text="User name" VerticalAlignment="Center" Height="25" FontSize="17" Foreground="White"/>
+                    <materialDesign:PackIcon Kind="User" Width="25" Height="25" Margin="0,0,10,0" Foreground="#002d53"/>
+                    <TextBlock Text="User name" VerticalAlignment="Center" Height="25" FontSize="17" Foreground="#002d53"/>
                 </StackPanel>
                 
                 <ListView Name="SpacesListView" Height="Auto" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="White" Background="{x:Null}" BorderBrush="{x:Null}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" SelectionChanged="SelectionChange_Event">
                 <ListViewItem Height="30">
                     <StackPanel Orientation="Horizontal">
-                        <materialDesign:PackIcon Kind="FileDocument" Width="25" Height="25" Margin="0,0,10,0"/>
-                        <TextBlock Text="Space 1" VerticalAlignment="Center" Height="25" FontSize="17"/>
+                        <materialDesign:PackIcon Kind="FileDocument" Width="25" Height="25" Margin="0,0,10,0" Foreground="#002d53"/>
+                            <TextBlock Text="Space 1" VerticalAlignment="Center" Height="25" FontSize="17" Foreground="#002d53"/>
                     </StackPanel>
                 </ListViewItem>
                 <ListViewItem Height="30">
                     <StackPanel Orientation="Horizontal">
-                        <materialDesign:PackIcon Kind="FileDocument" Width="25" Height="25" Margin="0,0,10,0"/>
-                        <TextBlock Text="Space 2" VerticalAlignment="Center" Height="25" FontSize="17"/>
+                            <materialDesign:PackIcon Kind="FileDocument" Width="25" Height="25" Margin="0,0,10,0" Foreground="#002d53"/>
+                            <TextBlock Text="Space 2" VerticalAlignment="Center" Height="25" FontSize="17" Foreground="#002d53"/>
                     </StackPanel>
                 </ListViewItem>
                 <ListViewItem Height="30">
                     <StackPanel Orientation="Horizontal">
-                        <materialDesign:PackIcon Kind="FileDocument" Width="25" Height="25" Margin="0,0,10,0"/>
-                        <TextBlock Text="Add space" VerticalAlignment="Center" Height="25" FontSize="17"/>
+                            <materialDesign:PackIcon Kind="FileDocument" Width="25" Height="25" Margin="0,0,10,0" Foreground="#002d53"/>
+                            <TextBlock Text="Add space" VerticalAlignment="Center" Height="25" FontSize="17" Foreground="#002d53"/>
                     </StackPanel>
                 </ListViewItem>
             </ListView>
 
-            <Button Height="30" Width="Auto" HorizontalAlignment="Left" VerticalAlignment="Bottom" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" Margin="10,0,0,10">
+                <Button Height="30" Width="Auto" HorizontalAlignment="Left" VerticalAlignment="Bottom" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#002d53" Margin="10,0,0,10">
                 <StackPanel Orientation="Horizontal">
                     <materialDesign:PackIcon Kind="Logout" Height="25" Width="25" Margin="0,0,10,0"/>
                     <TextBlock Text="Log Out" VerticalAlignment="Center"/>
@@ -162,22 +162,22 @@
             </Grid>
         </Grid>
 
-        <Grid Name="Notes" Grid.Column="1" Grid.Row="1" Background="#4f5352">
+        <Grid Name="Notes" Grid.Column="1" Grid.Row="1" Background="#002d53">
            
             <Grid x:Name="InfoGrid" HorizontalAlignment="Right" Width="150" Margin="0,60,10,60">
-                <Rectangle RadiusX="20" RadiusY="20" Fill="#1de5c7"/>
+                <Rectangle RadiusX="20" RadiusY="20" Fill="#dbf8ff"/>
                 <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="15">
-                    <TextBox Text="Space Name" FontSize="17" Foreground="White" Background="{x:Null}" BorderBrush="{x:Null}"/>
-                    <TextBox Text="Description" Height="Auto" Margin="5" FontSize="15" Foreground="White" Background="{x:Null}" BorderBrush="{x:Null}"/>
+                    <TextBox Text="Space Name" FontSize="17" Foreground="#002d53" Background="{x:Null}" BorderBrush="{x:Null}"/>
+                    <TextBox Text="Description" Height="Auto" Margin="5" FontSize="15" Foreground="#002d53" Background="{x:Null}" BorderBrush="{x:Null}"/>
                 </StackPanel>
                     
                 <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,50">
-                    <Label Content="User 1" FontSize="17" Foreground="White"/>
-                    <Label Content="User 2" FontSize="17" Foreground="White"/>
-                    <Label Content="User 3" FontSize="17" Foreground="White"/>
-                    <Label Content="User 4" FontSize="17" Foreground="White"/>
-                    <Label Content="User 5" FontSize="17" Foreground="White"/>
-                    <Label Content="User 6" FontSize="17" Foreground="White"/>
+                    <Label Content="User 1" FontSize="17" Foreground="#002d53"/>
+                    <Label Content="User 2" FontSize="17" Foreground="#002d53"/>
+                    <Label Content="User 3" FontSize="17" Foreground="#002d53"/>
+                    <Label Content="User 4" FontSize="17" Foreground="#002d53"/>
+                    <Label Content="User 5" FontSize="17" Foreground="#002d53"/>
+                    <Label Content="User 6" FontSize="17" Foreground="#002d53"/>
                 </StackPanel>
             </Grid>
             
