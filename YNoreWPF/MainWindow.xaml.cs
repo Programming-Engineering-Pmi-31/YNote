@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using MaterialDesignThemes;
 
 namespace YNoreWPF {
     /// <summary>
@@ -113,15 +114,16 @@ namespace YNoreWPF {
         }
         #endregion
 
+        #region SpaceInfoGrid
         private void ButtonOpenInfoGrid_Click(object sender, RoutedEventArgs e) {
             ButtonOpenInfoGrid.Visibility = Visibility.Collapsed;
             ButtonCloseInfoGrid.Visibility = Visibility.Visible;
         }
-
         private void ButtonCloseInfoGridu_Click(object sender, RoutedEventArgs e) {
             ButtonOpenInfoGrid.Visibility = Visibility.Visible;
             ButtonCloseInfoGrid.Visibility = Visibility.Collapsed;
         }
+        #endregion
 
         private void SelectionChange_Event(object sender, SelectionChangedEventArgs e) {
             int index = SpacesListView.SelectedIndex;
@@ -130,14 +132,42 @@ namespace YNoreWPF {
 
             if (index == SpacesListView.Items.Count - 1) { 
                 SpacesListView.Items.RemoveAt(SpacesListView.Items.Count - 1);
-                SpacesListView.Items.Add(new Label() {
-                    Content = $"{ SpacesListView.Items.Count + 1}",
-                    FontSize = 25
+
+                StackPanel dynamicStackPanel = new StackPanel() {Orientation = Orientation.Horizontal };
+
+                dynamicStackPanel.Children.Add(new MaterialDesignThemes.Wpf.PackIcon {
+                    Kind = MaterialDesignThemes.Wpf.PackIconKind.FileDocument,
+                    Height = 25,
+                    Width = 25,
+                    Margin = new Thickness(0, 0, 10, 0),
+                    Foreground = (Brush)new BrushConverter().ConvertFrom("#002d53")
                 });
-                SpacesListView.Items.Add(new Label() {
-                    Content = $"+",
-                    FontSize = 25
+                dynamicStackPanel.Children.Add(new TextBlock() {
+                    Text = $"Space {SpacesListView.Items.Count + 1}",
+                    Height = 25,
+                    FontSize = 17,
+                    Foreground = (Brush)new BrushConverter().ConvertFrom("#002d53")
                 });
+
+                SpacesListView.Items.Add(dynamicStackPanel);
+
+                StackPanel dynamicStackPanelAddNew = new StackPanel() { Orientation = Orientation.Horizontal};
+
+                dynamicStackPanelAddNew.Children.Add(new MaterialDesignThemes.Wpf.PackIcon {
+                    Kind = MaterialDesignThemes.Wpf.PackIconKind.FileDocument,
+                    Height = 25,
+                    Width = 25,
+                    Margin = new Thickness(0, 0, 10, 0),
+                    Foreground = (Brush)new BrushConverter().ConvertFrom("#002d53")
+                });
+                dynamicStackPanelAddNew.Children.Add(new TextBlock() {
+                    Text = $"Add Space",
+                    Height = 25,
+                    FontSize = 17,
+                    Foreground = (Brush)new BrushConverter().ConvertFrom("#002d53")
+                });
+
+                SpacesListView.Items.Add(dynamicStackPanelAddNew);
             }
 
         }
