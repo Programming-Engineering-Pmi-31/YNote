@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Markup;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
@@ -13,6 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using MaterialDesignThemes;
+using System.IO;
 
 namespace YNoreWPF {
     /// <summary>
@@ -33,6 +35,8 @@ namespace YNoreWPF {
             }
             NotesCanvas.PreviewMouseMove += this.MouseMove_Event;
 
+
+
             //for (int countSpace = 0; countSpace < 2; ++countSpace) {
             //    SpacesListView.Items.Add(new Label() { Content = $"{countSpace+1}",
             //                                           FontSize = 25});
@@ -50,11 +54,12 @@ namespace YNoreWPF {
         }
 
         private void Add_New_Note(object sender, RoutedEventArgs e) {
-            NotesCanvas.Children.Add(new CustomControls.Note() { Height = 150,
-                                                                     Width = 150,
-                                                                     HorizontalAlignment = HorizontalAlignment.Right,
-                                                                     VerticalAlignment = VerticalAlignment.Top,
-                                                                     Margin = new Thickness(10)});
+            NotesCanvas.Children.Add(new CustomControls.Note() {
+                Height = 150,
+                Width = 150,
+                HorizontalAlignment = HorizontalAlignment.Right,
+                Margin = new Thickness(10)
+            });
             foreach (Control control in NotesCanvas.Children) {
                 control.PreviewMouseLeftButtonDown += this.MouseLeftButtonDown_Event;
                 control.PreviewMouseLeftButtonUp += this.PreviewMouseLeftButtonUp_Event;
@@ -170,6 +175,29 @@ namespace YNoreWPF {
                 SpacesListView.Items.Add(dynamicStackPanelAddNew);
             }
 
+        }
+
+
+        
+
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e) {
+            //SaveExternalXaml();
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e) {
+            //LoadExternalXaml();
+        }
+        public void LoadExternalXaml() {
+            if (File.Exists("savepoint.xaml"))
+                using (FileStream savepoint = new FileStream("savepoint.xaml",FileMode.Open)) {
+                    this.Content = XamlReader.Load(savepoint);
+                }
+        }
+        public void SaveExternalXaml() {
+            using (FileStream savepoint = new FileStream("savepoint.xaml", FileMode.Create)) {
+                XamlWriter.Save(this.Content,savepoint);
+            }
         }
     }
 }

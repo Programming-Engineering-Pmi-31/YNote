@@ -8,7 +8,7 @@
         xmlns:addition="clr-namespace:YNoreWPF.Addition"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Title="MainWindow" Height="600" Width="1000" WindowStyle="None" AllowsTransparency="True" Background="Transparent" WindowStartupLocation="CenterScreen">
+        Title="MainWindow" Height="600" Width="1000" WindowStyle="None" AllowsTransparency="True" Background="Transparent" WindowStartupLocation="CenterScreen" Closing="Window_Closing" Loaded="Window_Loaded">
 
     <Window.Resources>
         <Style TargetType="{x:Type customcontrol:Note}">
@@ -118,15 +118,16 @@
             </Grid.RowDefinitions>
 
             <Grid Grid.Row="0">
-                <Button x:Name="ButtonOpenMenu" HorizontalAlignment="Right" VerticalAlignment="Top" Height="20" Width="20" Foreground="White" Background="{x:Null}" BorderBrush="{x:Null}" Click="ButtonOpenMenu_Click" Margin="0,0,3,0" Grid.RowSpan="2">
+                <Button x:Name="ButtonOpenMenu" HorizontalAlignment="Right" VerticalAlignment="Top" Height="20" Width="20" Foreground="#002d53" Background="{x:Null}" BorderBrush="{x:Null}" Click="ButtonOpenMenu_Click" Margin="0,0,10,0">
                     <materialDesign:PackIcon Kind="Menu" Width="20" Height="20"/>
                 </Button>
-                <Button x:Name="ButtonCloseMenu" HorizontalAlignment="Right" VerticalAlignment="Top" Height="20" Width="20" Foreground="White" Background="{x:Null}" BorderBrush="{x:Null}" Visibility="Collapsed" Click="ButtonCloseMenu_Click" Margin="0,0,3,0" Grid.RowSpan="2">
+                <Button x:Name="ButtonCloseMenu" HorizontalAlignment="Right" VerticalAlignment="Top" Height="20" Width="20" Foreground="#002d53" Background="{x:Null}" BorderBrush="{x:Null}" Visibility="Collapsed" Click="ButtonCloseMenu_Click" Margin="0,0,7,0">
                     <materialDesign:PackIcon Kind="Menu" Width="20" Height="20"/>
                 </Button>
             </Grid>
 
             <Grid Grid.Row="1">
+
                 <StackPanel HorizontalAlignment="Left" VerticalAlignment="Top" Orientation="Horizontal" Margin="10,10,0,0">
                     <materialDesign:PackIcon Kind="User" Width="25" Height="25" Margin="0,0,10,0" Foreground="#002d53"/>
                     <TextBlock Text="User name" VerticalAlignment="Center" Height="25" FontSize="17" Foreground="#002d53"/>
@@ -161,10 +162,12 @@
             </Button>
             </Grid>
         </Grid>
+        
+        
 
         <Grid Name="Notes" Grid.Column="1" Grid.Row="1" Background="#002d53">
-           
-            <Grid x:Name="InfoGrid" HorizontalAlignment="Right" Width="150" Margin="0,60,10,60">
+            <!-- change width to 0 to hide grid from start or to 150 to show -->
+            <Grid x:Name="InfoGrid" HorizontalAlignment="Right" Width="0" Margin="0,60,10,60">
                 <Rectangle RadiusX="20" RadiusY="20" Fill="#dbf8ff"/>
                 <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="15">
                     <TextBox Text="Space Name" FontSize="17" Foreground="#002d53" Background="{x:Null}" BorderBrush="{x:Null}"/>
@@ -181,7 +184,7 @@
                 </StackPanel>
             </Grid>
             
-            <Canvas Name="NotesCanvas" Margin="5" Grid.RowSpan="2">
+            <Canvas Name="NotesCanvas" Margin="5">
                 <ScrollViewer Name="test" VerticalScrollBarVisibility="Auto" Canvas.Left="1">
                     <customcontrol:Note Height="150" Width="150" />
 
