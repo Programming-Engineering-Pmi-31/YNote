@@ -4,17 +4,37 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:YNoreWPF.AdditionalWindow"
-        
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Title="LoginWindow" Height="350" Width="500" WindowStyle="None" ResizeMode="NoResize" Background="Transparent">
+        Title="LoginWindow" Height="300" Width="400" WindowStyle="None" ResizeMode="NoResize" Background="Transparent">
     <Grid>
         <Rectangle RadiusX="8" RadiusY="8" Fill="White"/>
-        <Grid Margin="20,50,250,0">
-            <Label Content="Login" FontSize="24" Margin="20,5" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+        <Rectangle Margin="230,0,0,0">
+            <Rectangle.Fill>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#CC935E12" Offset="1"/>
+                    <GradientStop Color="#CCEA4646"/>
+                    <GradientStop Color="#CCB89128" Offset="0.566"/>
+                </LinearGradientBrush>
+            </Rectangle.Fill>
+            
+        </Rectangle>
+
+        <StackPanel Margin="20,10,200,10">
+            <Label Content="Login" FontSize="24" Margin="0,10" HorizontalAlignment="Left" VerticalAlignment="Top" FontFamily="Segoe UI Black"/>
             <StackPanel Margin="0,15" Orientation="Horizontal">
-                <mate
+                <materialDesign:PackIcon Kind="Account" VerticalAlignment="Center" Margin="5" Foreground="#707070"/>
+                <TextBox Width="140" Margin="5"/>
             </StackPanel>
-        </Grid>
-        
+            <StackPanel Orientation="Horizontal">
+                <materialDesign:PackIcon Kind="Key" VerticalAlignment="Center" Margin="5" Foreground="#707070"/>
+                <TextBox Width="140" Margin="5"/>
+            </StackPanel>
+            <CheckBox Content="Save me" Margin="5,10"/>
+            <Button Content="LOGIN" HorizontalAlignment="Center" Background="Purple" Height="25" Width="60" FontFamily="Impact" Foreground="White"/>
+        </StackPanel>
+        <StackPanel Orientation="Vertical" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="85">
+
+        </StackPanel>
     </Grid>
 </Window>
