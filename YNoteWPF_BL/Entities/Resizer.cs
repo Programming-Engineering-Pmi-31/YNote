@@ -4,7 +4,7 @@ using System.Windows.Controls;
 using System.Collections.Generic;
 using System.Windows.Controls.Primitives;
 
-namespace YNoreWPF.Addition {
+namespace YNoteWPF_BL.Entities {
     public class Resizer : Thumb {
         /// <summary> 
         /// Direction to resize. 

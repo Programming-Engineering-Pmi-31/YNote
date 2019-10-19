@@ -93,10 +93,6 @@
     <Compile Include="AdditionalWindow\NoteDesktop.xaml.cs">
       <DependentUpon>NoteDesktop.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Addition\Note.cs" />
-    <Compile Include="Addition\Resizer.cs" />
-    <Compile Include="Addition\UserTask.cs" />
-    <Compile Include="Addition\User.cs" />
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -145,6 +141,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\YNoteWPF_BL\YNoteWPF_BL.csproj">
+      <Project>{f7579b0a-3e33-47b7-8290-f5015bd0d39f}</Project>
+      <Name>YNoteWPF_BL</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

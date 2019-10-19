@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace YNoreWPF.Addition {
+namespace YNoteWPF_BL.Entities {
     public class User {
 
         static User shared;
