@@ -74,6 +74,11 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\YNoteWPF_DL\YNoteWPF_DL.csproj">
+      <Project>{64161b97-162b-42ae-9dc8-1dcdb72489a6}</Project>
+      <Name>YNoteWPF_DL</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
