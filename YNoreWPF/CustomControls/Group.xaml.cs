@@ -12,7 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using YNoteWPF_BL.Entities;
+using YNoteWPF_BL.BusinessModels;
 
 namespace YNoreWPF.CustomControls {
     /// <summary>
@@ -24,10 +24,10 @@ namespace YNoreWPF.CustomControls {
         public Group() {
             InitializeComponent();
         }
-        public Group(List<YNoteWPF_BL.Entities.Note> _notes):this() {
+        public Group(List<YNoteWPF_BL.BusinessModels.Note> _notes):this() {
             //foreach(Addition.Note noteElem in _notes)
             //    StackPanelElem.Children.Add(new CustomControls.Note(noteElem.Text,noteElem.Tasks));
-            foreach (YNoteWPF_BL.Entities.Note noteElem in _notes) {
+            foreach (YNoteWPF_BL.BusinessModels.Note noteElem in _notes) {
                 for (int i = 0; i < 2; ++i)
                     for (int j = 0; j < 2; ++j) {
                         var note = new CustomControls.Note(noteElem.Text, noteElem.Tasks);

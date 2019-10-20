@@ -4,7 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace YNoteWPF_BL.Entities {
+namespace YNoteWPF_BL.BusinessModels
+{
     public class UserTask {
         public bool Status { get; set; }
         public string Text { get; set; }

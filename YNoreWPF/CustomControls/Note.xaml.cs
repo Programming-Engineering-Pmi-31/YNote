@@ -25,9 +25,9 @@ namespace YNoreWPF.CustomControls {
             InitializeComponent();
         }
 
-        public Note(string text, List<YNoteWPF_BL.Entities.UserTask> tasks) : this() {
+        public Note(string text, List<YNoteWPF_BL.BusinessModels.UserTask> tasks) : this() {
             TextBoxElem.Document.Blocks.Add(new Paragraph(new Run(text)));
-            foreach (YNoteWPF_BL.Entities.UserTask userTask in tasks)
+            foreach (YNoteWPF_BL.BusinessModels.UserTask userTask in tasks)
                 Context.Children.Add(new CustomControls.CheckWithTextBox(userTask.Status, userTask.Text));
         }
 

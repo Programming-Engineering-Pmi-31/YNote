@@ -4,7 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace YNoteWPF_BL.Entities {
+namespace YNoteWPF_BL.BusinessModels
+{
     public class Note {
         public string Text { get; set; }
         public List<UserTask> Tasks { get; set; }
