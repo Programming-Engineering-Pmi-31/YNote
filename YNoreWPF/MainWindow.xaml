@@ -130,7 +130,7 @@
 
                 <StackPanel HorizontalAlignment="Left" VerticalAlignment="Top" Orientation="Horizontal" Margin="10,10,0,0">
                     <materialDesign:PackIcon Kind="User" Width="25" Height="25" Margin="0,0,10,0" Foreground="#002d53"/>
-                    <TextBlock Text="User name" VerticalAlignment="Center" Height="25" FontSize="17" Foreground="#002d53"/>
+                    <TextBlock x:Name="UserNameTextBlock" Text="User name" VerticalAlignment="Center" Height="25" FontSize="17" Foreground="#002d53"/>
                 </StackPanel>
                 
                 <ListView Name="SpacesListView" Height="Auto" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="White" Background="{x:Null}" BorderBrush="{x:Null}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" SelectionChanged="SelectionChange_Event">
@@ -152,14 +152,14 @@
                             <TextBlock Text="Add space" VerticalAlignment="Center" Height="25" FontSize="17" Foreground="#002d53"/>
                     </StackPanel>
                 </ListViewItem>
-            </ListView>
+                </ListView>
 
-                <Button Height="30" Width="Auto" HorizontalAlignment="Left" VerticalAlignment="Bottom" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#002d53" Margin="10,0,0,10">
-                <StackPanel Orientation="Horizontal">
-                    <materialDesign:PackIcon Kind="Logout" Height="25" Width="25" Margin="0,0,10,0"/>
-                    <TextBlock Text="Log Out" VerticalAlignment="Center"/>
-                </StackPanel>
-            </Button>
+                <Button x:Name="LogOutButton" Height="30" Width="Auto" HorizontalAlignment="Left" VerticalAlignment="Bottom" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#002d53" Margin="10,0,0,10" Click="LogOutButton_Click">
+                    <StackPanel Orientation="Horizontal">
+                        <materialDesign:PackIcon Kind="Logout" Height="25" Width="25" Margin="0,0,10,0"/>
+                        <TextBlock Text="Log Out" VerticalAlignment="Center"/>
+                    </StackPanel>
+                </Button>
             </Grid>
         </Grid>
         

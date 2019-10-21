@@ -21,19 +21,24 @@ namespace YNoreWPF.AdditionalWindow {
         string Email,Password;
 
         public LoginWindow() {
+            WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
+
             InitializeComponent();
-
-
         }
 
         private void Button_Click(object sender, RoutedEventArgs e) {
 
             if (LoginTextBox.Text == "admin" && PasswordTextBox.Text == "admin") {
                 MainWindow mw = new MainWindow();
+                mw.UserProperty = new User(LoginTextBox.Text, PasswordTextBox.Text);
                 mw.Show();
+                this.Close();
+            }
+            else {
+                LoginTextBox.BorderBrush = Brushes.Red;
+                PasswordTextBox.BorderBrush = Brushes.Red;
             }
 
-            this.Close();
         }
     }
 }

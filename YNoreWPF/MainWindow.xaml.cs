@@ -17,6 +17,26 @@ using MaterialDesignThemes;
 using System.IO;
 
 namespace YNoreWPF {
+
+    public class User {
+
+        //static User shared;
+
+        public string Email { get; set; }
+        public string Password { get; set; }
+
+        public User(string email, string password) {
+            Email = email;
+            Password = password;
+        }
+
+        //public static User getShared(string email, string password) {
+        //    if (shared == null)
+        //        shared = new User(email, password);
+        //    return shared;
+        //}
+    }
+
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
@@ -25,7 +45,7 @@ namespace YNoreWPF {
         double FirstXPos, FirstYPos;
         object MovingObject;
 
-        
+        public User UserProperty;
 
         public MainWindow() {
 
@@ -42,6 +62,7 @@ namespace YNoreWPF {
             }
             NotesCanvas.PreviewMouseMove += this.MouseMove_Event;
 
+            //UserNameTextBlock.Text = UserProperty.Email;
 
 
             //for (int countSpace = 0; countSpace < 2; ++countSpace) {
@@ -201,6 +222,13 @@ namespace YNoreWPF {
                     this.Content = XamlReader.Load(savepoint);
                 }
         }
+
+        private void LogOutButton_Click(object sender, RoutedEventArgs e) {
+            AdditionalWindow.LoginWindow loginWindow = new AdditionalWindow.LoginWindow();
+            loginWindow.Show();
+            this.Close();
+        }
+
         public void SaveExternalXaml() {
             using (FileStream savepoint = new FileStream("savepoint.xaml", FileMode.Create)) {
                 XamlWriter.Save(this.Content,savepoint);
