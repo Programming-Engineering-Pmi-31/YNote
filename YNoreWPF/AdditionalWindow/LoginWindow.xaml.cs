@@ -22,10 +22,18 @@ namespace YNoreWPF.AdditionalWindow {
 
         public LoginWindow() {
             InitializeComponent();
+
+
         }
 
         private void Button_Click(object sender, RoutedEventArgs e) {
-            Close();
+
+            if (LoginTextBox.Text == "admin" && PasswordTextBox.Text == "admin") {
+                MainWindow mw = new MainWindow();
+                mw.Show();
+            }
+
+            this.Close();
         }
     }
 }

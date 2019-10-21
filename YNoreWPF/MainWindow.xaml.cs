@@ -25,7 +25,14 @@ namespace YNoreWPF {
         double FirstXPos, FirstYPos;
         object MovingObject;
 
+        
+
         public MainWindow() {
+
+            //AdditionalWindow.LoginWindow loginWindow = new AdditionalWindow.LoginWindow();
+            //loginWindow.Show();
+
+
             InitializeComponent();
 
             foreach (Control control in NotesCanvas.Children) {

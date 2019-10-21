@@ -140,12 +140,12 @@
                             <TextBlock Text="Space 1" VerticalAlignment="Center" Height="25" FontSize="17" Foreground="#002d53"/>
                     </StackPanel>
                 </ListViewItem>
-                <ListViewItem Height="30">
-                    <StackPanel Orientation="Horizontal">
-                            <materialDesign:PackIcon Kind="FileDocument" Width="25" Height="25" Margin="0,0,10,0" Foreground="#002d53"/>
-                            <TextBlock Text="Space 2" VerticalAlignment="Center" Height="25" FontSize="17" Foreground="#002d53"/>
-                    </StackPanel>
-                </ListViewItem>
+                <!--ListViewItem Height="30"-->
+                    <!--StackPanel Orientation="Horizontal"-->
+                            <!--materialDesign:PackIcon Kind="FileDocument" Width="25" Height="25" Margin="0,0,10,0" Foreground="#002d53"/-->
+                            <!--TextBlock Text="Space 2" VerticalAlignment="Center" Height="25" FontSize="17" Foreground="#002d53"/-->
+                    <!--/StackPanel-->
+                <!--ListViewItem/-->
                 <ListViewItem Height="30">
                     <StackPanel Orientation="Horizontal">
                             <materialDesign:PackIcon Kind="FileDocument" Width="25" Height="25" Margin="0,0,10,0" Foreground="#002d53"/>
