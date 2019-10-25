@@ -48,10 +48,6 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BusinessModels\Note.cs" />
-    <Compile Include="BusinessModels\Resizer.cs" />
-    <Compile Include="BusinessModels\User.cs" />
-    <Compile Include="BusinessModels\UserTask.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>

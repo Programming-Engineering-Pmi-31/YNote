@@ -4,7 +4,7 @@ using System.Windows.Controls;
 using System.Collections.Generic;
 using System.Windows.Controls.Primitives;
 
-namespace YNoteWPF_BL.BusinessModels
+namespace YNoreWPF.Models
 {
     public class Resizer : Thumb {
         /// <summary> 

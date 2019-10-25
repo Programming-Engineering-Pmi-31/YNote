@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace YNoteWPF_BL.BusinessModels
+namespace YNoreWPF.Models
 {
     public class UserTask {
         public bool Status { get; set; }

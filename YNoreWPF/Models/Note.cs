@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace YNoteWPF_BL.BusinessModels
+namespace YNoreWPF.Models
 {
     public class Note {
         public string Text { get; set; }
