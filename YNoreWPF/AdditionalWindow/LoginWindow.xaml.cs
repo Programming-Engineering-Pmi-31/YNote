@@ -30,13 +30,14 @@ namespace YNoreWPF.AdditionalWindow {
 
             if (LoginTextBox.Text == "admin" && PasswordTextBox.Text == "admin") {
                 MainWindow mw = new MainWindow();
-                mw.UserProperty = new User(LoginTextBox.Text, PasswordTextBox.Text);
+                //mw.UserProperty = new User(LoginTextBox.Text, PasswordTextBox.Text);
                 mw.Show();
                 this.Close();
             }
             else {
                 LoginTextBox.BorderBrush = Brushes.Red;
                 PasswordTextBox.BorderBrush = Brushes.Red;
+                RegisterButton.Visibility = Visibility.Visible;
             }
 
         }

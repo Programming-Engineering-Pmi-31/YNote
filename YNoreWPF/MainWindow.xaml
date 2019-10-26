@@ -186,7 +186,7 @@
             
             <Canvas Name="NotesCanvas" Margin="5">
                 <ScrollViewer Name="test" VerticalScrollBarVisibility="Auto" Canvas.Left="1">
-                    <customcontrol:Note Height="150" Width="150" />
+                    <!--customcontrol:Note Height="150" Width="150" /-->
 
                     <ScrollViewer.ContextMenu>
                         <ContextMenu>
