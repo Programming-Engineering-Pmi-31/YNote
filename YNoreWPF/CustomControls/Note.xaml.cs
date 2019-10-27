@@ -20,12 +20,19 @@ namespace YNoreWPF.CustomControls {
     /// Interaction logic for Note.xaml
     /// </summary>
     public partial class Note : UserControl {
-        
+
+        public string Text { get; set; }
+        public List<Models.UserTask> Task { get; set; }
+
+
         public Note() {
             InitializeComponent();
         }
 
         public Note(string text, List<Models.UserTask> tasks) : this() {
+            Text = text;
+            Task = tasks;
+
             TextBoxElem.Document.Blocks.Add(new Paragraph(new Run(text)));
             foreach (Models.UserTask userTask in tasks)
                 Context.Children.Add(new CustomControls.CheckWithTextBox(userTask.Status, userTask.Text));
@@ -69,6 +76,11 @@ namespace YNoreWPF.CustomControls {
             }
         }
 
+        public void DeleteParent() {
+            ((Panel)this.Parent).Children.Remove(this);
+        }
+
+        #region MouseInsideOutsideEvent
         private void MouseEnter_Event(object sender, MouseEventArgs e) {
             ToolPanel.Visibility = Visibility.Visible;
         }
@@ -76,5 +88,6 @@ namespace YNoreWPF.CustomControls {
         private void MouseLeave_Event(object sender, MouseEventArgs e) {
             ToolPanel.Visibility = Visibility.Hidden;
         }
+        #endregion
     }
 }

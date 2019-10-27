@@ -194,21 +194,32 @@ namespace YNoreWPF {
 
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e) {
-            SaveExternalXaml();
+            //SaveExternalXaml();
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e) {
-            NotesCanvas.Children.Clear();
-            LoadExternalXaml();
+            //NotesCanvas.Children.Clear();
+            //LoadExternalXaml();
         }
         public void LoadExternalXaml() {
             if (File.Exists("savepoint.xaml"))
-                using (FileStream savepoint = new FileStream("savepoint.xaml",FileMode.Open)) {
+                using (FileStream savepoint = new FileStream("savepoint.xaml",FileMode.Open, FileAccess.Read)) {
                     //this.Content = XamlReader.Load(savepoint);
                     //foreach (var elem in (UIElementCollection)XamlReader.Load(savepoint)) {
                     //NotesCanvas.Children.Add((UIElement)elem);
                     //}
-                    NotesCanvas.Children.Add(XamlReader.Load(savepoint) as Canvas);
+                    //NotesCanvas.Children.Add(XamlReader.Load(savepoint) as Canvas);
+                    //((Panel)this.Parent).Children.Remove(this);
+
+                    //var notes = XamlReader.Load(savepoint) as UIElementCollection;
+
+                    foreach (CustomControls.Note elem in (XamlReader.Load(savepoint) as Canvas).Children) {
+                        //((Panel)elem.Parent).Children.Remove(elem);
+                        var temp = elem;
+                        ((Panel)temp.Parent).Children.Remove(temp);
+                        NotesCanvas.Children.Add(temp);
+                    }
+
                 }
         }
         public void SaveExternalXaml() {
