@@ -116,7 +116,7 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Models\Class1.cs" />
+    <Compile Include="Models\RemoveParent.cs" />
     <Compile Include="Models\Note.cs" />
     <Compile Include="Models\RemoveChildHelper.cs" />
     <Compile Include="Models\Resizer.cs" />
