@@ -13,12 +13,10 @@ namespace YNoteWPF_DL.Configurations
 
             Property(e => e.SpaceName).IsRequired();
 
-            Property(e => e.AuthorId).IsRequired();
-
             Property(e => e.SpaceName).HasMaxLength(100);
 
             HasRequired(e => e.Author)
-                .WithMany(author => author.Spaces)
+                .WithMany(author => author.SpacesAsAuthor)
                 .HasForeignKey(e => e.AuthorId)
                 .WillCascadeOnDelete(false);
         }

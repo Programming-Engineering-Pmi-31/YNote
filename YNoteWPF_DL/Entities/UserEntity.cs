@@ -18,6 +18,7 @@ namespace YNoteWPF_DL.Entities {
         public string Password { get; set; }
 
         public List<NoteEntity> Notes { get; set; }
-        public List<SpaceEntity> Spaces { get; set; }
+        public List<SpaceEntity> SpacesAsUser { get; set; }
+        public List<SpaceEntity> SpacesAsAuthor { get; set; }
     }
 }
