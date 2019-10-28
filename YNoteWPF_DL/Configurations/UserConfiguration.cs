@@ -20,6 +20,16 @@ namespace YNoteWPF_DL.Configurations
             Property(e => e.Password).HasMaxLength(16).IsRequired();
 
             Property(e => e.Email).HasMaxLength(30).IsRequired();
+
+            HasMany<SpaceEntity>(u => u.SpacesAsUser)
+                .WithMany(s => s.Users)
+                .Map(su =>
+                {
+                    su.MapLeftKey("SpaceRefId");
+                    su.MapRightKey("UserRefId");
+                    su.ToTable("UserSpace");
+                });
+
         }
     }
 }

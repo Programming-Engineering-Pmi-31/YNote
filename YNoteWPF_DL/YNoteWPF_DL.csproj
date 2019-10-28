@@ -126,6 +126,10 @@
     <Compile Include="Migrations\201910280110284_addSeed.designer.cs">
       <DependentUpon>201910280110284_addSeed.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201910281055338_add-many-to-many-relation.cs" />
+    <Compile Include="Migrations\201910281055338_add-many-to-many-relation.designer.cs">
+      <DependentUpon>201910281055338_add-many-to-many-relation.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -139,6 +143,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201910280110284_addSeed.resx">
       <DependentUpon>201910280110284_addSeed.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910281055338_add-many-to-many-relation.resx">
+      <DependentUpon>201910281055338_add-many-to-many-relation.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
