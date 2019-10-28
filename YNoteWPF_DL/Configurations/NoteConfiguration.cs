@@ -1,35 +1,34 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata.Builders;
+﻿using System.Data.Entity.ModelConfiguration;
 using YNoteWPF_DL.Entities;
 
 namespace YNoteWPF_DL.Configurations
 {
-    class NoteConfiguration : IEntityTypeConfiguration<NoteEntity>
+    class NoteConfiguration : EntityTypeConfiguration<NoteEntity>
     {
-        public void Configure(EntityTypeBuilder<NoteEntity> builder)
+        public NoteConfiguration()
         {
-            builder.ToTable("Notes");
+            ToTable("Notes");
 
-            builder.HasKey(e => e.Id);
+            HasKey(e => e.Id);
 
-            builder.Property(e => e.CreationTime).IsRequired();
+            Property(e => e.CreationTime).IsRequired();
 
-            builder.HasOne(e => e.Space)
+            HasRequired(e => e.Space)
                 .WithMany(space => space.Notes)
                 .HasForeignKey(e => e.SpaceId)
-                .OnDelete(DeleteBehavior.Cascade);
+                .WillCascadeOnDelete(false);
 
-            builder.HasOne(e => e.Group)
+            HasRequired(e => e.Group)
                 .WithMany(group => group.Notes)
                 .HasForeignKey(e => e.GroupId)
-                .OnDelete(DeleteBehavior.SetNull);
+                .WillCascadeOnDelete(true);
 
-            builder.HasOne(e => e.AssignedUser)
+            HasRequired(e => e.AssignedUser)
                 .WithMany(user => user.Notes)
                 .HasForeignKey(e => e.AssignedUserId)
-                .OnDelete(DeleteBehavior.ClientSetNull);
-                
-                
+                .WillCascadeOnDelete(true);
+
+
         }
     }
 }

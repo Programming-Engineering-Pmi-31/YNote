@@ -1,5 +1,5 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore;
+﻿using System.Data.Entity;
+using System.Data.Entity.ModelConfiguration.Conventions;
 using YNoteWPF_DL.Configurations;
 using YNoteWPF_DL.Entities;
 
@@ -7,7 +7,7 @@ namespace YNoteWPF_DL
 {
     public class YNoteDbContext: DbContext
     {
-        public YNoteDbContext(DbContextOptions<YNoteDbContext> options) : base(options) { }
+        public YNoteDbContext() : base("YNoteDB") { }
 
         public DbSet<UserEntity> Users { get; set; }
 
@@ -19,22 +19,23 @@ namespace YNoteWPF_DL
 
         public DbSet<TaskEntity> Tasks { get; set; }
 
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
+            modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
 
-            Seed seed = new Seed();
-            seed.OnModelCreating(modelBuilder);
+            //Seed seed = new Seed();
+            //seed.OnModelCreating(modelBuilder);
 
-            modelBuilder.ApplyConfiguration(new UserConfiguration());
+            modelBuilder.Configurations.Add(new UserConfiguration());
 
-            modelBuilder.ApplyConfiguration(new SpaceConfiguration());
+            modelBuilder.Configurations.Add(new SpaceConfiguration());
 
-            modelBuilder.ApplyConfiguration(new GroupConfiguration());
+            modelBuilder.Configurations.Add(new GroupConfiguration());
 
-            modelBuilder.ApplyConfiguration(new NoteConfiguration());
+            modelBuilder.Configurations.Add(new NoteConfiguration());
 
-            modelBuilder.ApplyConfiguration(new TaskConfiguration());
+            modelBuilder.Configurations.Add(new TaskConfiguration());
         }
     }
 }

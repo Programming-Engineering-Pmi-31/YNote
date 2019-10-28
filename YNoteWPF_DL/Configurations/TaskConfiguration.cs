@@ -1,33 +1,30 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata.Builders;
+﻿using System.Data.Entity.ModelConfiguration;
 using YNoteWPF_DL.Entities;
 
 namespace YNoteWPF_DL.Configurations
 {
-    class TaskConfiguration : IEntityTypeConfiguration<TaskEntity>
+    class TaskConfiguration : EntityTypeConfiguration<TaskEntity>
     {
-        public void Configure(EntityTypeBuilder<TaskEntity> builder)
+        public TaskConfiguration()
         {
-            builder.ToTable("Tasks");
+            ToTable("Tasks");
 
-            builder.HasKey(e => e.Id);
+            HasKey(e => e.Id);
 
-            builder.Property(e => e.SumUp).IsRequired();
+            Property(e => e.SumUp).IsRequired();
 
-            builder.Property(e => e.SumUp).HasMaxLength(50);
+            Property(e => e.SumUp).HasMaxLength(50);
 
-            builder.Property(e => e.NoteId).IsRequired();
+            Property(e => e.NoteId).IsRequired();
 
-            builder.Property(e => e.Description).HasMaxLength(300);
+            Property(e => e.Description).HasMaxLength(300);
 
-            builder.Property(e => e.Status)
-                .IsRequired()
-                .HasDefaultValue(false);
+            Property(e => e.Status).IsRequired();
 
-            builder.HasOne(e => e.Note)
+            HasRequired(e => e.Note)
                 .WithMany(note => note.Tasks)
                 .HasForeignKey(e => e.NoteId)
-                .OnDelete(DeleteBehavior.Cascade);
+                .WillCascadeOnDelete(false);
         }
     }
 }

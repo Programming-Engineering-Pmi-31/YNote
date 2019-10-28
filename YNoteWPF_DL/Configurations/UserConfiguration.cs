@@ -1,26 +1,25 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata.Builders;
+﻿using System.Data.Entity.ModelConfiguration;
 using YNoteWPF_DL.Entities;
 
 namespace YNoteWPF_DL.Configurations
 {
-    class UserConfiguration : IEntityTypeConfiguration<UserEntity>
+    class UserConfiguration : EntityTypeConfiguration<UserEntity>
     {
-        public void Configure(EntityTypeBuilder<UserEntity> builder)
+        public UserConfiguration()
         {
-            builder.ToTable("Users");
+            ToTable("Users");
+                                                                       
+            HasKey(e => e.Id);
 
-            builder.HasKey(e => e.Id);
+            Property(e => e.Nickname).HasMaxLength(20).IsRequired();
 
-            builder.Property(e => e.Nickname).HasMaxLength(20).IsRequired();
+            Property(e => e.Name).HasMaxLength(50).IsRequired();
 
-            builder.Property(e => e.Name).HasMaxLength(50).IsRequired();
+            Property(e => e.Surname).HasMaxLength(50).IsRequired();
 
-            builder.Property(e => e.Surname).HasMaxLength(50).IsRequired();
+            Property(e => e.Password).HasMaxLength(16).IsRequired();
 
-            builder.Property(e => e.Password).HasMaxLength(16).IsRequired();
-
-            builder.Property(e => e.Email).HasMaxLength(30).IsRequired();
+            Property(e => e.Email).HasMaxLength(30).IsRequired();
         }
     }
 }

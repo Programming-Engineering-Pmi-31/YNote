@@ -1,23 +1,22 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata.Builders;
+﻿using System.Data.Entity.ModelConfiguration;
 using YNoteWPF_DL.Entities;
 
 namespace YNoteWPF_DL.Configurations
 {
-    class GroupConfiguration : IEntityTypeConfiguration<GroupEntity>
+    class GroupConfiguration : EntityTypeConfiguration<GroupEntity>
     {
-        public void Configure(EntityTypeBuilder<GroupEntity> builder)
+        public GroupConfiguration()
         {
-            builder.ToTable("Groups");
+            ToTable("Groups");
 
-            builder.HasKey(e => e.Id);
+            HasKey(e => e.Id);
 
-            builder.Property(e => e.SpaceId).IsRequired();
+            Property(e => e.SpaceId).IsRequired();
 
-            builder.HasOne(e => e.Space)
+            HasRequired(e => e.Space)
                 .WithMany(space => space.Groups)
                 .HasForeignKey(e => e.SpaceId)
-                .OnDelete(DeleteBehavior.ClientSetNull);
+                .WillCascadeOnDelete(true);
         }
     }
 }

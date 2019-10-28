@@ -1,27 +1,26 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata.Builders;
+﻿using System.Data.Entity.ModelConfiguration;
 using YNoteWPF_DL.Entities;
 
 namespace YNoteWPF_DL.Configurations
 {
-    class SpaceConfiguration : IEntityTypeConfiguration<SpaceEntity>
+    class SpaceConfiguration : EntityTypeConfiguration<SpaceEntity>
     {
-        public void Configure(EntityTypeBuilder<SpaceEntity> builder)
+        public SpaceConfiguration()
         {
-            builder.ToTable("Spaces");
+            ToTable("Spaces");
 
-            builder.HasKey(e => e.Id);
+            HasKey(e => e.Id);
 
-            builder.Property(e => e.SpaceName).IsRequired();
+            Property(e => e.SpaceName).IsRequired();
 
-            builder.Property(e => e.AuthorId).IsRequired();
+            Property(e => e.AuthorId).IsRequired();
 
-            builder.Property(e => e.SpaceName).HasMaxLength(100);
+            Property(e => e.SpaceName).HasMaxLength(100);
 
-            builder.HasOne(e => e.Author)
+            HasRequired(e => e.Author)
                 .WithMany(author => author.Spaces)
                 .HasForeignKey(e => e.AuthorId)
-                .OnDelete(DeleteBehavior.Cascade);
+                .WillCascadeOnDelete(false);
         }
     }
 }
