@@ -42,6 +42,7 @@
                 </Setter.Value>
             </Setter>
         </Style>
+        
         <Storyboard x:Key="MenuOpen">
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.TargetName="SpaceGrid">
                 <EasingDoubleKeyFrame KeyTime="0" Value="40"/>
@@ -66,6 +67,8 @@
                 <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
             </DoubleAnimationUsingKeyFrames>
         </Storyboard>
+        
+        
     </Window.Resources>
 
     <Window.Triggers>
@@ -183,17 +186,10 @@
                     <Label Content="User 6" FontSize="17" Foreground="#002d53"/>
                 </StackPanel>
             </Grid>
-            
-            <Canvas Name="NotesCanvas" Margin="5">
-                <ScrollViewer Name="test" VerticalScrollBarVisibility="Auto" Canvas.Left="1">
-                    <!--customcontrol:Note Height="150" Width="150" /-->
 
-                    <ScrollViewer.ContextMenu>
-                        <ContextMenu>
-                            <MenuItem Header="Add Note" Click="Add_New_Note"/>
-                        </ContextMenu>
-                    </ScrollViewer.ContextMenu>
-                </ScrollViewer>
+            <Canvas Name="NotesCanvas" Margin="5">
+                <!--customcontrol:Note Height="150" Width="150" /-->
+                
             </Canvas>
 
             <StackPanel HorizontalAlignment="Right" VerticalAlignment="Bottom" Orientation="Horizontal" Margin="0,0,10,10">

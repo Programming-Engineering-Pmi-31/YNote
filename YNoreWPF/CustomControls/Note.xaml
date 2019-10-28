@@ -6,9 +6,10 @@
              xmlns:local="clr-namespace:YNoreWPF.CustomControls"
              mc:Ignorable="d" 
              d:DesignHeight="150" d:DesignWidth="150" AllowDrop="True" MouseEnter="MouseEnter_Event" MouseLeave="MouseLeave_Event">
-    <Grid Name="NoteGrid" Background="#fff9ed">
-        <StackPanel Name="Context" Margin="5,5,5,30">
-            <RichTextBox Name="TextBoxElem" Height="Auto" VerticalAlignment="Top" Grid.IsSharedSizeScope="True" Background="{x:Null}" BorderBrush="{x:Null}"/>
+    
+    <Grid x:Name="NoteGrid" Background="#fff9ed">
+        <StackPanel x:Name="Context" Margin="5,5,5,30">
+            <RichTextBox x:Name="TextBoxElem" Height="Auto" VerticalAlignment="Top" Grid.IsSharedSizeScope="True" Background="{x:Null}" BorderBrush="{x:Null}"/>
         </StackPanel>
         <StackPanel x:Name="ToolPanel" HorizontalAlignment="Center" VerticalAlignment="Bottom" Orientation="Horizontal" Margin="5">
             <Button Content="V" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="20" Height="20" Margin="0,0,5,0" Background="{x:Null}" Click="Add_CheckBox_On_Click"/>

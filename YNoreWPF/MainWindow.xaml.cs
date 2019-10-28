@@ -194,16 +194,16 @@ namespace YNoreWPF {
 
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e) {
-            //SaveExternalXaml();
+            SaveExternalXaml();
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e) {
             //NotesCanvas.Children.Clear();
-            //LoadExternalXaml();
+            LoadExternalXaml();
         }
         public void LoadExternalXaml() {
-            if (File.Exists("savepoint.xaml"))
-                using (FileStream savepoint = new FileStream("savepoint.xaml",FileMode.Open, FileAccess.Read)) {
+            if (File.Exists("savepoint.xaml")) {
+                using (FileStream savepoint = new FileStream("savepoint.xaml", FileMode.Open, FileAccess.Read)) {
                     //this.Content = XamlReader.Load(savepoint);
                     //foreach (var elem in (UIElementCollection)XamlReader.Load(savepoint)) {
                     //NotesCanvas.Children.Add((UIElement)elem);
@@ -211,16 +211,33 @@ namespace YNoreWPF {
                     //NotesCanvas.Children.Add(XamlReader.Load(savepoint) as Canvas);
                     //((Panel)this.Parent).Children.Remove(this);
 
-                    //var notes = XamlReader.Load(savepoint) as UIElementCollection;
+                    //var notes = XamlReader.Load(savepoint) as Canvas;
 
-                    foreach (CustomControls.Note elem in (XamlReader.Load(savepoint) as Canvas).Children) {
-                        //((Panel)elem.Parent).Children.Remove(elem);
-                        var temp = elem;
-                        ((Panel)temp.Parent).Children.Remove(temp);
-                        NotesCanvas.Children.Add(temp);
+                    //foreach (CustomControls.Note elem in notes.Children) {
+                    //    //((Panel)elem.Parent).Children.Remove(elem);
+                    //    Models.RemovePaernt.RemoveElementFromItsParent(elem);
+                    //    //var temp = elem;
+                    //    //((Panel)temp.Parent).Children.Remove(temp);
+                    //    NotesCanvas.Children.Add(elem);
+                    //}
+
+                    //while (notes.Children.Count != 0) {
+                    //    var elem  = notes.Children.cop
+                    //    Models.RemovePaernt.RemoveElementFromItsParent()
+                    //}
+
+                    var notes = XamlReader.Load(savepoint) as Canvas;
+
+                    UIElement[] noteArray = new UIElement[notes.Children.Count];
+                    notes.Children.CopyTo(noteArray, 0);
+
+                    for (int i = 0; i < noteArray.Length; ++i) {
+                        Models.RemovePaernt.RemoveElementFromItsParent((FrameworkElement)noteArray[i]);
+                        NotesCanvas.Children.Add(noteArray[i]);
                     }
-
                 }
+                File.Delete("savepoint.xaml");
+            }
         }
         public void SaveExternalXaml() {
             using (FileStream savepoint = new FileStream("savepoint.xaml", FileMode.Create)) {
