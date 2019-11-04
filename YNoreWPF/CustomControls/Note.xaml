@@ -26,6 +26,8 @@
                     <MenuItem Header="Blue" Click="ChangeColorToBlue_click"/>
                 </MenuItem>
                 <MenuItem Header="Move to destop" Click="MoveToDesktop_Click"/>
+                <MenuItem Header="Minimize" Click="Minimaze_click"/>
+                <MenuItem Header="Maximize" Click="Maximaze_click"/>
             </ContextMenu>
         </Grid.ContextMenu>
     </Grid>

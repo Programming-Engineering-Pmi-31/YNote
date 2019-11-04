@@ -21,6 +21,8 @@ namespace YNoreWPF.CustomControls {
     /// </summary>
     public partial class Note : UserControl {
 
+        double normalHeight;
+
         public string Text { get; set; }
         public List<Models.UserTask> Task { get; set; }
 
@@ -89,5 +91,14 @@ namespace YNoreWPF.CustomControls {
             ToolPanel.Visibility = Visibility.Hidden;
         }
         #endregion
+
+        private void Minimaze_click(object sender, RoutedEventArgs e) {
+            normalHeight = this.Height;
+            this.Height = TextBoxElem.Height + 20;
+        }
+
+        private void Maximaze_click(object sender, RoutedEventArgs e) {
+            this.Height = normalHeight;
+        }
     }
 }

@@ -67,8 +67,7 @@
                 <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
             </DoubleAnimationUsingKeyFrames>
         </Storyboard>
-        
-        
+
     </Window.Resources>
 
     <Window.Triggers>
@@ -189,12 +188,15 @@
 
             <Canvas Name="NotesCanvas" Margin="5">
                 <!--customcontrol:Note Height="150" Width="150" /-->
-                
+                <!--customcontrol:Group Height="550" Canvas.Left="6" Canvas.Top="10"/-->
             </Canvas>
 
             <StackPanel HorizontalAlignment="Right" VerticalAlignment="Bottom" Orientation="Horizontal" Margin="0,0,10,10">
                 <Button  Width="30" Height="30" Background="{x:Null}" BorderBrush="{x:Null}" Click="Add_New_Note" Grid.Row="1">
                     <materialDesign:PackIcon Kind="Add" Foreground="White" Height="30" Width="30"/>
+                </Button>
+                <Button x:Name="AddGroup" Height="30" Width="30" Background="{x:Null}" BorderBrush="{x:Null}" Click="Add_Group">
+                    <materialDesign:PackIcon Kind="Group" Width="29" Height="29" Foreground="White"/>
                 </Button>
                 <Button x:Name="ButtonOpenInfoGrid" Height="30" Width="30" Background="{x:Null}" BorderBrush="{x:Null}" Click="ButtonOpenInfoGrid_Click">
                     <materialDesign:PackIcon Kind="Information" Width="29" Height="29" Foreground="White"/>

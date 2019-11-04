@@ -37,8 +37,12 @@ namespace YNoreWPF.CustomControls {
                     }
             }
         }
-        public void add_note() {
 
+        private void Add_New_Note(object sender, RoutedEventArgs e) {
+            NotePanel.Children.Add(new CustomControls.Note() {
+                Margin = new Thickness(5),
+                Width = 150
+            });
         }
     }
 }
