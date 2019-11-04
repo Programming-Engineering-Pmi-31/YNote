@@ -26,9 +26,13 @@ namespace YNoreWPF.AdditionalWindow {
             InitializeComponent();
         }
 
+        private void Close_Event(object sender, RoutedEventArgs e) {
+            this.Close();
+        }
+
         private void Button_Click(object sender, RoutedEventArgs e) {
 
-            if (LoginTextBox.Text == "admin" && PasswordTextBox.Text == "admin") {
+            if (LoginTextBox.Text == "admin" && PasswordTextBox.Password == "admin") {
                 MainWindow mw = new MainWindow();
                 //mw.UserProperty = new User(LoginTextBox.Text, PasswordTextBox.Text);
                 mw.Show();

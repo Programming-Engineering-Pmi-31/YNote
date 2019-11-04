@@ -194,12 +194,12 @@ namespace YNoreWPF {
 
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e) {
-            SaveExternalXaml();
+            //SaveExternalXaml();
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e) {
             //NotesCanvas.Children.Clear();
-            LoadExternalXaml();
+            //LoadExternalXaml();
         }
         public void LoadExternalXaml() {
             if (File.Exists("savepoint.xaml")) {
