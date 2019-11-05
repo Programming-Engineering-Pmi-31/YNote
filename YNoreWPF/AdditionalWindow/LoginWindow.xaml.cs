@@ -42,6 +42,7 @@ namespace YNoreWPF.AdditionalWindow {
                 LoginTextBox.BorderBrush = Brushes.Red;
                 PasswordTextBox.BorderBrush = Brushes.Red;
                 RegisterButton.Visibility = Visibility.Visible;
+                ConfirmPAsswordPanel.Visibility = Visibility.Visible;
             }
 
         }
