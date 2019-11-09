@@ -42,7 +42,7 @@
                 </Setter.Value>
             </Setter>
         </Style>
-        
+
         <Storyboard x:Key="MenuOpen">
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.TargetName="SpaceGrid">
                 <EasingDoubleKeyFrame KeyTime="0" Value="40"/>
@@ -134,26 +134,26 @@
                     <materialDesign:PackIcon Kind="User" Width="25" Height="25" Margin="0,0,10,0" Foreground="#002d53"/>
                     <TextBlock x:Name="UserNameTextBlock" Text="User name" VerticalAlignment="Center" Height="25" FontSize="17" Foreground="#002d53"/>
                 </StackPanel>
-                
+
                 <ListView Name="SpacesListView" Height="Auto" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="White" Background="{x:Null}" BorderBrush="{x:Null}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" SelectionChanged="SelectionChange_Event">
-                <ListViewItem Height="30">
-                    <StackPanel Orientation="Horizontal">
-                        <materialDesign:PackIcon Kind="FileDocument" Width="25" Height="25" Margin="0,0,10,0" Foreground="#002d53"/>
+                    <ListViewItem Height="30">
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="FileDocument" Width="25" Height="25" Margin="0,0,10,0" Foreground="#002d53"/>
                             <TextBlock Text="Space 1" VerticalAlignment="Center" Height="25" FontSize="17" Foreground="#002d53"/>
-                    </StackPanel>
-                </ListViewItem>
-                <!--ListViewItem Height="30"-->
+                        </StackPanel>
+                    </ListViewItem>
+                    <!--ListViewItem Height="30"-->
                     <!--StackPanel Orientation="Horizontal"-->
-                            <!--materialDesign:PackIcon Kind="FileDocument" Width="25" Height="25" Margin="0,0,10,0" Foreground="#002d53"/-->
-                            <!--TextBlock Text="Space 2" VerticalAlignment="Center" Height="25" FontSize="17" Foreground="#002d53"/-->
+                    <!--materialDesign:PackIcon Kind="FileDocument" Width="25" Height="25" Margin="0,0,10,0" Foreground="#002d53"/-->
+                    <!--TextBlock Text="Space 2" VerticalAlignment="Center" Height="25" FontSize="17" Foreground="#002d53"/-->
                     <!--/StackPanel-->
-                <!--ListViewItem/-->
-                <ListViewItem Height="30">
-                    <StackPanel Orientation="Horizontal">
+                    <!--ListViewItem/-->
+                    <ListViewItem Height="30">
+                        <StackPanel Orientation="Horizontal">
                             <materialDesign:PackIcon Kind="FileDocument" Width="25" Height="25" Margin="0,0,10,0" Foreground="#002d53"/>
                             <TextBlock Text="Add space" VerticalAlignment="Center" Height="25" FontSize="17" Foreground="#002d53"/>
-                    </StackPanel>
-                </ListViewItem>
+                        </StackPanel>
+                    </ListViewItem>
                 </ListView>
 
                 <Button x:Name="LogOutButton" Height="30" Width="Auto" HorizontalAlignment="Left" VerticalAlignment="Bottom" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#002d53" Margin="10,0,0,10" Click="LogOutButton_Click">
@@ -164,18 +164,23 @@
                 </Button>
             </Grid>
         </Grid>
-        
-        
+
+
 
         <Grid Name="Notes" Grid.Column="1" Grid.Row="1" Background="#002d53">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            
             <!-- change width to 0 to hide grid from start or to 150 to show -->
-            <Grid x:Name="InfoGrid" HorizontalAlignment="Right" Width="0" Margin="0,60,10,60">
+            <Grid x:Name="InfoGrid" HorizontalAlignment="Right" Width="0" Margin="0,60,10,60" Grid.Column="1">
                 <Rectangle RadiusX="20" RadiusY="20" Fill="#dbf8ff"/>
                 <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="15">
                     <TextBox Text="Space Name" FontSize="17" Foreground="#002d53" Background="{x:Null}" BorderBrush="{x:Null}"/>
                     <TextBox Text="Description" Height="Auto" Margin="5" FontSize="15" Foreground="#002d53" Background="{x:Null}" BorderBrush="{x:Null}"/>
                 </StackPanel>
-                    
+
                 <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,50">
                     <Label Content="User 1" FontSize="17" Foreground="#002d53"/>
                     <Label Content="User 2" FontSize="17" Foreground="#002d53"/>
@@ -186,12 +191,17 @@
                 </StackPanel>
             </Grid>
 
-            <Canvas Name="NotesCanvas" Margin="5">
+            <Grid x:Name="GroupGrid">
+                <StackPanel x:Name="GroupStackPanel" Orientation="Horizontal">
+                    
+                </StackPanel>                
+            </Grid>
+            <Canvas Name="NotesCanvas" Margin="5" Grid.Column ="1">
                 <!--customcontrol:Note Height="150" Width="150" /-->
                 <!--customcontrol:Group Height="550" Canvas.Left="6" Canvas.Top="10"/-->
             </Canvas>
 
-            <StackPanel HorizontalAlignment="Right" VerticalAlignment="Bottom" Orientation="Horizontal" Margin="0,0,10,10">
+            <StackPanel HorizontalAlignment="Right" VerticalAlignment="Bottom" Orientation="Horizontal" Margin="0,0,10,10" Grid.Column="1">
                 <Button  Width="30" Height="30" Background="{x:Null}" BorderBrush="{x:Null}" Click="Add_New_Note" Grid.Row="1">
                     <materialDesign:PackIcon Kind="Add" Foreground="White" Height="30" Width="30"/>
                 </Button>

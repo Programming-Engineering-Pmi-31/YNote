@@ -246,7 +246,7 @@ namespace YNoreWPF {
         }
 
         private void Add_Group(object sender, RoutedEventArgs e) {
-            NotesCanvas.Children.Add(new CustomControls.Group() {
+            GroupStackPanel.Children.Add(new CustomControls.Group() {
                 Margin = new Thickness(10),
                 Height = 550,
                 MinWidth = 160

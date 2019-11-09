@@ -41,7 +41,7 @@ namespace YNoreWPF.CustomControls {
         }
 
         private void Add_CheckBox_On_Click(object sender, RoutedEventArgs e) {
-            Context.Children.Add(new YNoreWPF.CustomControls.CheckWithTextBox(true,"todo") { HorizontalAlignment = System.Windows.HorizontalAlignment.Left });
+            ContextTask.Children.Add(new YNoreWPF.CustomControls.CheckWithTextBox(true,"todo") { HorizontalAlignment = System.Windows.HorizontalAlignment.Left });
         }
         private void Delete_Note_On_Click(object sender, RoutedEventArgs e) {
             ((Panel)this.Parent).Children.Remove(this);
@@ -66,15 +66,15 @@ namespace YNoreWPF.CustomControls {
         private void IncrementSelectedText_Click(object sender, RoutedEventArgs e) {
             TextSelection text = TextBoxElem.Selection;
             if (!text.IsEmpty) {
-                text.ApplyPropertyValue(RichTextBox.FontSizeProperty, FontSize + Convert.ToInt32(EnterSize.Text));
-                EnterSize.Text = "";
+                //text.ApplyPropertyValue(RichTextBox.FontSizeProperty, FontSize + Convert.ToInt32(EnterSize.Text));
+                //EnterSize.Text = "";
             }
         }
         private void DecrementSelectedText_Click(object sender, RoutedEventArgs e) {
             TextSelection text = TextBoxElem.Selection;
             if (!text.IsEmpty) {
-                text.ApplyPropertyValue(RichTextBox.FontSizeProperty, FontSize - Convert.ToInt32(EnterSize.Text));
-                EnterSize.Text = "";
+                //text.ApplyPropertyValue(RichTextBox.FontSizeProperty, FontSize - Convert.ToInt32(EnterSize.Text));
+                //EnterSize.Text = "";
             }
         }
 
@@ -84,11 +84,11 @@ namespace YNoreWPF.CustomControls {
 
         #region MouseInsideOutsideEvent
         private void MouseEnter_Event(object sender, MouseEventArgs e) {
-            ToolPanel.Visibility = Visibility.Visible;
+            //ToolPanel.Visibility = Visibility.Visible;
         }
 
         private void MouseLeave_Event(object sender, MouseEventArgs e) {
-            ToolPanel.Visibility = Visibility.Hidden;
+            //ToolPanel.Visibility = Visibility.Hidden;
         }
         #endregion
 
