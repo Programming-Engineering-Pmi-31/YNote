@@ -246,11 +246,12 @@ namespace YNoreWPF {
         }
 
         private void Add_Group(object sender, RoutedEventArgs e) {
-            GroupStackPanel.Children.Add(new CustomControls.Group() {
-                Margin = new Thickness(10),
-                Height = 550,
-                MinWidth = 160
-            });
+            if(GroupStackPanel.Children.Count < 4)
+                GroupStackPanel.Children.Add(new CustomControls.Group() {
+                    Margin = new Thickness(10),
+                    Height = 550,
+                    MinWidth = 160
+                });
         }
 
         private void LogOutButton_Click(object sender, RoutedEventArgs e) {
