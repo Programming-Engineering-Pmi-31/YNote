@@ -45,5 +45,9 @@ namespace YNoreWPF.CustomControls {
                     Width = 150
                 });
         }
+
+        private void Delete_Note_On_Click(object sender, RoutedEventArgs e) {
+            ((Panel)this.Parent).Children.Remove(this);
+        }
     }
 }

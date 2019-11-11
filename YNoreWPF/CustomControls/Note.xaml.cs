@@ -84,11 +84,11 @@ namespace YNoreWPF.CustomControls {
 
         #region MouseInsideOutsideEvent
         private void MouseEnter_Event(object sender, MouseEventArgs e) {
-            //ToolPanel.Visibility = Visibility.Visible;
+            ToolPanel.Visibility = Visibility.Visible;
         }
 
         private void MouseLeave_Event(object sender, MouseEventArgs e) {
-            //ToolPanel.Visibility = Visibility.Hidden;
+            ToolPanel.Visibility = Visibility.Hidden;
         }
         #endregion
 

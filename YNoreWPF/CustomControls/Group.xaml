@@ -22,5 +22,8 @@
         <Button  Width="20" Height="20" Background="{x:Null}" BorderBrush="{x:Null}" Click="Add_New_Note" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="10">
             <materialDesign:PackIcon Kind="Add" Foreground="Black" Height="20" Width="10"/>
         </Button>
+        <Button  Width="20" Height="20" Background="{x:Null}" BorderBrush="{x:Null}" Click="Delete_Note_On_Click" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="10">
+            <materialDesign:PackIcon Kind="Delete" Foreground="Black" Height="20" Width="10"/>
+        </Button>
     </Grid>
 </UserControl>
