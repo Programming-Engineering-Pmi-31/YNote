@@ -8,16 +8,22 @@
              d:DesignHeight="150" d:DesignWidth="150" AllowDrop="True" MouseEnter="MouseEnter_Event" MouseLeave="MouseLeave_Event">
     
     <Grid x:Name="NoteGrid" Background="#fff9ed">
+        
         <StackPanel x:Name="Context" Margin="5,5,5,30">
             <RichTextBox x:Name="TextBoxElem" Height="Auto" VerticalAlignment="Top" Grid.IsSharedSizeScope="True" Background="{x:Null}" BorderBrush="{x:Null}"/>
+            <StackPanel x:Name="ContextTask" Orientation="Vertical">
+                
+            </StackPanel>
+            <Button Content="+" FontSize="10" HorizontalAlignment="Center" VerticalAlignment="Bottom" Width="15" Height="15" Margin="0,0,5,0" Background="{x:Null}" BorderBrush="{x:Null}" BorderThickness="0" Click="Add_CheckBox_On_Click"/>
         </StackPanel>
-        <StackPanel x:Name="ToolPanel" HorizontalAlignment="Center" VerticalAlignment="Bottom" Orientation="Horizontal" Margin="5">
+        
+        <!--StackPanel x:Name="ToolPanel" HorizontalAlignment="Center" VerticalAlignment="Bottom" Orientation="Horizontal" Margin="5">
             <Button Content="V" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="20" Height="20" Margin="0,0,5,0" Background="{x:Null}" Click="Add_CheckBox_On_Click"/>
             <Button Content="+" Width="20" Height="20" Background="{x:Null}" Click="IncrementSelectedText_Click"/>
             <TextBox x:Name="EnterSize" Width="30" Background="{x:Null}"/>
             <Button Content="-" Width="20" Height="20" Background="{x:Null}" Click="DecrementSelectedText_Click"/>
             <Button Content="D" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="20" Height="20" Margin="5,0,0,0" Background="{x:Null}" Click="Delete_Note_On_Click"/>
-        </StackPanel>
+        </StackPanel-->
         <Grid.ContextMenu>
             <ContextMenu>
                 <MenuItem Header="Change color">
@@ -26,6 +32,8 @@
                     <MenuItem Header="Blue" Click="ChangeColorToBlue_click"/>
                 </MenuItem>
                 <MenuItem Header="Move to destop" Click="MoveToDesktop_Click"/>
+                <MenuItem Header="Minimize" Click="Minimaze_click"/>
+                <MenuItem Header="Maximize" Click="Maximaze_click"/>
             </ContextMenu>
         </Grid.ContextMenu>
     </Grid>

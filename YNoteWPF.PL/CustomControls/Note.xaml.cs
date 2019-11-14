@@ -22,6 +22,8 @@ namespace YNoteWPF.PL.CustomControls {
     /// </summary>
     public partial class Note : UserControl {
 
+        double normalHeight;
+
         public string Text { get; set; }
         public List<UserTask> Task { get; set; }
 
@@ -40,7 +42,11 @@ namespace YNoteWPF.PL.CustomControls {
         }
 
         private void Add_CheckBox_On_Click(object sender, RoutedEventArgs e) {
+<<<<<<< HEAD:YNoteWPF.PL/CustomControls/Note.xaml.cs
             Context.Children.Add(new CheckWithTextBox(true,"todo") { HorizontalAlignment = System.Windows.HorizontalAlignment.Left });
+=======
+            ContextTask.Children.Add(new YNoreWPF.CustomControls.CheckWithTextBox(true,"todo") { HorizontalAlignment = System.Windows.HorizontalAlignment.Left });
+>>>>>>> 3-layer-arc:YNoreWPF/CustomControls/Note.xaml.cs
         }
         private void Delete_Note_On_Click(object sender, RoutedEventArgs e) {
             ((Panel)this.Parent).Children.Remove(this);
@@ -65,15 +71,15 @@ namespace YNoteWPF.PL.CustomControls {
         private void IncrementSelectedText_Click(object sender, RoutedEventArgs e) {
             TextSelection text = TextBoxElem.Selection;
             if (!text.IsEmpty) {
-                text.ApplyPropertyValue(RichTextBox.FontSizeProperty, FontSize + Convert.ToInt32(EnterSize.Text));
-                EnterSize.Text = "";
+                //text.ApplyPropertyValue(RichTextBox.FontSizeProperty, FontSize + Convert.ToInt32(EnterSize.Text));
+                //EnterSize.Text = "";
             }
         }
         private void DecrementSelectedText_Click(object sender, RoutedEventArgs e) {
             TextSelection text = TextBoxElem.Selection;
             if (!text.IsEmpty) {
-                text.ApplyPropertyValue(RichTextBox.FontSizeProperty, FontSize - Convert.ToInt32(EnterSize.Text));
-                EnterSize.Text = "";
+                //text.ApplyPropertyValue(RichTextBox.FontSizeProperty, FontSize - Convert.ToInt32(EnterSize.Text));
+                //EnterSize.Text = "";
             }
         }
 
@@ -83,12 +89,21 @@ namespace YNoteWPF.PL.CustomControls {
 
         #region MouseInsideOutsideEvent
         private void MouseEnter_Event(object sender, MouseEventArgs e) {
-            ToolPanel.Visibility = Visibility.Visible;
+            //ToolPanel.Visibility = Visibility.Visible;
         }
 
         private void MouseLeave_Event(object sender, MouseEventArgs e) {
-            ToolPanel.Visibility = Visibility.Hidden;
+            //ToolPanel.Visibility = Visibility.Hidden;
         }
         #endregion
+
+        private void Minimaze_click(object sender, RoutedEventArgs e) {
+            normalHeight = this.Height;
+            this.Height = TextBoxElem.Height + 20;
+        }
+
+        private void Maximaze_click(object sender, RoutedEventArgs e) {
+            this.Height = normalHeight;
+        }
     }
 }

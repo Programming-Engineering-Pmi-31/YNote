@@ -67,7 +67,7 @@ namespace YNoteWPF.PL {
                 Height = 150,
                 Width = 150,
                 HorizontalAlignment = HorizontalAlignment.Right,
-                Margin = new Thickness(10)
+                Margin = new Thickness(30*NotesCanvas.Children.Count)
             });
             foreach (Control control in NotesCanvas.Children) {
                 control.PreviewMouseLeftButtonDown += this.MouseLeftButtonDown_Event;
@@ -243,6 +243,14 @@ namespace YNoteWPF.PL {
             using (FileStream savepoint = new FileStream("savepoint.xaml", FileMode.Create)) {
                 XamlWriter.Save(NotesCanvas,savepoint);
             }
+        }
+
+        private void Add_Group(object sender, RoutedEventArgs e) {
+            GroupStackPanel.Children.Add(new CustomControls.Group() {
+                Margin = new Thickness(10),
+                Height = 550,
+                MinWidth = 160
+            });
         }
 
         private void LogOutButton_Click(object sender, RoutedEventArgs e) {

@@ -28,7 +28,11 @@
             </StackPanel>
             <StackPanel Orientation="Horizontal">
                 <materialDesign:PackIcon Kind="Key" VerticalAlignment="Center" Margin="5" Foreground="#707070"/>
-                <TextBox x:Name="PasswordTextBox" Text="admin" Width="140" Margin="5"/>
+                <PasswordBox x:Name="PasswordTextBox" Width="140" Margin="5" PasswordChar="*"/>
+            </StackPanel>
+            <StackPanel x:Name="ConfirmPAsswordPanel" Orientation="Horizontal" Visibility="Hidden">
+                <materialDesign:PackIcon Kind="Reload" VerticalAlignment="Center" Margin="5" Foreground="#707070"/>
+                <PasswordBox x:Name="PasswordTextBoxConfirm" Width="140" Margin="5" PasswordChar="*"/>
             </StackPanel>
             <CheckBox Content="Save me" Margin="5,10"/>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
@@ -39,5 +43,8 @@
         <StackPanel Orientation="Vertical" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="85">
 
         </StackPanel>
+        <Button x:Name="close" HorizontalAlignment="Right" VerticalAlignment="Top" Height="20" Width="20" Background="{x:Null}" Click="Close_Event" Margin="2" BorderBrush="{x:Null}">
+            <materialDesign:PackIcon Kind="Close" Height="Auto" Width="Auto"/>
+        </Button>
     </Grid>
 </Window>
