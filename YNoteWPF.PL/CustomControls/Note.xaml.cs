@@ -16,11 +16,13 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using YNoteWPF.PL.Models;
 
-namespace YNoteWPF.PL.CustomControls {
+namespace YNoteWPF.PL.CustomControls
+{
     /// <summary>
     /// Interaction logic for Note.xaml
     /// </summary>
-    public partial class Note : UserControl {
+    public partial class Note : UserControl
+    {
 
         double normalHeight;
 
@@ -28,11 +30,13 @@ namespace YNoteWPF.PL.CustomControls {
         public List<UserTask> Task { get; set; }
 
 
-        public Note() {
+        public Note()
+        {
             InitializeComponent();
         }
 
-        public Note(string text, List<UserTask> tasks) : this() {
+        public Note(string text, List<UserTask> tasks) : this()
+        {
             Text = text;
             Task = tasks;
 
@@ -41,68 +45,79 @@ namespace YNoteWPF.PL.CustomControls {
                 Context.Children.Add(new CheckWithTextBox(userTask.Status, userTask.Text));
         }
 
-        private void Add_CheckBox_On_Click(object sender, RoutedEventArgs e) {
-<<<<<<< HEAD:YNoteWPF.PL/CustomControls/Note.xaml.cs
-            Context.Children.Add(new CheckWithTextBox(true,"todo") { HorizontalAlignment = System.Windows.HorizontalAlignment.Left });
-=======
-            ContextTask.Children.Add(new YNoreWPF.CustomControls.CheckWithTextBox(true,"todo") { HorizontalAlignment = System.Windows.HorizontalAlignment.Left });
->>>>>>> 3-layer-arc:YNoreWPF/CustomControls/Note.xaml.cs
+        private void Add_CheckBox_On_Click(object sender, RoutedEventArgs e)
+        {
+            Context.Children.Add(new CheckWithTextBox(true, "todo") { HorizontalAlignment = System.Windows.HorizontalAlignment.Left });
         }
-        private void Delete_Note_On_Click(object sender, RoutedEventArgs e) {
+        private void Delete_Note_On_Click(object sender, RoutedEventArgs e)
+        {
             ((Panel)this.Parent).Children.Remove(this);
         }
 
-        private void ChangeColorToWhite_click(object sender, RoutedEventArgs e) {
+        private void ChangeColorToWhite_click(object sender, RoutedEventArgs e)
+        {
             NoteGrid.Background = Brushes.White;
         }
-        private void ChangeColorToYellow_click(object sender, RoutedEventArgs e) {
+        private void ChangeColorToYellow_click(object sender, RoutedEventArgs e)
+        {
             NoteGrid.Background = Brushes.Yellow;
         }
-        private void ChangeColorToBlue_click(object sender, RoutedEventArgs e) {
+        private void ChangeColorToBlue_click(object sender, RoutedEventArgs e)
+        {
             NoteGrid.Background = Brushes.Aqua;
         }
 
-        private void MoveToDesktop_Click(object sender, RoutedEventArgs e) {
+        private void MoveToDesktop_Click(object sender, RoutedEventArgs e)
+        {
             ((Panel)this.Parent).Children.Remove(this);
             AdditionalWindow.NoteDesktop noteWindow = new AdditionalWindow.NoteDesktop(this);
             noteWindow.Show();
         }
 
-        private void IncrementSelectedText_Click(object sender, RoutedEventArgs e) {
+        private void IncrementSelectedText_Click(object sender, RoutedEventArgs e)
+        {
             TextSelection text = TextBoxElem.Selection;
-            if (!text.IsEmpty) {
+            if (!text.IsEmpty)
+            {
                 //text.ApplyPropertyValue(RichTextBox.FontSizeProperty, FontSize + Convert.ToInt32(EnterSize.Text));
                 //EnterSize.Text = "";
             }
         }
-        private void DecrementSelectedText_Click(object sender, RoutedEventArgs e) {
+        private void DecrementSelectedText_Click(object sender, RoutedEventArgs e)
+        {
             TextSelection text = TextBoxElem.Selection;
-            if (!text.IsEmpty) {
+            if (!text.IsEmpty)
+            {
                 //text.ApplyPropertyValue(RichTextBox.FontSizeProperty, FontSize - Convert.ToInt32(EnterSize.Text));
                 //EnterSize.Text = "";
             }
         }
 
-        public void DeleteParent() {
+        public void DeleteParent()
+        {
             ((Panel)this.Parent).Children.Remove(this);
         }
 
         #region MouseInsideOutsideEvent
-        private void MouseEnter_Event(object sender, MouseEventArgs e) {
+        private void MouseEnter_Event(object sender, MouseEventArgs e)
+        {
             ToolPanel.Visibility = Visibility.Visible;
         }
 
-        private void MouseLeave_Event(object sender, MouseEventArgs e) {
+        private void MouseLeave_Event(object sender, MouseEventArgs e)
+        {
             ToolPanel.Visibility = Visibility.Hidden;
         }
         #endregion
 
-        private void Minimaze_click(object sender, RoutedEventArgs e) {
+        private void Minimaze_click(object sender, RoutedEventArgs e)
+        {
             normalHeight = this.Height;
             this.Height = TextBoxElem.Height + 20;
         }
 
-        private void Maximaze_click(object sender, RoutedEventArgs e) {
+        private void Maximaze_click(object sender, RoutedEventArgs e)
+        {
             this.Height = normalHeight;
         }
     }

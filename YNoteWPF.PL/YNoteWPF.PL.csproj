@@ -149,7 +149,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\YNoteWPF_BL\YNoteWPF.BLL.csproj">
+    <ProjectReference Include="..\YNoteWPF.BLL\YNoteWPF.BLL.csproj">
       <Project>{f7579b0a-3e33-47b7-8290-f5015bd0d39f}</Project>
       <Name>YNoteWPF.BLL</Name>
     </ProjectReference>
