@@ -1,0 +1,34 @@
+﻿<UserControl x:Class="YNoteWPF.PL.CustomControls.Group"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+<<<<<<< HEAD:YNoteWPF.PL/CustomControls/Group.xaml
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:YNoteWPF.PL.CustomControls"
+=======
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:customcontrol="clr-namespace:YNoreWPF.CustomControls"
+             xmlns:addition="clr-namespace:YNoreWPF.Models"
+             xmlns:local="clr-namespace:YNoreWPF.CustomControls"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+>>>>>>> 3-layer-arc:YNoreWPF/CustomControls/Group.xaml
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="170" Background="{x:Null}">
+    <Grid Name="MainGrid">
+        <Rectangle Fill="Aquamarine" RadiusX="10" RadiusY="10"/>
+        <StackPanel>
+            <TextBox x:Name="NameTextBlock" Text="NameGroup" HorizontalAlignment="Center" VerticalAlignment="Top" BorderBrush="{x:Null}" Background="{x:Null}" Margin="5"/>
+            <!--ScrollViewer-->
+                <StackPanel x:Name="NotePanel" Orientation="Vertical" Margin="5">
+                    <!--customcontrol:Note Margin="5"/-->
+                </StackPanel>
+            <!--/ScrollViewer-->    
+        </StackPanel>
+        <Button  Width="20" Height="20" Background="{x:Null}" BorderBrush="{x:Null}" Click="Add_New_Note" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="10">
+            <materialDesign:PackIcon Kind="Add" Foreground="Black" Height="20" Width="10"/>
+        </Button>
+        <Button  Width="20" Height="20" Background="{x:Null}" BorderBrush="{x:Null}" Click="Delete_Note_On_Click" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="10">
+            <materialDesign:PackIcon Kind="Delete" Foreground="Black" Height="20" Width="10"/>
+        </Button>
+    </Grid>
+</UserControl>
