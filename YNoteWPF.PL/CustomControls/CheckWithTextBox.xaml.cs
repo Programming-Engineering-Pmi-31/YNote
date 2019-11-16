@@ -29,5 +29,15 @@ namespace YNoteWPF.PL.CustomControls {
             CheckBoxElem.IsChecked = status;
             TextBoxElem.Text = text;
         }
+
+        private void StackPanel_MouseEnter(object sender, MouseEventArgs e) {
+            DescriptionPopUp.IsOpen = true;
+        }
+
+        private void StackPanel_MouseLeave(object sender, MouseEventArgs e) {
+            if (!DescriptionPopUp.IsMouseOver)
+                DescriptionPopUp.IsOpen = false;
+            else { }
+        }
     }
 }
