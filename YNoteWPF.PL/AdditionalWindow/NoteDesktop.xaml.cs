@@ -48,6 +48,7 @@ namespace YNoteWPF.PL.AdditionalWindow {
                     fe.Width = fe.ActualWidth * xChange;
                 }
             }
+            // save changes
         }
     }
 }

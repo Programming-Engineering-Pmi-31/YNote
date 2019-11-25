@@ -22,22 +22,34 @@
 
         <StackPanel Margin="20,10,200,10">
             <Label Content="Login" FontSize="24" Margin="0,10" HorizontalAlignment="Left" VerticalAlignment="Top" FontFamily="Segoe UI Black"/>
-            <StackPanel Margin="0,15" Orientation="Horizontal">
+            <StackPanel x:Name="NameStackPanel" Orientation="Horizontal" Visibility="Hidden">
                 <materialDesign:PackIcon Kind="Account" VerticalAlignment="Center" Margin="5" Foreground="#707070"/>
-                <TextBox x:Name="LoginTextBox" Text="admin" Width="140" Margin="5"/>
+                <TextBox x:Name="NameTextBox" Text="name" Width="140" Margin="5"/>
+            </StackPanel>
+            <StackPanel x:Name="SurnameStackPanel" Orientation="Horizontal" Visibility="Hidden">
+                <materialDesign:PackIcon Kind="Account" VerticalAlignment="Center" Margin="5" Foreground="#707070"/>
+                <TextBox x:Name="SurnameTextBox" Text="surname" Width="140" Margin="5"/>
+            </StackPanel>
+            <StackPanel x:Name="NicknameStackPanel" Orientation="Horizontal" Visibility="Hidden">
+                <materialDesign:PackIcon Kind="Account" VerticalAlignment="Center" Margin="5" Foreground="#707070"/>
+                <TextBox x:Name="NicknameTextBox" Text="nickname" Width="140" Margin="5"/>
+            </StackPanel>
+            <StackPanel  Orientation="Horizontal">
+                <materialDesign:PackIcon Kind="Email" VerticalAlignment="Center" Margin="5" Foreground="#707070"/>
+                <TextBox x:Name="LoginTextBox" Text="" Width="140" Margin="5"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
                 <materialDesign:PackIcon Kind="Key" VerticalAlignment="Center" Margin="5" Foreground="#707070"/>
                 <PasswordBox x:Name="PasswordTextBox" Width="140" Margin="5" PasswordChar="*"/>
             </StackPanel>
-            <StackPanel x:Name="ConfirmPAsswordPanel" Orientation="Horizontal" Visibility="Hidden">
+            <StackPanel x:Name="ConfirmPasswordPanel" Orientation="Horizontal" Visibility="Hidden">
                 <materialDesign:PackIcon Kind="Reload" VerticalAlignment="Center" Margin="5" Foreground="#707070"/>
                 <PasswordBox x:Name="PasswordTextBoxConfirm" Width="140" Margin="5" PasswordChar="*"/>
             </StackPanel>
-            <CheckBox Content="Save me" Margin="5,10"/>
+            <CheckBox Content="Save me" Margin="5,0"/>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                 <Button x:Name="LoginButton" Content="LOGIN" HorizontalAlignment="Left" Background="Purple" Height="25" Width="60" FontFamily="Impact" Foreground="White" Click="Button_Click"/>
-                <Button x:Name="RegisterButton" Content="REGISTER" Margin="10,0,0,0" Background="Purple" Height="25" Width="60" FontFamily="Impact" Visibility="Hidden" Foreground="White" Click="Button_Click"/>
+                <Button x:Name="RegisterButton" Content="REGISTER" Margin="10,0,0,0" Background="Purple" Height="25" Width="60" FontFamily="Impact" Foreground="White" Click="Register_Click"/>
             </StackPanel>
         </StackPanel>
         <StackPanel Orientation="Vertical" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="85">

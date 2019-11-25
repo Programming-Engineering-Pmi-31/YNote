@@ -28,6 +28,7 @@ namespace YNoteWPF.PL.CustomControls {
         public CheckWithTextBox(bool status, string text) : this() {
             CheckBoxElem.IsChecked = status;
             TextBoxElem.Text = text;
+            // save changes
         }
 
         private void StackPanel_MouseEnter(object sender, MouseEventArgs e) {
