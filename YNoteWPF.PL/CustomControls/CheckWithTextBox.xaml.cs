@@ -30,5 +30,15 @@ namespace YNoteWPF.PL.CustomControls {
             TextBoxElem.Text = text;
             // save changes
         }
+
+        private void StackPanel_MouseEnter(object sender, MouseEventArgs e) {
+            DescriptionPopUp.IsOpen = true;
+        }
+
+        private void StackPanel_MouseLeave(object sender, MouseEventArgs e) {
+            if (!DescriptionPopUp.IsMouseOver)
+                DescriptionPopUp.IsOpen = false;
+            else { }
+        }
     }
 }

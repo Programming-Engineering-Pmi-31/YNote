@@ -34,6 +34,7 @@ namespace YNoteWPF.PL.CustomControls
         public Note()
         {
             InitializeComponent();
+            CreationAt.Content = $"{DateTime.Now.ToLongTimeString()}";
         }
 
         public Note(string text, List<UserTask> tasks) : this()
