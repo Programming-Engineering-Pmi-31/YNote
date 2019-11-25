@@ -3,22 +3,34 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using YNoteWPF.DAL.Entities;
 using YNoteWPF.DAL;
+
 namespace YNoteWPF.BLL
 {
-    class DataVerification
+    public class DataVerification
     {
-        public void GetUserData(string nickName, string password)
+        YNoteDbContext db = new YNoteDbContext();
+        string nickname;
+        string password;
+        public bool Verification(string Nickname, string Password)
         {
-            //using ()
-            //{
+            nickname = Nickname;
+            password = Password;
 
-            //}
-            YNoteDbContext db = new YNoteDbContext();
-            foreach (var item in db.Users)
+            IQueryable<UserEntity> users = from user in db.Users
+                        where user.Nickname == nickname && user.Password == password
+                        select user;
+            if (users.Any())
             {
-
+                // list has at least one item
+                return true;
             }
+            return false;
+        }
+        public void SaveChangesForUser()
+        {
+            //db.SaveChanges();
         }
     }
 }

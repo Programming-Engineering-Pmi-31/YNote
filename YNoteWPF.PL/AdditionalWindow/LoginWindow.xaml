@@ -30,7 +30,7 @@
                 <materialDesign:PackIcon Kind="Key" VerticalAlignment="Center" Margin="5" Foreground="#707070"/>
                 <PasswordBox x:Name="PasswordTextBox" Width="140" Margin="5" PasswordChar="*"/>
             </StackPanel>
-            <StackPanel x:Name="ConfirmPAsswordPanel" Orientation="Horizontal" Visibility="Hidden">
+            <StackPanel x:Name="ConfirmPasswordPanel" Orientation="Horizontal" Visibility="Hidden">
                 <materialDesign:PackIcon Kind="Reload" VerticalAlignment="Center" Margin="5" Foreground="#707070"/>
                 <PasswordBox x:Name="PasswordTextBoxConfirm" Width="140" Margin="5" PasswordChar="*"/>
             </StackPanel>

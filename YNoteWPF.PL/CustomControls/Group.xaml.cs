@@ -44,10 +44,12 @@ namespace YNoteWPF.PL.CustomControls {
                     Margin = new Thickness(5),
                     Width = 150
                 });
+            // save changes
         }
 
         private void Delete_Note_On_Click(object sender, RoutedEventArgs e) {
             ((Panel)this.Parent).Children.Remove(this);
+            // save changes
         }
     }
 }

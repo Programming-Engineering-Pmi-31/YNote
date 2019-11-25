@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using YNoteWPF.BLL;
 
 namespace YNoteWPF.PL.AdditionalWindow {
     /// <summary>
@@ -20,6 +21,7 @@ namespace YNoteWPF.PL.AdditionalWindow {
 
         string Email;
         string Password;
+        DataVerification data = new DataVerification();
 
         public LoginWindow() {
             WindowStartupLocation = WindowStartupLocation.CenterScreen;
@@ -39,11 +41,17 @@ namespace YNoteWPF.PL.AdditionalWindow {
                 mw.Show();
                 this.Close();
             }
+            else if(data.Verification(LoginTextBox.Text, PasswordTextBox.Password))
+            {
+                MainWindow mw = new MainWindow();
+                mw.Show();
+                this.Close();
+            }
             else {
                 LoginTextBox.BorderBrush = Brushes.Red;
                 PasswordTextBox.BorderBrush = Brushes.Red;
                 RegisterButton.Visibility = Visibility.Visible;
-                ConfirmPAsswordPanel.Visibility = Visibility.Visible;
+                ConfirmPasswordPanel.Visibility = Visibility.Visible;
             }
 
         }
