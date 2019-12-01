@@ -58,10 +58,11 @@ namespace YNoteWPF.PL.AdditionalWindow {
 
         private void Register_Click(object sender, RoutedEventArgs e)
         {
+            MainLabel.Content = "Register";
             NameStackPanel.Visibility = Visibility.Visible;
             SurnameStackPanel.Visibility = Visibility.Visible;
             NicknameStackPanel.Visibility = Visibility.Visible;
-            ConfirmPAsswordPanel.Visibility = Visibility.Visible;
+            ConfirmPasswordPanel.Visibility = Visibility.Visible;
         }
     }
 }
