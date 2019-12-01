@@ -24,7 +24,7 @@ namespace YNoteWPF.PL.CustomControls
     /// </summary>
     public partial class Note : UserControl
     {
-        DataVerification data;
+        UserData data;
         double normalHeight;
 
         public string Text { get; set; }
@@ -45,18 +45,18 @@ namespace YNoteWPF.PL.CustomControls
             TextBoxElem.Document.Blocks.Add(new Paragraph(new Run(text)));
             foreach (UserTask userTask in tasks)
                 Context.Children.Add(new CheckWithTextBox(userTask.Status, userTask.Text));
-            data.SaveChangesForUser();
+            //data.SaveChangesForUser();
         }
 
         private void Add_CheckBox_On_Click(object sender, RoutedEventArgs e)
         {
             Context.Children.Add(new CheckWithTextBox(true, "todo") { HorizontalAlignment = System.Windows.HorizontalAlignment.Left });
-            data.SaveChangesForUser();
+            //data.SaveChangesForUser();
         }
         private void Delete_Note_On_Click(object sender, RoutedEventArgs e)
         {
             ((Panel)this.Parent).Children.Remove(this);
-            data.SaveChangesForUser();
+            //data.SaveChangesForUser();
         }
 
         private void ChangeColorToWhite_click(object sender, RoutedEventArgs e)

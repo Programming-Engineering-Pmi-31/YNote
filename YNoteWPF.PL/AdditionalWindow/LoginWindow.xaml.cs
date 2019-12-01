@@ -13,41 +13,48 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using YNoteWPF.BLL;
 
-namespace YNoteWPF.PL.AdditionalWindow {
+namespace YNoteWPF.PL.AdditionalWindow
+{
     /// <summary>
     /// Interaction logic for LoginWindow.xaml
     /// </summary>
-    public partial class LoginWindow : Window {
+    public partial class LoginWindow : Window
+    {
 
         string Email;
         string Password;
-        DataVerification data = new DataVerification();
+        UserData data = new UserData();
 
-        public LoginWindow() {
+        public LoginWindow()
+        {
             WindowStartupLocation = WindowStartupLocation.CenterScreen;
 
             InitializeComponent();
         }
 
-        private void Close_Event(object sender, RoutedEventArgs e) {
+        private void Close_Event(object sender, RoutedEventArgs e)
+        {
             this.Close();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e) {
-
-            if (LoginTextBox.Text == "admin" && PasswordTextBox.Password == "admin") {
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            // maybe time to delete such admin
+            if (LoginTextBox.Text == "admin" && PasswordTextBox.Password == "admin")
+            {
                 MainWindow mw = new MainWindow();
                 //mw.UserProperty = new User(LoginTextBox.Text, PasswordTextBox.Text);
                 mw.Show();
                 this.Close();
             }
-            else if(data.Verification(LoginTextBox.Text, PasswordTextBox.Password))
+            else if (data.Verification(LoginTextBox.Text, PasswordTextBox.Password))
             {
                 MainWindow mw = new MainWindow();
                 mw.Show();
                 this.Close();
             }
-            else {
+            else
+            {
                 LoginTextBox.BorderBrush = Brushes.Red;
                 PasswordTextBox.BorderBrush = Brushes.Red;
                 RegisterButton.Visibility = Visibility.Visible;
@@ -61,7 +68,11 @@ namespace YNoteWPF.PL.AdditionalWindow {
             NameStackPanel.Visibility = Visibility.Visible;
             SurnameStackPanel.Visibility = Visibility.Visible;
             NicknameStackPanel.Visibility = Visibility.Visible;
-            ConfirmPAsswordPanel.Visibility = Visibility.Visible;
+            ConfirmPasswordPanel.Visibility = Visibility.Visible;
+
+            List<string> parameters = new List<string>() { NameTextBox.Text, SurnameTextBox.Text, NicknameTextBox.Text,
+                    LoginTextBox.Text, PasswordTextBox.Password, PasswordTextBoxConfirm.Password};
+            data.RegisterWithoutAllNecessaryTests(parameters, RegisterButton);
         }
     }
 }
