@@ -61,7 +61,7 @@ namespace YNoteWPF.PL.AdditionalWindow {
             NameStackPanel.Visibility = Visibility.Visible;
             SurnameStackPanel.Visibility = Visibility.Visible;
             NicknameStackPanel.Visibility = Visibility.Visible;
-            ConfirmPAsswordPanel.Visibility = Visibility.Visible;
+            ConfirmPasswordPanel.Visibility = Visibility.Visible;
         }
     }
 }
