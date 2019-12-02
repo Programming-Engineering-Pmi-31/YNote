@@ -273,6 +273,11 @@ namespace YNoteWPF.PL {
         private void DeleteAccountButton_Click(object sender, RoutedEventArgs e) {
             YNoteWPF.PL.AdditionalWindow.ConfirmDelete confirmdeleteWindow = new AdditionalWindow.ConfirmDelete();
             confirmdeleteWindow.Show();
+            ChangesGrid.Visibility = Visibility.Hidden;
+        }
+
+        private void SavaChangeButton_Click(object sender, RoutedEventArgs e) {
+            ChangesGrid.Visibility = Visibility.Hidden;
         }
 
         private void LogOutButton_Click(object sender, RoutedEventArgs e) {
