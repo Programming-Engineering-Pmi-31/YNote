@@ -8,6 +8,7 @@ using YNoteWPF.DAL;
 using System.IO;
 using System.Windows.Media;
 using System.Windows.Controls;
+using YNoteWPF.BLL.Data.Models;
 
 namespace YNoteWPF.BLL
 {
@@ -66,12 +67,31 @@ namespace YNoteWPF.BLL
             {
                 db.Users.Add(user);
                 db.SaveChanges();
+                regButton.BorderThickness = new System.Windows.Thickness(2);
                 regButton.BorderBrush = Brushes.Green;
             }
             else
             {
+                regButton.BorderThickness = new System.Windows.Thickness(2);
                 regButton.BorderBrush = Brushes.Red;
             }
+        }
+        public UserDTO GetUser()
+        {
+            UserDTO user = new UserDTO();
+            if (Verification(email, password))
+            {
+                IEnumerable<UserEntity> users = from usr in db.Users
+                                               where usr.Email == email && user.Password == password
+                                               select usr;
+                user.Id = users.First().Id;
+                user.Name = users.First().Name;
+                user.Surname = users.First().Surname;
+                user.Nickname = users.First().Nickname;
+                user.Email = users.First().Email;
+                user.Name = users.First().Password;
+            }
+            return user;
         }
     }
 }

@@ -63,6 +63,18 @@
   <ItemGroup>
     <Compile Include="FieldsConditions.cs" />
     <Compile Include="UserData.cs" />
+    <Compile Include="Data.Models\GroupDTO.cs" />
+    <Compile Include="Data.Models\NoteDTO.cs" />
+    <Compile Include="Data.Models\SpaceDTO.cs" />
+    <Compile Include="Data.Models\TaskDTO.cs" />
+    <Compile Include="Data.Models\UserDTO.cs" />
+    <Compile Include="Data\GroupService.cs" />
+    <Compile Include="Data\IGroupService.cs" />
+    <Compile Include="Data\INoteService.cs" />
+    <Compile Include="Data\ISpaceService.cs" />
+    <Compile Include="Data\ITaskService.cs" />
+    <Compile Include="Data\NoteService.cs" />
+    <Compile Include="Data\TaskService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -77,6 +89,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <Compile Include="ValidationTests.cs" />
+    <Compile Include="Data\SpaceService.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

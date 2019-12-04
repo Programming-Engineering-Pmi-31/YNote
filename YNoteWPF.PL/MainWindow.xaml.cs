@@ -62,6 +62,7 @@ namespace YNoteWPF.PL {
                 
         }
 
+        #region AddToDashboard
         private void Add_New_Note(object sender, RoutedEventArgs e) {
             NotesCanvas.Children.Add(new CustomControls.Note() {
                 Height = 150,
@@ -76,6 +77,16 @@ namespace YNoteWPF.PL {
             }
             NotesCanvas.PreviewMouseMove += this.MouseMove_Event;
         }
+        private void Add_Group(object sender, RoutedEventArgs e) {
+            if (GroupStackPanel.Children.Count < 4)
+                GroupStackPanel.Children.Add(new CustomControls.Group()
+                {
+                    Margin = new Thickness(10),
+                    Height = 550,
+                    MinWidth = 160
+                });
+        }
+        #endregion
 
         #region InfoBar
         private void Login_Click(object sender, RoutedEventArgs e) {
@@ -245,13 +256,28 @@ namespace YNoteWPF.PL {
             }
         }
 
-        private void Add_Group(object sender, RoutedEventArgs e) {
-            if(GroupStackPanel.Children.Count < 4)
-                GroupStackPanel.Children.Add(new CustomControls.Group() {
-                    Margin = new Thickness(10),
-                    Height = 550,
-                    MinWidth = 160
-                });
+
+
+        private void CloseUserInfo_Click(object sender, RoutedEventArgs e) {
+            UserInfoGrid.Visibility = Visibility.Hidden;
+        }
+
+        private void PackIcon_MouseLeftButtonDown(object sender, MouseButtonEventArgs e) {
+            UserInfoGrid.Visibility = Visibility.Visible;
+        }
+
+        private void ChangeButton_Click(object sender, RoutedEventArgs e) {
+            ChangesGrid.Visibility = Visibility.Visible;
+        }
+
+        private void DeleteAccountButton_Click(object sender, RoutedEventArgs e) {
+            YNoteWPF.PL.AdditionalWindow.ConfirmDelete confirmdeleteWindow = new AdditionalWindow.ConfirmDelete();
+            confirmdeleteWindow.Show();
+            ChangesGrid.Visibility = Visibility.Hidden;
+        }
+
+        private void SavaChangeButton_Click(object sender, RoutedEventArgs e) {
+            ChangesGrid.Visibility = Visibility.Hidden;
         }
 
         private void LogOutButton_Click(object sender, RoutedEventArgs e) {

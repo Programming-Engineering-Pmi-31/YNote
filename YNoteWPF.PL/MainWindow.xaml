@@ -131,10 +131,23 @@
             <Grid Grid.Row="1">
 
                 <StackPanel HorizontalAlignment="Left" VerticalAlignment="Top" Orientation="Horizontal" Margin="10,10,0,0">
-                    <materialDesign:PackIcon Kind="User" Width="25" Height="25" Margin="0,0,10,0" Foreground="#002d53"/>
+                    <materialDesign:PackIcon Kind="User" Width="25" Height="25" Margin="0,0,10,0" Foreground="#002d53" MouseLeftButtonDown="PackIcon_MouseLeftButtonDown"/>
                     <TextBlock x:Name="UserNameTextBlock" Text="User name" VerticalAlignment="Center" Height="25" FontSize="17" Foreground="#002d53"/>
                 </StackPanel>
-
+                
+                <Grid x:Name="UserInfoGrid" Margin="0,40,0,0" VerticalAlignment="Top" HorizontalAlignment="Center" Visibility="Hidden">
+                    <Rectangle Fill="Aqua" Height="100" Width="100" RadiusX="10" RadiusY="10"/>
+                    <Button x:Name="CloseUserInfo" HorizontalAlignment="Right" VerticalAlignment="Top" Background="{x:Null}" BorderBrush="{x:Null}" Click="CloseUserInfo_Click">
+                        <materialDesign:PackIcon Kind="Close"/>
+                    </Button>
+                    <StackPanel Orientation="Vertical">
+                        <Label Content="User Info" HorizontalAlignment="Center"/>
+                        <TextBlock x:Name="NameLabel" Text="name" Margin="5,0,5,0" HorizontalAlignment="Center"/>
+                        <TextBlock x:Name="Surname" Text="Surname" Margin="5,5,5,0" HorizontalAlignment="Center"/>
+                        <Button x:Name="ChangeButton" Content="Change" Margin="5" Background="{x:Null}" BorderBrush="{x:Null}" Click="ChangeButton_Click"/>
+                    </StackPanel>
+                </Grid>
+                
                 <ListView Name="SpacesListView" Height="Auto" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="White" Background="{x:Null}" BorderBrush="{x:Null}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" SelectionChanged="SelectionChange_Event">
                     <ListViewItem Height="30">
                         <StackPanel Orientation="Horizontal">
@@ -165,8 +178,6 @@
             </Grid>
         </Grid>
 
-
-
         <Grid Name="Notes" Grid.Column="1" Grid.Row="1" Background="#002d53">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"/>
@@ -190,7 +201,24 @@
                     <Label Content="User 6" FontSize="17" Foreground="#002d53"/>
                 </StackPanel>
             </Grid>
-
+            <Grid x:Name="ChangesGrid" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10" Visibility="Hidden">
+                <Rectangle Height="150" Width="150" Fill="Aqua" RadiusX="10" RadiusY="10"/>
+                
+                <StackPanel>
+                    <TextBox x:Name="ChangeName" Text="Name" Margin="10,10,10,4"/>
+                    <TextBox x:Name="ChangeSurname" Text="Surname" Margin="10,0,10,4"/>
+                    <StackPanel Orientation="Vertical">
+                        <TextBox x:Name="ChangePassword" Text="New Password" Margin="10,0"/>
+                        <TextBox x:Name="ChangeConfirmPassword" Text="Confirm Password" Margin="10,0"/>
+                    </StackPanel>
+                    <TextBox x:Name="ChangeEmail" Text="New Email" Margin="10,5"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="10">
+                    <Button x:Name="DeleteAccountButton" Content="Delete Account" Background="Red" Foreground="White" Click="DeleteAccountButton_Click"/>
+                    <Button x:Name="SavaChangeButton" Content="Save" Background="{x:Null}" Margin="10,0,0,0" Click="SavaChangeButton_Click"/>
+                </StackPanel>
+            </Grid>
+            
             <Grid x:Name="GroupGrid">
                 <StackPanel x:Name="GroupStackPanel" Orientation="Horizontal">
                     
