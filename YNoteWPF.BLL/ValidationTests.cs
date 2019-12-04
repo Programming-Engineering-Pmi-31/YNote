@@ -12,7 +12,7 @@ namespace YNoteWPF.BLL
         public bool NotEmpty(string fieldToCheck)
         {
             string message = "is empty\n";
-            bool passed = fieldToCheck != "" ? true : false;
+            bool passed = fieldToCheck != "";
             if (!passed)
             {
                 notPassedTests += message;
@@ -22,7 +22,8 @@ namespace YNoteWPF.BLL
         public bool EqualPasswords(string pass, string passToConfirm)
         {
             string message = "Not equal passwords\n";
-            bool passed = pass == passToConfirm ? true : false; if (!passed)
+            bool passed = pass == passToConfirm; 
+            if (!passed)
             {
                 notPassedTests += message;
             }
@@ -94,7 +95,7 @@ namespace YNoteWPF.BLL
                 message += ")";
                 notPassedTests += message + "\n";
             }
-            return !passedTests.Contains(false) ? true : false;
+            return !passedTests.Contains(false) ? true : false; //change that thing!
         }
         public bool WithoutAtSymbols(string fieldToCheck)
         {

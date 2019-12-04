@@ -8,23 +8,17 @@ using YNoteWPF.DAL;
 using System.IO;
 using System.Windows.Media;
 using System.Windows.Controls;
+using YNoteWPF.BLL.DTO;
 
 namespace YNoteWPF.BLL
 {
     public class UserData
     {
         YNoteDbContext db = new YNoteDbContext();
-        string email; // should be deleted?
-        string password; // should be deleted?
+        string email;
+        string password;
         FieldsConditions fieldsValidation = new FieldsConditions();
         public string ValidationErrors { get; private set; }
-        //private void SeeValidationErrorsInFile()
-        //{
-        //    using (FileStream stream = new FileStream(")
-        //    {
-
-        //    }
-        //}
         public bool Verification(string Email, string Password)
         {
             email = Email;
@@ -66,12 +60,31 @@ namespace YNoteWPF.BLL
             {
                 db.Users.Add(user);
                 db.SaveChanges();
+                regButton.BorderThickness = new System.Windows.Thickness(2.0);
                 regButton.BorderBrush = Brushes.Green;
             }
             else
             {
+                regButton.BorderThickness = new System.Windows.Thickness(2.0);
                 regButton.BorderBrush = Brushes.Red;
             }
+        }
+        public UserDTO GetUser()
+        {
+            UserDTO user = new UserDTO();
+            if (Verification(email, password))
+            {
+                IEnumerable<UserEntity> users = from usr in db.Users
+                                               where usr.Email == email && usr.Password == password
+                                               select usr;
+                
+                user.Name = users.First().Name;
+                user.Surname = users.First().Surname;
+                user.Nickname = users.First().Nickname;
+                user.Email = users.First().Email;
+                user.Password = users.First().Password;
+            }
+            return user;
         }
     }
 }
