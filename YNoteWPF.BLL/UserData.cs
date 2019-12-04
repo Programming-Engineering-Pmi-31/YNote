@@ -76,14 +76,55 @@ namespace YNoteWPF.BLL
                 regButton.BorderBrush = Brushes.Red;
             }
         }
+        public void Register(List<string> parameters, Button regButton)
+        {
+            FieldsConditions fields = new FieldsConditions();
+            string errors = "";
+            if (fields.CheckOnValidation(parameters))
+            {
+                UserEntity user = new UserEntity()
+                {
+                    Id = Guid.NewGuid(),
+                    Name = parameters[0],
+                    Surname = parameters[1],
+                    Nickname = parameters[2],
+                    Email = parameters[3],
+                    Password = parameters[4]
+                };
+                var emailInTable = db.Users.Where(x => x.Email == user.Email);
+                var nickInTable = db.Users.Where(x => x.Nickname == user.Nickname);
+                if (!emailInTable.Any() && !nickInTable.Any())
+                {
+                    db.Users.Add(user);
+                    db.SaveChanges();
+                    regButton.BorderThickness = new System.Windows.Thickness(2);
+                    regButton.BorderBrush = Brushes.Green;
+                }
+                else
+                {
+                    regButton.BorderThickness = new System.Windows.Thickness(2);
+                    regButton.BorderBrush = Brushes.Red;
+                    errors = "Email or nick already exists";
+                }
+            }
+            else
+            {
+                regButton.BorderThickness = new System.Windows.Thickness(2);
+                regButton.BorderBrush = Brushes.Red;
+            }
+            if (errors != "")
+            {
+                errors = fields.Errors;
+            }
+        }
         public UserDTO GetUser()
         {
             UserDTO user = new UserDTO();
             if (Verification(email, password))
             {
                 IEnumerable<UserEntity> users = from usr in db.Users
-                                               where usr.Email == email && user.Password == password
-                                               select usr;
+                                                where usr.Email == email && user.Password == password
+                                                select usr;
                 user.Id = users.First().Id;
                 user.Name = users.First().Name;
                 user.Surname = users.First().Surname;

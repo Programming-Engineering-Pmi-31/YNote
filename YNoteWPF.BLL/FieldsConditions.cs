@@ -9,80 +9,75 @@ namespace YNoteWPF.BLL
     class FieldsConditions
     {
         public string Errors { get; private set; }
-
-        // also nicknames must be unique?
-        private bool NameConditions(string name)
+        public bool NameConditions(string name)
         {
-            string messageForField = $"Field {name} contains: ";
             ValidationTests tests = new ValidationTests();
-            bool passed = tests.NotEmpty(name) && tests.WithoutAtSymbols(name) &&
-                tests.WithoutGeneralBannedSymbols(name) && tests.WithoutNumbers(name);
-            if (!passed)
+            bool t1 = tests.NotEmpty(name);
+            bool t2 = tests.WithoutAtSymbols(name);
+            bool t3 = tests.WithoutGeneralBannedSymbols(name);
+            bool t4 = tests.WithoutNumbers(name);
+            if ((t1 && t2 && t3 && t4) == false)
             {
-                messageForField += tests.notPassedTests;
-                Errors += messageForField + "\n";
-                // Errors += $"Field {name} contains: " + message + "\n";
+                Errors += $"Field Name: {tests.notPassedTests}\n";
             }
-            return passed;
+            return (t1 && t2 && t3 && t4);
         }
-        private bool SurnameConditions(string surname)
+        public bool SurnameConditions(string surname)
         {
             ValidationTests tests = new ValidationTests();
-            string messageForField = $"Field {surname} contains: ";
-            bool passed = tests.NotEmpty(surname) && tests.WithoutAtSymbols(surname) &&
-                tests.WithoutGeneralBannedSymbols(surname) && tests.WithoutNumbers(surname);
-            if (!passed)
+            bool t1 = tests.NotEmpty(surname);
+            bool t2 = tests.WithoutAtSymbols(surname);
+            bool t3 = tests.WithoutGeneralBannedSymbols(surname);
+            bool t4 = tests.WithoutNumbers(surname);
+            if ((t1 && t2 && t3 && t4) == false)
             {
-                messageForField += tests.notPassedTests;
-                Errors += messageForField + "\n";
-                // Errors += $"Field {name} contains: " + message + "\n";
+                Errors += $"Field Surname: {tests.notPassedTests}\n";
             }
-            return passed;
+            return (t1 && t2 && t3 && t4);
         }
-        private bool NicknameConditions(string nickname)
+        public bool NicknameConditions(string nickname)
         {
             ValidationTests tests = new ValidationTests();
-            string messageForField = $"Field {nickname} contains: ";
-            bool passed = tests.NotEmpty(nickname) && tests.WithoutGeneralBannedSymbols(nickname); // GenBannedSymb can be hear?
-            if (!passed)
+            bool t1 = tests.NotEmpty(nickname);
+            bool t2 = tests.WithoutGeneralBannedSymbols(nickname);
+            if ((t1 && t2) == false)
             {
-                messageForField += tests.notPassedTests;
-                Errors += messageForField + "\n";
-                // Errors += $"Field {name} contains: " + message + "\n";
+                Errors += $"Field Nickname: {tests.notPassedTests}\n";
             }
-            return passed;
+            return t1 && t2;
         }
-        private bool EmailConditions(string email)
+        public bool EmailConditions(string email)
         {
             ValidationTests tests = new ValidationTests();
-            string messageForField = $"Field {email} contains: ";
-            bool passed = tests.NotEmpty(email) && tests.WithoutAtSymbols(email) && tests.WithoutGeneralBannedSymbols(email, '.');
-            if (!passed)
+            bool t1 = tests.NotEmpty(email);
+            //bool t2 = tests.WithoutAtSymbols(email);
+            bool t2 = tests.WithoutGeneralBannedSymbols(email, '.');
+            if ((t1 && t2) == false)
             {
-                messageForField += tests.notPassedTests;
-                Errors += messageForField + "\n";
-                // Errors += $"Field {name} contains: " + message + "\n";
+                Errors += $"Field Email: {tests.notPassedTests}\n";
             }
-            return passed;
+            return t1 && t2;
         }
-        private bool PasswordConditions(string pass1, string pass2)
+        public bool PasswordConditions(string pass1, string pass2)
         {
             ValidationTests tests = new ValidationTests();
-            string messageForField = $"Field {pass1} contains: ";
-            bool passed = tests.NotEmpty(pass1) && tests.NotEmpty(pass2) && tests.EqualPasswords(pass1, pass2);
-            if (!passed)
+            bool t1 = tests.NotEmpty(pass1);
+            bool t2 = tests.NotEmpty(pass2);
+            bool t3 = tests.EqualPasswords(pass1, pass2);
+            if ((t1 && t2 && t3) == false)
             {
-                messageForField += tests.notPassedTests;
-                Errors += messageForField + "\n";
-                // Errors += $"Field {name} contains: " + message + "\n";
+                Errors += $"Field Password: {tests.notPassedTests}\n";
             }
-            return passed;
+            return (t1 && t2 && t3);
         }
         public bool CheckOnValidation(List<string> parameters)
         {
-            bool passed = NameConditions(parameters[0]) && SurnameConditions(parameters[1]) && NicknameConditions(parameters[2])
-                && EmailConditions(parameters[3]) && PasswordConditions(parameters[4], parameters[5]);
-            return passed;
+            bool t1 = NameConditions(parameters[0]);
+            bool t2 = SurnameConditions(parameters[1]);
+            bool t3 = NicknameConditions(parameters[2]);
+            bool t4 = EmailConditions(parameters[3]);
+            bool t5 = PasswordConditions(parameters[4], parameters[5]);
+            return (t1 && t2 && t3 && t4 && t5);
         }
     }
 }

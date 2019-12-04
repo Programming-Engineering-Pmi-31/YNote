@@ -73,7 +73,7 @@ namespace YNoteWPF.PL.AdditionalWindow
 
             List<string> parameters = new List<string>() { NameTextBox.Text, SurnameTextBox.Text, NicknameTextBox.Text,
                     LoginTextBox.Text, PasswordTextBox.Password, PasswordTextBoxConfirm.Password};
-            data.RegisterWithoutAllNecessaryTests(parameters, RegisterButton);
+            data.Register(parameters, RegisterButton);
         }
     }
 }

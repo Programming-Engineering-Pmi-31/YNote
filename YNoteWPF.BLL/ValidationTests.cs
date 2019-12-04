@@ -8,11 +8,11 @@ namespace YNoteWPF.BLL
 {
     class ValidationTests
     {
-        public string notPassedTests;
+        public string notPassedTests = "";
         public bool NotEmpty(string fieldToCheck)
         {
-            string message = "is empty\n";
-            bool passed = fieldToCheck != "" ? true : false;
+            string message = "is empty. ";
+            bool passed = fieldToCheck != "";
             if (!passed)
             {
                 notPassedTests += message;
@@ -21,8 +21,9 @@ namespace YNoteWPF.BLL
         }
         public bool EqualPasswords(string pass, string passToConfirm)
         {
-            string message = "Not equal passwords\n";
-            bool passed = pass == passToConfirm ? true : false; if (!passed)
+            string message = "Not equal passwords. ";
+            bool passed = pass == passToConfirm;
+            if (!passed)
             {
                 notPassedTests += message;
             }
@@ -30,7 +31,7 @@ namespace YNoteWPF.BLL
         }
         public bool WithoutGeneralBannedSymbols(string fieldToCheck)
         {
-            string message = "banned symbols (";
+            string message = "banned symbols ( ";
             List<char> generalBannedSymbols = new List<char>() { '!', '#', '$', '%', '^', '&', '*', '(', ')', '-', '+', '=',
             '{', '}', '[', ']', '|', ';', ':', '"', '\'', ',', '<', '>', '?', '/', ' ', '.' };
             List<bool> passedTests = new List<bool>() { };
@@ -39,13 +40,13 @@ namespace YNoteWPF.BLL
                 if (fieldToCheck.Contains(symbol))
                 {
                     passedTests.Add(false);
-                    message += $"{symbol} ";
+                    message += $"'{symbol}' ";
                 }
             }
-            if (passedTests.Contains(false))
+            if (passedTests.Contains(false) == true)
             {
-                message += ")";
-                notPassedTests += message + "\n";
+                message += ") ";
+                notPassedTests += message;
             }
             return !passedTests.Contains(false);
         }
@@ -56,29 +57,26 @@ namespace YNoteWPF.BLL
             string message = "banned symbols (";
             List<char> generalBannedSymbols = new List<char>() { '!', '#', '$', '%', '^', '&', '*', '(', ')', '-', '+', '=',
             '{', '}', '[', ']', '|', ';', ':', '"', '\'', ',', '<', '>', '?', '/', ' ', '.' };
+            generalBannedSymbols.RemoveAll(x => x == allowedSymbol);
             List<bool> passedTests = new List<bool>() { };
             foreach (var symbol in generalBannedSymbols)
             {
                 if (fieldToCheck.Contains(symbol))
                 {
-                    if (symbol == allowedSymbol)
-                    {
-                        continue;
-                    }
                     passedTests.Add(false);
-                    message += $"{symbol} ";
+                    message += $"'{symbol}' ";
                 }
             }
             if (passedTests.Contains(false))
             {
-                message += ")";
-                notPassedTests += message + "\n";
+                message += ") ";
+                notPassedTests += message;
             }
             return !passedTests.Contains(false);
         }
         public bool WithoutNumbers(string fieldToCheck)
         {
-            string message = $"numbers (";
+            string message = $"numbers ( ";
             List<bool> passedTests = new List<bool>() { };
             List<char> numbers = new List<char>() { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9' };
             foreach (var number in numbers)
@@ -92,18 +90,24 @@ namespace YNoteWPF.BLL
             if (passedTests.Contains(false))
             {
                 message += ")";
-                notPassedTests += message + "\n";
+                notPassedTests += message;
             }
-            return !passedTests.Contains(false) ? true : false;
+            return !passedTests.Contains(false);
         }
         public bool WithoutAtSymbols(string fieldToCheck)
         {
-            string message = "symbol '@'";
+            string message = "symbol '@' ";
             bool passed = !fieldToCheck.Contains('@');
             if (!passed)
             {
-                notPassedTests += message + "\n";
+                notPassedTests += message;
             }
+            return passed;
+        }
+        public bool IsUnique(string fieldToCheck)
+        {
+            bool passed = false;
+
             return passed;
         }
     }
