@@ -15,6 +15,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using MaterialDesignThemes;
 using System.IO;
+using YNoteWPF.BLL.Data.Models;
 
 namespace YNoteWPF.PL {
 
@@ -26,13 +27,9 @@ namespace YNoteWPF.PL {
         double FirstXPos, FirstYPos;
         object MovingObject;
 
-        
+        public UserDTO User { get; set; }
 
         public MainWindow() {
-
-            //AdditionalWindow.LoginWindow loginWindow = new AdditionalWindow.LoginWindow();
-            //loginWindow.Show();
-
 
             InitializeComponent();
 
@@ -43,23 +40,21 @@ namespace YNoteWPF.PL {
             }
             NotesCanvas.PreviewMouseMove += this.MouseMove_Event;
 
-            //UserNameTextBlock.Text = UserProperty.Email;
+            
+        }
+        public MainWindow(UserDTO user) : this() {
+            
+            User = user;
 
+            UserNameTextBlock.Text = user.Nickname;
 
-            //for (int countSpace = 0; countSpace < 2; ++countSpace) {
-            //    SpacesListView.Items.Add(new Label() { Content = $"{countSpace+1}",
-            //                                           FontSize = 25});
-            //}
-            //SpacesListView.Items.Add(new Label() {
-            //    Content = "+",
-            //    FontSize = 25
-            //});
+            NameLabel.Text = user.Name;
+            SurnameLabel.Text = user.Surname;
 
-            //Notes.Children.Add(new CustomControls.Group(new List<Addition.Note> { new Addition.Note("1",new List<Addition.UserTask> { }),
-            //                                                                      new Addition.Note("2",new List<Addition.UserTask> { }),
-            //                                                                      new Addition.Note("3",new List<Addition.UserTask> { }),
-            //                                                                      new Addition.Note("4",new List<Addition.UserTask> { })}) { Height = 200, Width = 200 });
-                
+            ChangeName.Text = user.Name;
+            ChangeSurname.Text = user.Surname;
+
+            ChangeEmail.Text = user.Email;
         }
 
         #region AddToDashboard
@@ -263,7 +258,10 @@ namespace YNoteWPF.PL {
         }
 
         private void PackIcon_MouseLeftButtonDown(object sender, MouseButtonEventArgs e) {
-            UserInfoGrid.Visibility = Visibility.Visible;
+            if (SpaceGrid.Width > 50)
+            {
+                UserInfoGrid.Visibility = Visibility.Visible;
+            }
         }
 
         private void ChangeButton_Click(object sender, RoutedEventArgs e) {

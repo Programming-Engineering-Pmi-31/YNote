@@ -123,14 +123,15 @@ namespace YNoteWPF.BLL
             if (Verification(email, password))
             {
                 IEnumerable<UserEntity> users = from usr in db.Users
-                                                where usr.Email == email && user.Password == password
+                                                where usr.Email == email && usr.Password == password
                                                 select usr;
                 user.Id = users.First().Id;
                 user.Name = users.First().Name;
                 user.Surname = users.First().Surname;
                 user.Nickname = users.First().Nickname;
                 user.Email = users.First().Email;
-                user.Name = users.First().Password;
+                user.Password = users.First().Password;
+                return user;
             }
             return user;
         }

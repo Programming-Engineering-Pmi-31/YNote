@@ -49,7 +49,8 @@ namespace YNoteWPF.PL.AdditionalWindow
             }
             else if (data.Verification(LoginTextBox.Text, PasswordTextBox.Password))
             {
-                MainWindow mw = new MainWindow();
+                MainWindow mw = new MainWindow(data.GetUser());
+                //mw.User = data.GetUser();
                 mw.Show();
                 this.Close();
             }
@@ -57,8 +58,6 @@ namespace YNoteWPF.PL.AdditionalWindow
             {
                 LoginTextBox.BorderBrush = Brushes.Red;
                 PasswordTextBox.BorderBrush = Brushes.Red;
-                RegisterButton.Visibility = Visibility.Visible;
-                ConfirmPasswordPanel.Visibility = Visibility.Visible;
             }
 
         }
@@ -74,6 +73,17 @@ namespace YNoteWPF.PL.AdditionalWindow
             List<string> parameters = new List<string>() { NameTextBox.Text, SurnameTextBox.Text, NicknameTextBox.Text,
                     LoginTextBox.Text, PasswordTextBox.Password, PasswordTextBoxConfirm.Password};
             data.Register(parameters, RegisterButton);
+            
+        }
+
+        private void PasswordTextBox_KeyDown(object sender, KeyEventArgs e) {
+            if (data.Verification(LoginTextBox.Text, PasswordTextBox.Password) && e.Key == Key.Return)
+            {
+                MainWindow mw = new MainWindow(data.GetUser());
+                //mw.User = data.GetUser();
+                mw.Show();
+                this.Close();
+            }
         }
     }
 }
