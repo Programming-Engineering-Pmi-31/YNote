@@ -123,10 +123,8 @@ namespace YNoteWPF.BLL
                 user.Nickname = users.First().Nickname;
                 user.Email = users.First().Email;
                 user.Password = users.First().Password;
-<<<<<<< HEAD
+
                 return user;
-=======
->>>>>>> 38d47fb1ade10b41ae7bb18551066b2dea336e73
             }
             return user;
         }

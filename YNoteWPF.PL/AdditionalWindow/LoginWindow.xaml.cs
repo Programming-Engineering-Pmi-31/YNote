@@ -21,9 +21,6 @@ namespace YNoteWPF.PL.AdditionalWindow
     /// </summary>
     public partial class LoginWindow : Window
     {
-
-        string Email;
-        string Password;
         UserData data = new UserData();
 
         public LoginWindow()
@@ -78,12 +75,14 @@ namespace YNoteWPF.PL.AdditionalWindow
         }
 
         private void PasswordTextBox_KeyDown(object sender, KeyEventArgs e) {
-            if (data.Verification(LoginTextBox.Text, PasswordTextBox.Password) && e.Key == Key.Return)
-            {
-                MainWindow mw = new MainWindow(data.GetUser());
-                //mw.User = data.GetUser();
-                mw.Show();
-                this.Close();
+            if (e.Key == Key.Return) {
+                if (data.Verification(LoginTextBox.Text, PasswordTextBox.Password))
+                {
+                    MainWindow mw = new MainWindow(data.GetUser());
+                    //mw.User = data.GetUser();
+                    mw.Show();
+                    this.Close();
+                }
             }
         }
     }

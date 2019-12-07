@@ -20,12 +20,13 @@ using YNoteWPF.BLL.Data.Models;
 namespace YNoteWPF.PL {
 
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for MainWindow.xaml.
     /// </summary>
     public partial class MainWindow : Window {
         // Drop and drag
-        double FirstXPos, FirstYPos;
-        object MovingObject;
+        private double firstXPos;
+        private double firstYPos;
+        private object movingObject;
 
         public UserDTO User { get; set; }
 
@@ -33,53 +34,58 @@ namespace YNoteWPF.PL {
 
             InitializeComponent();
 
-            foreach (Control control in NotesCanvas.Children) {
+            foreach (Control control in this.NotesCanvas.Children) {
                 control.PreviewMouseLeftButtonDown += this.MouseLeftButtonDown_Event;
                 control.PreviewMouseLeftButtonUp += this.PreviewMouseLeftButtonUp_Event;
                 control.Cursor = Cursors.Hand;
             }
-            NotesCanvas.PreviewMouseMove += this.MouseMove_Event;
 
-            
+            this.NotesCanvas.PreviewMouseMove += this.MouseMove_Event;
         }
+
         public MainWindow(UserDTO user) : this() {
-            
-            User = user;
+            this.User = user;
 
-            UserNameTextBlock.Text = user.Nickname;
+            this.UserNameTextBlock.Text = user.Nickname;
 
-            NameLabel.Text = user.Name;
-            SurnameLabel.Text = user.Surname;
+            this.NameLabel.Text = user.Name;
+            this.SurnameLabel.Text = user.Surname;
 
-            ChangeName.Text = user.Name;
-            ChangeSurname.Text = user.Surname;
+            this.ChangeName.Text = user.Name;
+            this.ChangeSurname.Text = user.Surname;
 
-            ChangeEmail.Text = user.Email;
+            this.ChangeEmail.Text = user.Email;
         }
 
         #region AddToDashboard
         private void Add_New_Note(object sender, RoutedEventArgs e) {
-            NotesCanvas.Children.Add(new CustomControls.Note() {
+            this.NotesCanvas.Children.Add(new CustomControls.Note()
+            {
                 Height = 150,
                 Width = 150,
                 HorizontalAlignment = HorizontalAlignment.Right,
-                Margin = new Thickness(30*NotesCanvas.Children.Count)
+                Margin = new Thickness(30 * this.NotesCanvas.Children.Count),
             });
-            foreach (Control control in NotesCanvas.Children) {
+
+            foreach (Control control in this.NotesCanvas.Children) {
                 control.PreviewMouseLeftButtonDown += this.MouseLeftButtonDown_Event;
                 control.PreviewMouseLeftButtonUp += this.PreviewMouseLeftButtonUp_Event;
                 control.Cursor = Cursors.Hand;
             }
-            NotesCanvas.PreviewMouseMove += this.MouseMove_Event;
+
+            this.NotesCanvas.PreviewMouseMove += this.MouseMove_Event;
         }
+
         private void Add_Group(object sender, RoutedEventArgs e) {
-            if (GroupStackPanel.Children.Count < 4)
-                GroupStackPanel.Children.Add(new CustomControls.Group()
+            if (this.GroupStackPanel.Children.Count < 4)
+            {
+                this.GroupStackPanel.Children.Add(new CustomControls.Group()
                 {
                     Margin = new Thickness(10),
                     Height = 550,
                     MinWidth = 160
                 });
+            }
         }
         #endregion
 
@@ -88,15 +94,22 @@ namespace YNoteWPF.PL {
             YNoteWPF.PL.AdditionalWindow.LoginWindow loginWindow = new AdditionalWindow.LoginWindow();
             loginWindow.Show();
         }
+
         private void Exit_Click(object sender, RoutedEventArgs e) {
             Application.Current.Shutdown();
         }
+
         private void FullScreen_Click(object sender, RoutedEventArgs e) {
             if (this.WindowState == WindowState.Normal)
+            {
                 this.WindowState = WindowState.Maximized;
+            }
             else
+            {
                 this.WindowState = WindowState.Normal;
+            }
         }
+
         private void Minimized_Click(object sender, RoutedEventArgs e) {
             this.WindowState = WindowState.Minimized;
         }
@@ -104,44 +117,46 @@ namespace YNoteWPF.PL {
 
         #region MakeNoteMovable_Events
         private void MouseLeftButtonDown_Event(object sender, MouseButtonEventArgs e) {
-            FirstXPos = e.GetPosition(sender as Control).X;
-            FirstYPos = e.GetPosition(sender as Control).Y;
-            MovingObject = sender;
+            firstXPos = e.GetPosition(sender as Control).X;
+            firstYPos = e.GetPosition(sender as Control).Y;
+            movingObject = sender;
         }
+
         void PreviewMouseLeftButtonUp_Event(object sender, MouseButtonEventArgs e) {
-            MovingObject = null;
+            movingObject = null;
         }
         private void MouseMove_Event(object sender, MouseEventArgs e) {
             if (e.LeftButton == MouseButtonState.Pressed && Keyboard.IsKeyDown(Key.LeftCtrl)) {
-                (MovingObject as FrameworkElement).SetValue(Canvas.LeftProperty,
-                     e.GetPosition((MovingObject as FrameworkElement).Parent as FrameworkElement).X - FirstXPos);
+                (movingObject as FrameworkElement).SetValue(
+                    Canvas.LeftProperty,
+                    e.GetPosition((movingObject as FrameworkElement).Parent as FrameworkElement).X - firstXPos);
 
-                (MovingObject as FrameworkElement).SetValue(Canvas.TopProperty,
-                     e.GetPosition((MovingObject as FrameworkElement).Parent as FrameworkElement).Y - FirstYPos);
+                (movingObject as FrameworkElement).SetValue(Canvas.TopProperty,
+                     e.GetPosition((movingObject as FrameworkElement).Parent as FrameworkElement).Y - firstYPos);
             }
         }
         #endregion
 
         #region PopUp_Menu
         private void ButtonCloseMenu_Click(object sender, RoutedEventArgs e) {
-            ButtonOpenMenu.Visibility = Visibility.Visible;
-            ButtonCloseMenu.Visibility = Visibility.Collapsed;
+            this.ButtonOpenMenu.Visibility = Visibility.Visible;
+            this.ButtonCloseMenu.Visibility = Visibility.Collapsed;
         }
 
         private void ButtonOpenMenu_Click(object sender, RoutedEventArgs e) {
-            ButtonOpenMenu.Visibility = Visibility.Collapsed;
-            ButtonCloseMenu.Visibility = Visibility.Visible;
+            this.ButtonOpenMenu.Visibility = Visibility.Collapsed;
+            this.ButtonCloseMenu.Visibility = Visibility.Visible;
         }
         #endregion
 
         #region SpaceInfoGrid
         private void ButtonOpenInfoGrid_Click(object sender, RoutedEventArgs e) {
-            ButtonOpenInfoGrid.Visibility = Visibility.Collapsed;
-            ButtonCloseInfoGrid.Visibility = Visibility.Visible;
+            this.ButtonOpenInfoGrid.Visibility = Visibility.Collapsed;
+            this.ButtonCloseInfoGrid.Visibility = Visibility.Visible;
         }
         private void ButtonCloseInfoGridu_Click(object sender, RoutedEventArgs e) {
-            ButtonOpenInfoGrid.Visibility = Visibility.Visible;
-            ButtonCloseInfoGrid.Visibility = Visibility.Collapsed;
+            this.ButtonOpenInfoGrid.Visibility = Visibility.Visible;
+            this.ButtonCloseInfoGrid.Visibility = Visibility.Collapsed;
         }
         #endregion
 
@@ -195,10 +210,6 @@ namespace YNoteWPF.PL {
 
         }
 
-
-        
-
-
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e) {
             //SaveExternalXaml();
         }
@@ -245,37 +256,38 @@ namespace YNoteWPF.PL {
                 File.Delete("savepoint.xaml");
             }
         }
+
         public void SaveExternalXaml() {
             using (FileStream savepoint = new FileStream("savepoint.xaml", FileMode.Create)) {
-                XamlWriter.Save(NotesCanvas,savepoint);
+                XamlWriter.Save(this.NotesCanvas, savepoint);
             }
         }
 
 
 
         private void CloseUserInfo_Click(object sender, RoutedEventArgs e) {
-            UserInfoGrid.Visibility = Visibility.Hidden;
+            this.UserInfoGrid.Visibility = Visibility.Hidden;
         }
 
         private void PackIcon_MouseLeftButtonDown(object sender, MouseButtonEventArgs e) {
-            if (SpaceGrid.Width > 50)
+            if (this.SpaceGrid.Width > 50)
             {
-                UserInfoGrid.Visibility = Visibility.Visible;
+                this.UserInfoGrid.Visibility = Visibility.Visible;
             }
         }
 
         private void ChangeButton_Click(object sender, RoutedEventArgs e) {
-            ChangesGrid.Visibility = Visibility.Visible;
+            this.ChangesGrid.Visibility = Visibility.Visible;
         }
 
         private void DeleteAccountButton_Click(object sender, RoutedEventArgs e) {
             YNoteWPF.PL.AdditionalWindow.ConfirmDelete confirmdeleteWindow = new AdditionalWindow.ConfirmDelete();
             confirmdeleteWindow.Show();
-            ChangesGrid.Visibility = Visibility.Hidden;
+            this.ChangesGrid.Visibility = Visibility.Hidden;
         }
 
         private void SavaChangeButton_Click(object sender, RoutedEventArgs e) {
-            ChangesGrid.Visibility = Visibility.Hidden;
+            this.ChangesGrid.Visibility = Visibility.Hidden;
         }
 
         private void LogOutButton_Click(object sender, RoutedEventArgs e) {
