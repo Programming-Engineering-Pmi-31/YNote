@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using YNoteWPF.BLL;
+using YNoteWPF.BLL.Data.Models;
 
 namespace YNoteWPF.PL.AdditionalWindow
 {

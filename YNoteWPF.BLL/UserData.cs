@@ -15,17 +15,9 @@ namespace YNoteWPF.BLL
     public class UserData
     {
         YNoteDbContext db = new YNoteDbContext();
-        string email; // should be deleted?
-        string password; // should be deleted?
-        FieldsConditions fieldsValidation = new FieldsConditions();
+        string email;
+        string password;
         public string ValidationErrors { get; private set; }
-        //private void SeeValidationErrorsInFile()
-        //{
-        //    using (FileStream stream = new FileStream(")
-        //    {
-
-        //    }
-        //}
         public bool Verification(string Email, string Password)
         {
             email = Email;
@@ -123,14 +115,14 @@ namespace YNoteWPF.BLL
             if (Verification(email, password))
             {
                 IEnumerable<UserEntity> users = from usr in db.Users
-                                                where usr.Email == email && user.Password == password
+                                                where usr.Email == email && usr.Password == password
                                                 select usr;
                 user.Id = users.First().Id;
                 user.Name = users.First().Name;
                 user.Surname = users.First().Surname;
                 user.Nickname = users.First().Nickname;
                 user.Email = users.First().Email;
-                user.Name = users.First().Password;
+                user.Password = users.First().Password;
             }
             return user;
         }
