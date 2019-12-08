@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using YNoteWPF.BLL;
+using YNoteWPF.BLL.Data.Models;
 
 namespace YNoteWPF.PL.AdditionalWindow
 {
@@ -20,9 +21,6 @@ namespace YNoteWPF.PL.AdditionalWindow
     /// </summary>
     public partial class LoginWindow : Window
     {
-
-        string Email;
-        string Password;
         UserData data = new UserData();
 
         public LoginWindow()
@@ -49,7 +47,8 @@ namespace YNoteWPF.PL.AdditionalWindow
             }
             else if (data.Verification(LoginTextBox.Text, PasswordTextBox.Password))
             {
-                MainWindow mw = new MainWindow();
+                MainWindow mw = new MainWindow(data.GetUser());
+                //mw.User = data.GetUser();
                 mw.Show();
                 this.Close();
             }
@@ -57,8 +56,6 @@ namespace YNoteWPF.PL.AdditionalWindow
             {
                 LoginTextBox.BorderBrush = Brushes.Red;
                 PasswordTextBox.BorderBrush = Brushes.Red;
-                RegisterButton.Visibility = Visibility.Visible;
-                ConfirmPasswordPanel.Visibility = Visibility.Visible;
             }
 
         }
@@ -74,6 +71,19 @@ namespace YNoteWPF.PL.AdditionalWindow
             List<string> parameters = new List<string>() { NameTextBox.Text, SurnameTextBox.Text, NicknameTextBox.Text,
                     LoginTextBox.Text, PasswordTextBox.Password, PasswordTextBoxConfirm.Password};
             data.Register(parameters, RegisterButton);
+            
+        }
+
+        private void PasswordTextBox_KeyDown(object sender, KeyEventArgs e) {
+            if (e.Key == Key.Return) {
+                if (data.Verification(LoginTextBox.Text, PasswordTextBox.Password))
+                {
+                    MainWindow mw = new MainWindow(data.GetUser());
+                    //mw.User = data.GetUser();
+                    mw.Show();
+                    this.Close();
+                }
+            }
         }
     }
 }
