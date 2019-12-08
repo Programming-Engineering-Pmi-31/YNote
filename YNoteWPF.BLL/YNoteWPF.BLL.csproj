@@ -35,6 +35,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper, Version=9.0.0.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.9.0.0\lib\net461\AutoMapper.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.3.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
@@ -61,7 +64,12 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Data.Models\CreateNoteDTO.cs" />
+    <Compile Include="Data.Models\UpdateNoteDTO.cs" />
+    <Compile Include="Data.Models\CreateTaskDTO.cs" />
+    <Compile Include="Data.Models\UpdateTaskDTO.cs" />
     <Compile Include="FieldsConditions.cs" />
+    <Compile Include="Mappers\ServicesMapperProfile.cs" />
     <Compile Include="UserData.cs" />
     <Compile Include="Data.Models\GroupDTO.cs" />
     <Compile Include="Data.Models\NoteDTO.cs" />
@@ -69,10 +77,10 @@
     <Compile Include="Data.Models\TaskDTO.cs" />
     <Compile Include="Data.Models\UserDTO.cs" />
     <Compile Include="Data\GroupService.cs" />
-    <Compile Include="Data\IGroupService.cs" />
-    <Compile Include="Data\INoteService.cs" />
-    <Compile Include="Data\ISpaceService.cs" />
-    <Compile Include="Data\ITaskService.cs" />
+    <Compile Include="Data.Interfaces\IGroupService.cs" />
+    <Compile Include="Data.Interfaces\INoteService.cs" />
+    <Compile Include="Data.Interfaces\ISpaceService.cs" />
+    <Compile Include="Data.Interfaces\ITaskService.cs" />
     <Compile Include="Data\NoteService.cs" />
     <Compile Include="Data\TaskService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
