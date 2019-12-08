@@ -11,7 +11,11 @@ namespace YNoteWPF.BLL.Mappers
             CreateMap<CreateTaskDTO, TaskEntity>();
             CreateMap<TaskEntity, TaskDTO>();
             CreateMap<UpdateTaskDTO, TaskEntity>();
-            CreateMap<UpdateTaskDTO, CreateTaskDTO>();
+            //CreateMap<UpdateTaskDTO, CreateTaskDTO>();
+
+            CreateMap<CreateNoteDTO, NoteEntity>();
+            CreateMap<NoteEntity, NoteDTO>();
+            CreateMap<UpdateNoteDTO, NoteEntity>();
         }
     }
 }
