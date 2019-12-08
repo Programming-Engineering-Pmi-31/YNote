@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 using YNoteWPF.DAL.Entities;
 
-namespace YNoteWPF.BLL.Data
+namespace YNoteWPF.BLL.Data.Interfaces
 {
     public interface ISpaceService
     {

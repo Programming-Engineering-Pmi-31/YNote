@@ -4,6 +4,7 @@ using YNoteWPF.DAL;
 using YNoteWPF.DAL.Entities;
 using System.Threading.Tasks;
 using System.Data.Entity;
+using YNoteWPF.BLL.Data.Interfaces;
 
 namespace YNoteWPF.BLL.Data
 {
