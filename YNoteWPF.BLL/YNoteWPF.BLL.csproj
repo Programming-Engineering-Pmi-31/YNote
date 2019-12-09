@@ -64,6 +64,8 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Data.Models\CreateSpaceDTO.cs" />
+    <Compile Include="Data.Models\UpdateSpaceDTO.cs" />
     <Compile Include="Data.Models\CreateNoteDTO.cs" />
     <Compile Include="Data.Models\UpdateNoteDTO.cs" />
     <Compile Include="Data.Models\CreateTaskDTO.cs" />
