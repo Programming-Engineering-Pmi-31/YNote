@@ -4,27 +4,106 @@ using YNoteWPF.DAL;
 using YNoteWPF.DAL.Entities;
 using System.Threading.Tasks;
 using System.Data.Entity;
+using YNoteWPF.BLL.Data.Interfaces;
+using YNoteWPF.BLL.Data.Models;
+using AutoMapper;
+using System.Linq;
 
 namespace YNoteWPF.BLL.Data
 {
     public class SpaceService : ISpaceService
     {
-        private Func<YNoteDbContext> _contextCreator;
+        private readonly YNoteDbContext _dbContext;
+        private readonly IMapper _mapper;
 
-        public SpaceService(Func<YNoteDbContext> contextCreator)
+        public SpaceService(YNoteDbContext dbContext, IMapper mapper)
         {
-            _contextCreator = contextCreator;
+            _dbContext = dbContext;
+            _mapper = mapper;
         }
 
-        public async Task<List<SpaceEntity>> GetAllAsync()
+        public async Task<SpaceDTO> CreateSpaceAsync(CreateSpaceDTO createSpaceDTO)
         {
-            using (var ctx = _contextCreator())
-            {
-                return await ctx.Spaces.AsNoTracking().ToListAsync();
-            }
+            var spaceEntity = _mapper.Map<SpaceEntity>(createSpaceDTO);
+
+            _dbContext.Spaces.Add(spaceEntity);
+            await _dbContext.SaveChangesAsync();
+
+            spaceEntity = await _dbContext.Spaces
+                .AsNoTracking()
+                .SingleOrDefaultAsync(space => space.Id == spaceEntity.Id);
+
+            var spaceDTO = _mapper.Map<SpaceDTO>(spaceEntity);
+            return spaceDTO;
+                
         }
 
-        public Task<SpaceEntity> GetByIdAsync(int id)
+        public async Task DeleteSpaceAsync(int id)
+        {
+            var spaceToDelete = await _dbContext.Spaces
+                .AsNoTracking()
+                .Include(space => space.Groups)
+                .Include(space => space.Notes.Select(n => n.Tasks))
+                .SingleOrDefaultAsync(space => space.Id == id);
+
+            //remove all that space contains
+            _dbContext.Groups.RemoveRange(spaceToDelete.Groups);
+            await _dbContext.Notes.ForEachAsync(n=>_dbContext.Tasks.RemoveRange(n.Tasks));
+            _dbContext.Notes.RemoveRange(spaceToDelete.Notes);
+
+            _dbContext.Spaces.Remove(spaceToDelete);
+
+            await _dbContext.SaveChangesAsync();            
+        }
+
+        public async Task<List<SpaceDTO>> GetAllSpacesAsync()
+        {
+            var spaceEntity = await _dbContext.Spaces
+                .AsNoTracking()
+                .Include(space => space.Groups)
+                .Include(space => space.Notes.Select(n=>n.Tasks))
+                .Include(space => space.Users)
+                .ToListAsync();
+
+            var spaceDTO = _mapper.Map<List<SpaceDTO>>(spaceEntity);
+            return spaceDTO;
+        }
+
+        public async Task<SpaceDTO> GetSpaceByIdAsync(int id)
+        {
+            var spaceEntity = await _dbContext.Spaces
+                .AsNoTracking()
+                .Include(space => space.Groups)
+                .Include(space => space.Notes.Select(n => n.Tasks))                
+                .Include(space=> space.Users)
+                .SingleOrDefaultAsync(space => space.Id == id);
+
+            var spaceDTO = _mapper.Map<SpaceDTO>(spaceEntity);
+            return spaceDTO;
+        }
+
+        public async Task<SpaceDTO> ChangeSpaceNameAsync(UpdateSpaceDTO updateSpaceDTO)
+        {
+
+            var spaceEntity = await _dbContext.Spaces
+                .AsNoTracking()
+                //.Include(space => space.Groups)
+                //.Include(space => space.Notes.Select(n => n.Tasks))
+                //.Include(space => space.Users)
+                .SingleOrDefaultAsync(space => space.Id == updateSpaceDTO.Id);
+
+            var updateSpaceEntity = _mapper.Map<SpaceEntity>(updateSpaceDTO);
+            spaceEntity.SpaceName = updateSpaceEntity.SpaceName;
+
+            await _dbContext.SaveChangesAsync();
+
+            var spaceDTO = _mapper.Map<SpaceDTO>(spaceEntity);
+
+            return spaceDTO;
+
+        }
+
+        public Task<SpaceDTO> UpdateSpaceUsersAsync(UpdateSpaceDTO updateSpaceDTO)
         {
             throw new NotImplementedException();
         }

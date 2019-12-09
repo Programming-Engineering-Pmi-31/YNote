@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using YNoteWPF.DAL;
 using YNoteWPF.DAL.Entities;
+using YNoteWPF.BLL.Data.Interfaces;
 using System.Threading.Tasks;
 using System.Data.Entity;
+using YNoteWPF.BLL.Data.Models;
 
 namespace YNoteWPF.BLL.Data
 {
@@ -16,15 +18,16 @@ namespace YNoteWPF.BLL.Data
             _contextCreator = contextCreator;
         }
 
-        public async Task<List<GroupEntity>> GetAllAsync()
+        public async Task<List<GroupDTO>> GetAllAsync()
         {
             using (var ctx = _contextCreator())
             {
-                return await ctx.Groups.AsNoTracking().ToListAsync();
+                throw new NotImplementedException();
+                //return await ctx.Groups.AsNoTracking().ToListAsync();
             }
         }
 
-        public Task<GroupEntity> GetByIdAsync(int id)
+        public Task<GroupDTO> GetByIdAsync(int id)
         {
             throw new NotImplementedException();
         }

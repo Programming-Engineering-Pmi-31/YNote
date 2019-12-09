@@ -135,7 +135,7 @@
                     <TextBlock x:Name="UserNameTextBlock" Text="User name" VerticalAlignment="Center" Height="25" FontSize="17" Foreground="#002d53"/>
                 </StackPanel>
                 
-                <Grid x:Name="UserInfoGrid" Margin="0,40,0,0" VerticalAlignment="Top" HorizontalAlignment="Center" Visibility="Hidden">
+                <Grid x:Name="UserInfoGrid" Margin="0,40,0,0" VerticalAlignment="Top" HorizontalAlignment="Center" Visibility="Visible">
                     <Rectangle Fill="Aqua" Height="100" Width="100" RadiusX="10" RadiusY="10"/>
                     <Button x:Name="CloseUserInfo" HorizontalAlignment="Right" VerticalAlignment="Top" Background="{x:Null}" BorderBrush="{x:Null}" Click="CloseUserInfo_Click">
                         <materialDesign:PackIcon Kind="Close"/>
@@ -143,7 +143,7 @@
                     <StackPanel Orientation="Vertical">
                         <Label Content="User Info" HorizontalAlignment="Center"/>
                         <TextBlock x:Name="NameLabel" Text="name" Margin="5,0,5,0" HorizontalAlignment="Center"/>
-                        <TextBlock x:Name="Surname" Text="Surname" Margin="5,5,5,0" HorizontalAlignment="Center"/>
+                        <TextBlock x:Name="SurnameLabel" Text="Surname" Margin="5,5,5,0" HorizontalAlignment="Center"/>
                         <Button x:Name="ChangeButton" Content="Change" Margin="5" Background="{x:Null}" BorderBrush="{x:Null}" Click="ChangeButton_Click"/>
                     </StackPanel>
                 </Grid>
@@ -202,13 +202,12 @@
                 </StackPanel>
             </Grid>
             <Grid x:Name="ChangesGrid" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10" Visibility="Hidden">
-                <Rectangle Height="150" Width="150" Fill="Aqua" RadiusX="10" RadiusY="10"/>
-                
+                <Rectangle Height="150" Width="Auto" Fill="Aqua" RadiusX="10" RadiusY="10"/>
                 <StackPanel>
                     <TextBox x:Name="ChangeName" Text="Name" Margin="10,10,10,4"/>
                     <TextBox x:Name="ChangeSurname" Text="Surname" Margin="10,0,10,4"/>
                     <StackPanel Orientation="Vertical">
-                        <TextBox x:Name="ChangePassword" Text="New Password" Margin="10,0"/>
+                        <TextBox x:Name="ChangePassword" Text="Enter New Password" Margin="10,0"/>
                         <TextBox x:Name="ChangeConfirmPassword" Text="Confirm Password" Margin="10,0"/>
                     </StackPanel>
                     <TextBox x:Name="ChangeEmail" Text="New Email" Margin="10,5"/>

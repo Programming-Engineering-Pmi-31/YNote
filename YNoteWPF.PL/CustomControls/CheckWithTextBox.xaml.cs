@@ -19,26 +19,42 @@ namespace YNoteWPF.PL.CustomControls {
     /// </summary>
     public partial class CheckWithTextBox : UserControl {
 
-        public bool Status { get { return (bool)CheckBoxElem.IsChecked; } }
-        public string Text { get { return TextBoxElem.Text; } }
+        public bool Status { get { return (bool)this.CheckBoxElem.IsChecked; } }
+        public string Text { get { return this.TextBoxElem.Text; } }
 
-        public CheckWithTextBox() {
+        public CheckWithTextBox()
+        {
             InitializeComponent();
         }
-        public CheckWithTextBox(bool status, string text) : this() {
-            CheckBoxElem.IsChecked = status;
-            TextBoxElem.Text = text;
-            // save changes
+
+        public CheckWithTextBox(bool status, string text) : this()
+        {
+            this.CheckBoxElem.IsChecked = status;
+            this.TextBoxElem.Text = text;
         }
 
-        private void StackPanel_MouseEnter(object sender, MouseEventArgs e) {
-            DescriptionPopUp.IsOpen = true;
+        private void StackPanel_MouseEnter(object sender, MouseEventArgs e)
+        {
+            this.DescriptionPopUp.IsOpen = true;
         }
 
-        private void StackPanel_MouseLeave(object sender, MouseEventArgs e) {
-            if (!DescriptionPopUp.IsMouseOver)
-                DescriptionPopUp.IsOpen = false;
+        private void StackPanel_MouseLeave(object sender, MouseEventArgs e)
+        {
+            if (!this.DescriptionPopUp.IsMouseOver)
+            {
+                this.DescriptionPopUp.IsOpen = false;
+            }
             else { }
+        }
+
+        private void CheckBoxElem_Checked(object sender, RoutedEventArgs e)
+        {
+            this.TextBoxElem.TextDecorations = TextDecorations.Strikethrough;
+        }
+
+        private void CheckBoxElem_Unchecked(object sender, RoutedEventArgs e)
+        {
+            this.TextBoxElem.TextDecorations = TextDecorations.Baseline;
         }
     }
 }
