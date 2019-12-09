@@ -16,6 +16,10 @@ namespace YNoteWPF.BLL.Mappers
             CreateMap<CreateNoteDTO, NoteEntity>();
             CreateMap<NoteEntity, NoteDTO>();
             CreateMap<UpdateNoteDTO, NoteEntity>();
+
+            CreateMap<CreateSpaceDTO, SpaceDTO>();
+            CreateMap<SpaceEntity, SpaceDTO>();
+            CreateMap<UpdateSpaceDTO, SpaceEntity>();
         }
     }
 }
