@@ -9,19 +9,21 @@ using System.IO;
 using System.Windows.Media;
 using System.Windows.Controls;
 using YNoteWPF.BLL.Data.Models;
+using YNoteWPF.BLL.UserOperations;
 
 namespace YNoteWPF.BLL
 {
     public class UserData
     {
         YNoteDbContext db = new YNoteDbContext();
-        string email;
-        string password;
-        public string ValidationErrors { get; private set; }
+        static string email;
+        static string password;
+        public string ValidationErrors { get; private set; } = "";
         public bool Verification(string Email, string Password)
         {
             email = Email;
             password = Password;
+            UserEditor userEditor = new UserEditor(email, password);
 
             IQueryable<UserEntity> users = from user in db.Users
                                            where user.Email == email && user.Password == password
@@ -33,14 +35,8 @@ namespace YNoteWPF.BLL
             }
             return false;
         }
-        public void SaveChangesForUser()
-        {
-            //db.SaveChanges();
-        }
         public void RegisterWithoutAllNecessaryTests(List<string> parameters, Button regButton)
         {
-            // tests only on password equality and check if the user with such email exists to prevent
-            // of adding to db the same user (with such email)
             if (parameters[4] != parameters[5])
             {
                 throw new Exception("Passwords do not match");
@@ -71,7 +67,6 @@ namespace YNoteWPF.BLL
         public void Register(List<string> parameters, Button regButton)
         {
             FieldsConditions fields = new FieldsConditions();
-            string errors = "";
             if (fields.CheckOnValidation(parameters))
             {
                 UserEntity user = new UserEntity()
@@ -96,7 +91,7 @@ namespace YNoteWPF.BLL
                 {
                     regButton.BorderThickness = new System.Windows.Thickness(2);
                     regButton.BorderBrush = Brushes.Red;
-                    errors = "Email or nick already exists";
+                    ValidationErrors = "Email or nick already exists";
                 }
             }
             else
@@ -104,9 +99,9 @@ namespace YNoteWPF.BLL
                 regButton.BorderThickness = new System.Windows.Thickness(2);
                 regButton.BorderBrush = Brushes.Red;
             }
-            if (errors != "")
+            if (ValidationErrors == "")
             {
-                errors = fields.Errors;
+                ValidationErrors = fields.Errors;
             }
         }
         public UserDTO GetUser()
