@@ -19,37 +19,43 @@ namespace YNoteWPF.PL.CustomControls {
     /// Interaction logic for Group.xaml
     /// </summary>
     public partial class Group : UserControl {
-        List<Note> notes = new List<Note>();
+        public List<Note> Notes = new List<Note>();
 
-        public Group() {
+        public Group() 
+        {
             InitializeComponent();
         }
-        public Group(List<Models.Note> _notes):this() {
-            //foreach(Addition.Note noteElem in _notes)
-            //    StackPanelElem.Children.Add(new CustomControls.Note(noteElem.Text,noteElem.Tasks));
+
+        public Group(List<Models.Note> _notes) : this()
+        {
             foreach (Models.Note noteElem in _notes) {
                 for (int i = 0; i < 2; ++i)
-                    for (int j = 0; j < 2; ++j) {
+                {
+                    for (int j = 0; j < 2; ++j)
+                    {
                         var note = new Note(noteElem.Text, noteElem.Tasks);
-                        MainGrid.Children.Add(note);
+                        this.MainGrid.Children.Add(note);
                         Grid.SetColumn(note,i);
                         Grid.SetRow(note,j);
                     }
+                }
             }
         }
 
         private void Add_New_Note(object sender, RoutedEventArgs e) {
-            if (NotePanel.Children.Count < 5) 
-                NotePanel.Children.Add(new CustomControls.Note() {
+            if (this.NotePanel.Children.Count < 5)
+            {
+                this.NotePanel.Children.Add(new CustomControls.Note()
+                {
                     Margin = new Thickness(5),
-                    Width = 150
+                    Width = 150,
                 });
-            // save changes
+            }
         }
 
-        private void Delete_Note_On_Click(object sender, RoutedEventArgs e) {
+        private void Delete_Note_On_Click(object sender, RoutedEventArgs e)
+        {
             ((Panel)this.Parent).Children.Remove(this);
-            // save changes
         }
     }
 }

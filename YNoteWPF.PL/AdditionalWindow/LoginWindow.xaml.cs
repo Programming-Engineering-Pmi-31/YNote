@@ -25,7 +25,7 @@ namespace YNoteWPF.PL.AdditionalWindow
 
         public LoginWindow()
         {
-            WindowStartupLocation = WindowStartupLocation.CenterScreen;
+            this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
 
             InitializeComponent();
         }
@@ -38,14 +38,14 @@ namespace YNoteWPF.PL.AdditionalWindow
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             // maybe time to delete such admin
-            if (LoginTextBox.Text == "admin" && PasswordTextBox.Password == "admin")
+            if (this.LoginTextBox.Text == "admin" && this.PasswordTextBox.Password == "admin")
             {
                 MainWindow mw = new MainWindow();
                 //mw.UserProperty = new User(LoginTextBox.Text, PasswordTextBox.Text);
                 mw.Show();
                 this.Close();
             }
-            else if (data.Verification(LoginTextBox.Text, PasswordTextBox.Password))
+            else if (this.data.Verification(this.LoginTextBox.Text, this.PasswordTextBox.Password))
             {
                 MainWindow mw = new MainWindow(data.GetUser());
                 //mw.User = data.GetUser();
@@ -54,29 +54,28 @@ namespace YNoteWPF.PL.AdditionalWindow
             }
             else
             {
-                LoginTextBox.BorderBrush = Brushes.Red;
-                PasswordTextBox.BorderBrush = Brushes.Red;
+                this.LoginTextBox.BorderBrush = Brushes.Red;
+                this.PasswordTextBox.BorderBrush = Brushes.Red;
             }
 
         }
 
         private void Register_Click(object sender, RoutedEventArgs e)
         {
-            MainLabel.Content = "Register";
-            NameStackPanel.Visibility = Visibility.Visible;
-            SurnameStackPanel.Visibility = Visibility.Visible;
-            NicknameStackPanel.Visibility = Visibility.Visible;
-            ConfirmPasswordPanel.Visibility = Visibility.Visible;
+            this.MainLabel.Content = "Register";
+            this.NameStackPanel.Visibility = Visibility.Visible;
+            this.SurnameStackPanel.Visibility = Visibility.Visible;
+            this.NicknameStackPanel.Visibility = Visibility.Visible;
+            this.ConfirmPasswordPanel.Visibility = Visibility.Visible;
 
             List<string> parameters = new List<string>() { NameTextBox.Text, SurnameTextBox.Text, NicknameTextBox.Text,
                     LoginTextBox.Text, PasswordTextBox.Password, PasswordTextBoxConfirm.Password};
             data.Register(parameters, RegisterButton);
-            
         }
 
         private void PasswordTextBox_KeyDown(object sender, KeyEventArgs e) {
             if (e.Key == Key.Return) {
-                if (data.Verification(LoginTextBox.Text, PasswordTextBox.Password))
+                if (data.Verification(this.LoginTextBox.Text, this.PasswordTextBox.Password))
                 {
                     MainWindow mw = new MainWindow(data.GetUser());
                     //mw.User = data.GetUser();

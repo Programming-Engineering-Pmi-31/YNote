@@ -22,24 +22,23 @@ namespace YNoteWPF.PL.CustomControls {
         public bool Status { get { return (bool)this.CheckBoxElem.IsChecked; } }
         public string Text { get { return this.TextBoxElem.Text; } }
 
-        public CheckWithTextBox() 
+        public CheckWithTextBox()
         {
             InitializeComponent();
         }
 
-        public CheckWithTextBox(bool status, string text) : this() 
+        public CheckWithTextBox(bool status, string text) : this()
         {
             this.CheckBoxElem.IsChecked = status;
             this.TextBoxElem.Text = text;
-            // save changes
         }
 
-        private void StackPanel_MouseEnter(object sender, MouseEventArgs e) 
+        private void StackPanel_MouseEnter(object sender, MouseEventArgs e)
         {
             this.DescriptionPopUp.IsOpen = true;
         }
 
-        private void StackPanel_MouseLeave(object sender, MouseEventArgs e) 
+        private void StackPanel_MouseLeave(object sender, MouseEventArgs e)
         {
             if (!this.DescriptionPopUp.IsMouseOver)
             {
@@ -48,11 +47,13 @@ namespace YNoteWPF.PL.CustomControls {
             else { }
         }
 
-        private void CheckBoxElem_Checked(object sender, RoutedEventArgs e) {
+        private void CheckBoxElem_Checked(object sender, RoutedEventArgs e)
+        {
             this.TextBoxElem.TextDecorations = TextDecorations.Strikethrough;
         }
 
-        private void CheckBoxElem_Unchecked(object sender, RoutedEventArgs e) {
+        private void CheckBoxElem_Unchecked(object sender, RoutedEventArgs e)
+        {
             this.TextBoxElem.TextDecorations = TextDecorations.Baseline;
         }
     }

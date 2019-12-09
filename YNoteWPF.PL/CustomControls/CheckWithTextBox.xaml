@@ -8,7 +8,7 @@
              d:DesignHeight="20" d:DesignWidth="40">
     <Grid>
         <StackPanel x:Name="TaskStackPanel" Orientation="Horizontal" MouseEnter="StackPanel_MouseEnter" MouseLeave="StackPanel_MouseLeave">
-            <CheckBox Name="CheckBoxElem" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+            <CheckBox Name="CheckBoxElem" HorizontalAlignment="Left" VerticalAlignment="Center" Checked="CheckBoxElem_Checked" Unchecked="CheckBoxElem_Unchecked" />
             <TextBox Name="TextBoxElem" HorizontalAlignment="Center" VerticalAlignment="Center" Width="Auto" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="Black"/>
         </StackPanel>
         <Popup x:Name="DescriptionPopUp" >
