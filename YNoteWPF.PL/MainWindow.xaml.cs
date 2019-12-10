@@ -15,11 +15,8 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using MaterialDesignThemes;
 using System.IO;
-<<<<<<< HEAD
 using YNoteWPF.BLL.UserOperations;
-=======
 using YNoteWPF.BLL.Data.Models;
->>>>>>> cfcf0adac9e9034abafbf8911e36d40a85ac20a4
 
 namespace YNoteWPF.PL {
 
@@ -31,13 +28,7 @@ namespace YNoteWPF.PL {
         private double firstXPos;
         private double firstYPos;
         private object movingObject;
-
-<<<<<<< HEAD
-        //UserEditor userEditor = new UserEditor();
-        
-=======
         public UserDTO User { get; set; }
->>>>>>> cfcf0adac9e9034abafbf8911e36d40a85ac20a4
 
         public MainWindow() {
 
@@ -315,7 +306,6 @@ namespace YNoteWPF.PL {
         {
             YNoteWPF.PL.AdditionalWindow.ConfirmDelete confirmdeleteWindow = new AdditionalWindow.ConfirmDelete();
             confirmdeleteWindow.Show();
-<<<<<<< HEAD
             ChangesGrid.Visibility = Visibility.Hidden;
             // must be closed if user pushed Delete in ConfirmDelete window
         }
@@ -324,22 +314,11 @@ namespace YNoteWPF.PL {
             UserEditor userEditor = new UserEditor();
             List<string> parameters = new List<string>() { ChangeName.Text, ChangeSurname.Text, ChangeEmail.Text, ChangePassword.Text, ChangeConfirmPassword.Text };
             userEditor.UpdateUser(parameters);
-            ChangesGrid.Visibility = Visibility.Hidden;
-        }
-
-        public void LogOutButton_Click(object sender, RoutedEventArgs e) {
-=======
+            //userEditor.error != "" then show window
             this.ChangesGrid.Visibility = Visibility.Hidden;
         }
-
-        private void SavaChangeButton_Click(object sender, RoutedEventArgs e)
-        {
-            this.ChangesGrid.Visibility = Visibility.Hidden;
-        }
-
         private void LogOutButton_Click(object sender, RoutedEventArgs e)
         {
->>>>>>> cfcf0adac9e9034abafbf8911e36d40a85ac20a4
             AdditionalWindow.LoginWindow loginWindow = new AdditionalWindow.LoginWindow();
             loginWindow.Show();
             this.Close();

@@ -12,6 +12,7 @@ namespace YNoteWPF.BLL.UserOperations
     {
         private static string email;
         private static string password;
+        public string error = "";
         public UserEditor()
         {
 
@@ -35,26 +36,28 @@ namespace YNoteWPF.BLL.UserOperations
             IEnumerable<UserEntity> users = from usr in db.Users
                                             where usr.Email == email && usr.Password == password
                                             select usr;
-            if (parameters[3] == parameters[4])
-            {
-
             users.First().Name = parameters[0];
             users.First().Surname = parameters[1];
             users.First().Email = parameters[2];
-            users.First().Password = parameters[3];
-            db.SaveChanges();
-            }
-            else
+            if (parameters[3] != "Enter New Password" && parameters[4] != "Confirm Password")
             {
-                throw new Exception("Password are note equal");
+                if (parameters[3] == parameters[4])
+                {
+                    users.First().Password = parameters[3];
+                }
+                else
+                {
+                    error = $"Passwords are not equal. You entered: {parameters[3]} and {parameters[4]}";
+                }
             }
+            db.SaveChanges();
         }
         public void DeleteUser()
         {
             YNoteDbContext db = new YNoteDbContext();
             IEnumerable<UserEntity> users = from usr in db.Users
-                                                where usr.Email == email && usr.Password == password
-                                                select usr;
+                                            where usr.Email == email && usr.Password == password
+                                            select usr;
             db.Users.Remove(users.First());
             db.SaveChanges();
         }
