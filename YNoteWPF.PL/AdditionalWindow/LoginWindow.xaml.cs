@@ -78,6 +78,7 @@ namespace YNoteWPF.PL.AdditionalWindow
                 if (data.Verification(this.LoginTextBox.Text, this.PasswordTextBox.Password))
                 {
                     MainWindow mw = new MainWindow(data.GetUser());
+                    //mw.User = data.GetUser();
                     mw.Show();
                     this.Close();
                 }
