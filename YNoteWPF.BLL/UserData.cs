@@ -19,18 +19,19 @@ namespace YNoteWPF.BLL
         static string email;
         static string password;
         public string ValidationErrors { get; private set; } = "";
-        public bool Verification(string Email, string Password)
+
+        public bool Verification(string Login, string Password)
         {
-            email = Email;
-            password = Password;
-            UserEditor userEditor = new UserEditor(email, password);
 
             IQueryable<UserEntity> users = from user in db.Users
-                                           where user.Email == email && user.Password == password
+                                           where (user.Email == Login || user.Nickname == Login) && user.Password == Password
                                            select user;
             if (users.Any())
             {
                 // list has at least one item
+                email = users.First().Email;
+                password = Password;
+                UserEditor userEditor = new UserEditor(email, password);
                 return true;
             }
             return false;
