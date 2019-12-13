@@ -15,6 +15,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using MaterialDesignThemes;
 using System.IO;
+using YNoteWPF.BLL.UserOperations;
 using YNoteWPF.BLL.Data.Models;
 
 namespace YNoteWPF.PL {
@@ -307,12 +308,15 @@ namespace YNoteWPF.PL {
         {
             YNoteWPF.PL.AdditionalWindow.ConfirmDelete confirmdeleteWindow = new AdditionalWindow.ConfirmDelete();
             confirmdeleteWindow.Show();
-            this.ChangesGrid.Visibility = Visibility.Hidden;
+            ChangesGrid.Visibility = Visibility.Hidden;
+            // must be closed if user pushed Delete in ConfirmDelete window
         }
 
-        private void SavaChangeButton_Click(object sender, RoutedEventArgs e)
-        {
-            this.ChangesGrid.Visibility = Visibility.Hidden;
+        private void SavaChangeButton_Click(object sender, RoutedEventArgs e) {
+            UserEditor userEditor = new UserEditor();
+            List<string> parameters = new List<string>() { ChangeName.Text, ChangeSurname.Text, ChangeEmail.Text, ChangePassword.Text, ChangeConfirmPassword.Text };
+            userEditor.UpdateUser(parameters);
+            ChangesGrid.Visibility = Visibility.Hidden;
         }
 
         private void LogOutButton_Click(object sender, RoutedEventArgs e)

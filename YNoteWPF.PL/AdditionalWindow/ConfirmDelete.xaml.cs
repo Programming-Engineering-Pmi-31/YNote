@@ -12,18 +12,41 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using YNoteWPF.BLL.UserOperations;
 
-namespace YNoteWPF.PL.AdditionalWindow {
+namespace YNoteWPF.PL.AdditionalWindow
+{
     /// <summary>
     /// Interaction logic for Window1.xaml
     /// </summary>
-    public partial class ConfirmDelete : Window {
-        public ConfirmDelete() {
+    public partial class ConfirmDelete : Window
+    {
+        UserEditor userEditor = new UserEditor();
+        public ConfirmDelete()
+        {
             WindowStartupLocation = WindowStartupLocation.CenterScreen;
             InitializeComponent();
         }
+        public void Delete_Click(object sender, RoutedEventArgs e)
+        {
+            userEditor.DeleteUser();
+            LoginWindow lg = new LoginWindow();
+            lg.Show();
 
-        private void cancelDelete_Click(object sender, RoutedEventArgs e) {
+            Assembly currentAssembly = Assembly.GetExecutingAssembly();
+            foreach (Window w in Application.Current.Windows)
+            {
+                if (w.GetType().Assembly == currentAssembly)
+                {
+                    w.Close();
+                    break;
+                }
+            }
+
+            this.Close();
+        }
+        private void cancelDelete_Click(object sender, RoutedEventArgs e)
+        {
             this.Close();
         }
 
