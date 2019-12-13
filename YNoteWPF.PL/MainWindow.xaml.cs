@@ -78,6 +78,7 @@ namespace YNoteWPF.PL {
             }
 
             this.NotesCanvas.PreviewMouseMove += this.MouseMove_Event;
+
         }
 
         private void Add_Group(object sender, RoutedEventArgs e)
@@ -118,7 +119,7 @@ namespace YNoteWPF.PL {
             }
         }
 
-        private void Minimized_Click(object sender, RoutedEventArgs e) 
+        private void Minimized_Click(object sender, RoutedEventArgs e)
         {
             this.WindowState = WindowState.Minimized;
         }
