@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -23,6 +24,23 @@ namespace YNoteWPF.PL.AdditionalWindow {
         }
 
         private void cancelDelete_Click(object sender, RoutedEventArgs e) {
+            this.Close();
+        }
+
+        private void deleteAcount_Click(object sender, RoutedEventArgs e) {
+            LoginWindow lg = new LoginWindow();
+            lg.Show();
+
+            Assembly currentAssembly = Assembly.GetExecutingAssembly();
+            foreach (Window w in Application.Current.Windows)
+            {
+                if (w.GetType().Assembly == currentAssembly)
+                {
+                    w.Close();
+                    break;
+                }
+            }
+
             this.Close();
         }
     }
