@@ -11,17 +11,27 @@ using System.Linq;
 
 namespace YNoteWPF.BLL.Data
 {
+    /// <summary>
+    /// Service to operate Spaces
+    /// </summary>
     public class SpaceService : ISpaceService
     {
         private readonly YNoteDbContext _dbContext;
         private readonly IMapper _mapper;
 
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="SpaceService"/> class.
+        /// </summary>
+        /// <param name="dbContext">Database context injection.</param>
+        /// <param name="mapper">Mapper injection.</param>
         public SpaceService(YNoteDbContext dbContext, IMapper mapper)
         {
             _dbContext = dbContext;
             _mapper = mapper;
         }
 
+        /// <inheridoc/>
         public async Task<SpaceDTO> CreateSpaceAsync(CreateSpaceDTO createSpaceDTO)
         {
             var spaceEntity = _mapper.Map<SpaceEntity>(createSpaceDTO);
@@ -38,6 +48,7 @@ namespace YNoteWPF.BLL.Data
                 
         }
 
+        /// <inheridoc/>
         public async Task DeleteSpaceAsync(int id)
         {
             var spaceToDelete = await _dbContext.Spaces
@@ -56,6 +67,7 @@ namespace YNoteWPF.BLL.Data
             await _dbContext.SaveChangesAsync();            
         }
 
+        /// <inheridoc/>
         public async Task<List<SpaceDTO>> GetAllSpacesAsync()
         {
             var spaceEntity = await _dbContext.Spaces
@@ -69,6 +81,7 @@ namespace YNoteWPF.BLL.Data
             return spaceDTO;
         }
 
+        /// <inheridoc/>
         public async Task<SpaceDTO> GetSpaceByIdAsync(int id)
         {
             var spaceEntity = await _dbContext.Spaces
@@ -82,6 +95,7 @@ namespace YNoteWPF.BLL.Data
             return spaceDTO;
         }
 
+        /// <inheridoc/>
         public async Task<SpaceDTO> ChangeSpaceNameAsync(UpdateSpaceDTO updateSpaceDTO)
         {
 
